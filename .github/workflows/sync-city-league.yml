@@ -19,7 +19,7 @@ concurrency:
 jobs:
   sync-city:
     runs-on: ubuntu-latest
-    timeout-minutes: 15
+    timeout-minutes: 30
     steps:
       - uses: actions/checkout@v4
         with:
@@ -29,7 +29,7 @@ jobs:
           python-version: '3.11'
       - run: pip install -r requirements.txt
       - name: Collect published Japanese City League placings
-        run: python city_league_sync.py --since 2026-09-01 --pages 3 --max-events 12 --delay 3
+        run: python city_league_sync.py --since 2026-09-01 --pages 5 --max-events 35 --delay 3
       - name: Save verified results without overwriting match data
         run: |
           test -s city_league_results.csv

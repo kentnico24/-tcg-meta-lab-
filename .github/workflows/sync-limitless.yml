@@ -57,5 +57,16 @@ jobs:
           git add matches_snapshot.csv match_countries.csv sync_state.json
           if ! git diff --cached --quiet; then
             git commit -m "Update Limitless match data"
-            git push
+            # City League syncs and source-code merges can advance main while
+            # the lengthy Limitless fetch is running. Rebase on those commits
+            # rather than discarding successfully collected match data.
+            for attempt in 1 2 3; do
+              git pull --rebase
+              if git push; then
+                exit 0
+              fi
+              sleep $((attempt * 3))
+            done
+            echo "::error::Failed to push cumulative match data after retries"
+            exit 1
           fi
