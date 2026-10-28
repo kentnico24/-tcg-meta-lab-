@@ -35,3 +35,7 @@ Do not publish passwords or API keys. The default public app is read-only. Match
 実CSVの1,028試合保持とモックAPIでの更新・失敗保護を検証しています。
 この改修時の環境ではLimitless APIがネットワーク許可対象外のため、実API通信と
 Streamlitブラウザ操作は未検証です。
+
+### 日本語デッキ名の自動組み合わせ
+
+`deck_names.py` は既知の日本語ポケモン名や特殊デッキ名から複合デッキ名を自動構成します（例: `Alakazam Dudunsparce` → `フーディン・ノココッチ`、`Mega Excadrill` → `メガドリュウズ`）。初期1,028試合に登場した78種類のデッキ名をカバーします。新しい組み合わせは既知の構成要素だけで自動日本語化し、未知の構成要素を含む場合は誤訳を防ぐため英語のまま表示します。翻訳APIや有料AIサービスは使用しません。英語の保存データや勝率の集計キーは変更しません。

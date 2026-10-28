@@ -107,12 +107,12 @@ with st.expander('集計条件',expanded=True):
  if dates.notna().any():
   lo=dates.min().date();hi=dates.max().date();period=st.date_input('開催期間',(lo,hi),min_value=lo,max_value=hi)
   if isinstance(period,tuple) and len(period)==2:df=df[(dates.dt.date>=period[0])&(dates.dt.date<=period[1])]
- decks=sorted(set(df.deck_a)|set(df.deck_b))
+ decks=sorted(set(df.deck_a)|set(df.deck_b),key=deck_name)
  if not decks:st.warning('条件に一致する試合がありません');st.stop()
  deck=st.selectbox('分析するデッキ',decks,format_func=deck_name)
 p=perspective(df,deck)
 if p.empty:st.warning('対象試合がありません');st.stop()
-allopp=sorted(p.opponent.unique());opp=st.selectbox('対面を選択',['すべて']+allopp,format_func=deck_name)
+allopp=sorted(p.opponent.unique(),key=deck_name);opp=st.selectbox('対面を選択',['すべて']+allopp,format_func=deck_name)
 if opp!='すべて':p=p[p.opponent==opp]
 s=stats(p);m1,m2,m3=st.columns(3);m1.metric('勝率',f"{s['勝率']}%");m2.metric('試合数',f"{s['試合数']:,}");m3.metric('95%信頼区間',f"{s['95%下限']}–{s['95%上限']}%")
 st.subheader('対面別勝率')
