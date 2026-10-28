@@ -141,7 +141,7 @@ def select_events(events, known_ids, limit, now=None):
     rechecks = sorted(
         (t for t in eligible if t not in pending),
         key=lambda t: (t.get('checked', ''), t['date'], str(t['id'])))
-    refresh_slots = min(len(rechecks), max(1, limit // 5)) if pending else limit
+    refresh_slots = min(len(rechecks), max(1, limit // 5), limit - 1) if pending else limit
     selected = pending[:max(0, limit - refresh_slots)] + rechecks[:refresh_slots]
     # Fill unused slots if either side has fewer candidates.
     selected_ids = {str(t['id']) for t in selected}
