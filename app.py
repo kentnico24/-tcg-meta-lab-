@@ -92,6 +92,13 @@ if view=='シティリーグ（国内大会）':
    st.stop()
   st.success(f'シティリーグ：{city.event_url.nunique():,}大会 / {len(city):,}入賞記録')
   st.caption(f'保存されている期間：{city.date.min()} 〜 {city.date.max()}。全シティリーグの網羅を意味するものではありません。')
+  st.caption('公式のシティリーグ2027 シーズン1は2026年9月25日〜11月14日です。9月1日〜24日の掲載大会がある場合は別期間として扱います。')
+  city_season=st.selectbox('シティリーグのシーズン',['2026年9月1日以降（すべて）','2027シーズン1（9/25〜11/14）','2027開始前（9/1〜9/24）'],
+                           help='シティリーグだけを区分します。CL横浜などのCL・PJCSは別大会として集計し、シティリーグのシーズンで分類しません。')
+  if city_season.startswith('2027シーズン1'):
+   city=city[(city.date>='2026-09-25')&(city.date<='2026-11-14')]
+  elif city_season.startswith('2027開始前'):
+   city=city[(city.date>='2026-09-01')&(city.date<'2026-09-25')]
   prefectures=sorted(x for x in city.prefecture.unique() if x)
   selected_pref=st.selectbox('都道府県',['すべて']+prefectures)
   if selected_pref!='すべて':

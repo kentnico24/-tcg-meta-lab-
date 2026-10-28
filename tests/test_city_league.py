@@ -88,5 +88,83 @@ class CityDeckLabelTests(unittest.TestCase):
         self.assertEqual(city_deck_name('unknown pokemon'), 'unknown pokemon')
 
 
+class SeptemberBackfillTests(unittest.TestCase):
+    def test_city_league_september_2027_listing_is_included(self):
+        from city_league_sync import parse_listing
+        html = """
+        <table><tr><th>Date</th><th>Prefecture</th><th>Shop</th><th>Winner</th></tr>
+        <tr><td>26 Oct 26</td><td>Kanagawa<a href="/tournaments/jp/5201">City</a></td><td>Shop</td><td>x</td></tr>
+        <tr><td>25 Sep 26</td><td>Chiba<a href="/tournaments/jp/4701">City</a></td><td>Shop</td><td>x</td></tr>
+        <tr><td>01 Sep 26</td><td>Ōsaka<a href="/tournaments/jp/4001">City</a></td><td>Shop</td><td>x</td></tr>
+        <tr><td>31 Aug 26</td><td>Ōsaka<a href="/tournaments/jp/3900">City</a></td><td>Shop</td><td>x</td></tr>
+        </table>"""
+        events, reached = parse_listing(html, date(2026, 9, 1))
+        self.assertTrue(reached)
+        self.assertEqual([x["date"] for x in events],
+                         ["2026-10-26", "2026-09-25", "2026-09-01"])
+        self.assertEqual(events[1]["id"], "4701")
+
+    def test_oldest_missing_backfill_prioritizes_september(self):
+        from city_league_sync import select_events
+        sep = [
+            {"id": str(i), "date": f"2026-09-{i:02d}",
+             "event_url": f"https://limitlesstcg.com/tournaments/jp/{i}"}
+            for i in range(1, 21)
+        ]
+        oct_events = [
+            {"id": str(100 + i), "date": f"2026-10-{i:02d}",
+             "event_url": f"https://limitlesstcg.com/tournaments/jp/{100 + i}"}
+            for i in range(1, 21)
+        ]
+        previous = {
+            "id": "400", "date": "2026-10-22",
+            "event_url": "https://limitlesstcg.com/tournaments/jp/400",
+        }
+        all_events = list(reversed(sep + oct_events)) + [previous]
+        choices = select_events(all_events, {previous["event_url"]}, 30,
+                                oldest_first=True)
+        self.assertEqual(len(choices), 30)
+        self.assertEqual(choices[0]["date"], "2026-09-01")
+        self.assertGreaterEqual(
+            sum(x["date"].startswith("2026-09") for x in choices), 20)
+        self.assertIn("2026-10-20", [x["date"] for x in choices])
+        self.assertIn(previous["event_url"], [x["event_url"] for x in choices])
+        self.assertEqual(len({x["event_url"] for x in choices}), len(choices))
+
+    def test_no_pending_means_bounded_daily_refresh(self):
+        from city_league_sync import select_events
+        existing = [
+            {"id": str(i), "date": f"2026-10-{(i % 27) + 1:02d}",
+             "event_url": f"https://limitlesstcg.com/tournaments/jp/{i}"}
+            for i in range(60)
+        ]
+        known = {x["event_url"] for x in existing}
+        chosen = select_events(existing, known, 100, oldest_first=True)
+        self.assertEqual(len(chosen), 10)
+        self.assertEqual(len({x["event_url"] for x in chosen}), 10)
+
+    def test_source_record_retention_after_backfill(self):
+        from city_league_sync import read_saved, save_atomic
+        with tempfile.TemporaryDirectory() as folder:
+            path = Path(folder) / "city_league_results.csv"
+            old = {
+                "key": "5201:0", "date": "2026-10-26", "prefecture": "Chiba",
+                "shop": "A", "rank": "1", "deck": "dragapult",
+                "player": "Example", "event_url":
+                    "https://limitlesstcg.com/tournaments/jp/5201",
+                "decklist_url": "",
+            }
+            newer = dict(old, key="4701:0", date="2026-09-25",
+                         event_url="https://limitlesstcg.com/tournaments/jp/4701")
+            save_atomic(path, {old["key"]: old})
+            before = read_saved(path)
+            saved = dict(before)
+            saved[newer["key"]] = newer
+            save_atomic(path, saved)
+            after = read_saved(path)
+            self.assertEqual(after[old["key"]], before[old["key"]])
+            self.assertIn(newer["key"], after)
+
+
 if __name__ == '__main__':
     unittest.main()
