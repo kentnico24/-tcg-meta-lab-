@@ -179,14 +179,55 @@ def save_atomic(path, records):
             os.unlink(tmp)
 
 
+def select_events(events, known_events, limit, oldest_first=False):
+    """Fill the collection quota without losing new tournaments.
+
+    During initial backfill, reserve most requests for the oldest missing
+    events (September first), but still check newly published results and
+    a few previously collected events. The event list is expected to be
+    discovered from a bounded set of public Limitless index pages.
+    """
+    unique = list({e["event_url"]: e for e in events}.values())
+    pending = [e for e in unique if e["event_url"] not in known_events]
+    refresh = [e for e in unique if e["event_url"] in known_events]
+    pending.sort(key=lambda e: (e["date"], e["id"]))
+    refresh.sort(key=lambda e: (e["date"], e["id"]), reverse=True)
+    if not oldest_first:
+        pending.reverse()
+    refresh_quota = min(3, len(refresh), limit // 10)
+    recent_quota = min(5, max(0, (limit - refresh_quota) // 10)) if oldest_first else 0
+    selected = pending[:max(0, limit - refresh_quota - recent_quota)]
+    seen = {e["event_url"] for e in selected}
+    if recent_quota:
+        for e in reversed(pending):
+            if len(selected) >= limit - refresh_quota:
+                break
+            if e["event_url"] not in seen:
+                selected.append(e)
+                seen.add(e["event_url"])
+    for e in refresh[:refresh_quota]:
+        if e["event_url"] not in seen:
+            selected.append(e)
+            seen.add(e["event_url"])
+    for e in pending + refresh:
+        if len(selected) >= limit:
+            break
+        if e["event_url"] not in seen:
+            selected.append(e)
+            seen.add(e["event_url"])
+    return selected
+
+
 def main():
     parser = argparse.ArgumentParser()
     parser.add_argument("--since", type=date.fromisoformat, default=date(2026, 9, 1))
     parser.add_argument("--pages", type=int, default=3)
     parser.add_argument("--max-events", type=int, default=12)
     parser.add_argument("--delay", type=float, default=3.0)
+    parser.add_argument("--oldest-first", action="store_true",
+                        help="Prioritize earliest missing September tournaments during backfill")
     args = parser.parse_args()
-    if not 1 <= args.pages <= 20 or not 1 <= args.max_events <= 40 or args.delay < 2:
+    if not 1 <= args.pages <= 20 or not 1 <= args.max_events <= 120 or args.delay < 2:
         parser.error("Unsafe City League request budget")
     records = read_saved(OUTPUT)
     known_events = {row["event_url"] for row in records.values()}
@@ -199,15 +240,12 @@ def main():
         if reached or not found:
             break
         time.sleep(args.delay)
-    # Prioritize newly published tournaments; revisit a few existing for corrections.
-    unique = list({e["event_url"]: e for e in events}.values())
-    pending = [e for e in unique if e["event_url"] not in known_events]
-    refresh = [e for e in unique if e["event_url"] in known_events]
-    refresh_slots = min(3, len(refresh), max(0, args.max_events // 6))
-    selected = pending[:args.max_events - refresh_slots]
-    selected += refresh[:refresh_slots]
-    if len(selected) < args.max_events:
-        selected += pending[len(pending[:args.max_events - refresh_slots]):][:args.max_events - len(selected)]
+    selected = select_events(events, known_events, args.max_events,
+                             oldest_first=args.oldest_first)
+    print(f"City League index: {len({e['event_url'] for e in events})} tournaments "
+          f"since {args.since}; {len(known_events)} already saved; "
+          f"selected {len(selected)}; {'oldest-first' if args.oldest_first else 'newest-first'}",
+          flush=True)
     if not selected:
         print("No new City League events in index")
         return
@@ -230,6 +268,8 @@ def main():
             print(f"::warning::City League {event['id']}: {exc}", flush=True)
         time.sleep(args.delay)
     if successes == 0:
+        if not selected:
+            return
         raise RuntimeError("No City League event fetched; leaving prior results unchanged")
     save_atomic(OUTPUT, records)
     print(f"Saved {len(records)} City League placements from "
