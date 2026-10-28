@@ -109,7 +109,11 @@ class WeeklyMetaTests(unittest.TestCase):
         self.assertGreater(recommendation["index"], 0.5)
         self.assertGreaterEqual(recommendation["world_n"], 40)
         self.assertEqual(recommendation["domestic_placements"], 4)
-        self.assertEqual(len(got["recommendations"]), 1)
+        self.assertGreaterEqual(len(got["recommendations"]), 1)
+        self.assertLessEqual(len(got["recommendations"]), 5)
+        self.assertEqual(got["recommendations"][0]["family"], "Mega Lucario")
+        self.assertEqual(len({r["family"] for r in got["recommendations"]}),
+                         len(got["recommendations"]))
 
     def test_insufficient_and_unmatched_world_data_never_generate_fake_rates(self):
         rows = [city("dragapult", index=i) for i in range(10)]
