@@ -156,6 +156,32 @@ class WeeklyMetaTests(unittest.TestCase):
         self.assertAlmostEqual(candidate["coverage"], 12 / 36)
         self.assertLess(candidate["index"], 1.0)
 
+    def test_csv_style_single_pass_iterators_match_web_lists(self):
+        # Streamlit passes lists of dicts; the nightly CLI reads DictReader
+        # iterators. Both must produce precisely the same five candidates.
+        city_rows = [
+            city("dragapult", index=i, event=6000)
+            for i in range(16)
+        ] + [
+            city("dragapult", index=i, event=6001)
+            for i in range(16)
+        ] + [
+            city("lucario-mega hariyama", index=i, event=6002)
+            for i in range(16)
+        ]
+        world_rows = [
+            world("Mega Lucario", "Dragapult", "a", i)
+            for i in range(40)
+        ]
+        lists = rank_recommendations(city_rows, world_rows, AS_OF)
+        generators = rank_recommendations(
+            (dict(row) for row in city_rows),
+            (dict(row) for row in world_rows), AS_OF
+        )
+        self.assertTrue(lists["recommendations"])
+        self.assertEqual(lists["recommendations"], generators["recommendations"])
+        self.assertEqual(lists["meta"]["shares"], generators["meta"]["shares"])
+
     def test_current_production_snapshots_are_kept_separate(self):
         # Real-file smoke check protects data integration, not a fixed rank.
         with (ROOT/"city_league_results.csv").open(encoding="utf-8",newline="") as fp:
