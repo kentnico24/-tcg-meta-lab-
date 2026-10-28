@@ -1,54 +1,67 @@
-"""Verify and preview today's domestic-meta picks from the real tracked CSV files.
+"""Read-only preview of Japan top-16 share × world matchup recommendations.
 
-Read-only; daily GitHub Actions update the two source snapshots. Streamlit
-recomputes the top 5 whenever the updated snapshots are deployed.
+The same computation is used by the mobile/web Streamlit screen. CI prints
+real, current source counts and qualified picks, never fabricated win rates.
 """
 import csv
 from datetime import datetime
 from pathlib import Path
 from zoneinfo import ZoneInfo
 
-from domestic_recommendations import recommend
-from deck_names import deck_name, city_deck_name
-
+from weekly_recommendations import rank_recommendations
 
 ROOT = Path(__file__).resolve().parent
 
 
 def main():
-    today = datetime.now(ZoneInfo("Asia/Tokyo")).date()
-    city = ROOT / "city_league_results.csv"
-    world = ROOT / "matches_snapshot.csv"
-    with city.open(newline="", encoding="utf-8") as city_file, \
-            world.open(newline="", encoding="utf-8") as world_file:
-        report = recommend(csv.DictReader(city_file),
-                           csv.DictReader(world_file), today)
-    jp = report["japan"]
-    global_stats = report["world"]
-    print(f"JP City League top-16 shares: {jp['start']} to {jp['end']}; "
-          f"{jp['events']} events, {jp['placements']} placements")
-    print(f"Worldwide Limitless Play records: {global_stats['start']} to "
-          f"{global_stats['end']}; {global_stats['matches']} verified matches")
-    for family, share in sorted(jp["shares"].items(),
-                                key=lambda x: -x[1])[:5]:
-        print(f" JP {city_deck_name(family)}: "
-              f"{share * 100:.1f}% ({jp['counts'][family]} placings)")
-    for i, pick in enumerate(report["recommendations"], 1):
-        print(f" {i}. {deck_name(pick['deck'])}: index={pick['meta_score']:.1f} "
-              f"coverage={pick['matched_share']:.1f}% "
-              f"related_games={pick['matched_games']} "
-              f"world_appearances={pick['world_matches']}")
-        for detail in pick["evidence"][:3]:
-            print(f"   vs {city_deck_name(detail['family'])}: "
-                  f"JP {detail['jp_share']}%; worldwide "
-                  f"{detail['world_win_rate']}% over {detail['games']} games")
+    as_of = datetime.now(ZoneInfo("Asia/Tokyo")).date()
+    with (ROOT / "city_league_results.csv").open(
+            newline="", encoding="utf-8") as city, (
+            ROOT / "matches_snapshot.csv").open(
+            newline="", encoding="utf-8") as world:
+        report = rank_recommendations(csv.DictReader(city),
+                                      csv.DictReader(world), as_of, n=5)
+    jp = report["meta"]
+    worldwide = report["world"]
+    print(
+        "Japan City League top16 only:",
+        f"{jp['start']}..{jp['end']}",
+        f"{jp['events']} events, {jp['total']} named placements,",
+        f"{jp['unknown']} unnamed placements,",
+        f"last listing {jp['last_event']}"
+    )
+    print(
+        "Worldwide real Limitless Play matchups only:",
+        f"{worldwide['first']}..{worldwide['end']}",
+        f"{worldwide['matches']} matches,",
+        f"last match {worldwide['latest_match']}"
+    )
+    print("Top Japanese threats:")
+    for row in report["threats"][:8]:
+        print(f" {row['label']}: {row['share']*100:.1f}% "
+              f"({row['count']} placings)")
+    print(f"Supported candidates: {report['eligible']}")
+    for rank, item in enumerate(report["recommendations"], 1):
+        print(
+            f" {rank}. {item['label']}: indicative score "
+            f"{item['index']*100:.1f}/100, evidence coverage "
+            f"{item['coverage']*100:.1f}%, "
+            f"{item['world_n']} relevant world matches, "
+            f"{item['domestic_placements']} domestic placings"
+        )
+        for detail in item["details"][:3]:
+            print(
+                f"     vs {detail['opponent']}: "
+                f"Japan share {detail['share']*100:.1f}%, "
+                f"world observed {detail['raw']*100:.1f}% "
+                f"across {detail['n']} games"
+            )
+    if jp["total"] and jp["events"] < 10:
+        print("::warning::Japan recent seven-day results cover under 10 "
+              "City League events; standings share is not national usage.")
     if len(report["recommendations"]) < 5:
         print(f"::warning::Only {len(report['recommendations'])} "
-              "candidate(s) have sufficient documented worldwide matchup "
-              "evidence for this week's domestic meta.")
-    # No misleading success claim for unavailable records.
-    if jp["placements"] and not report["recommendations"]:
-        print("::warning::Insufficient matchup evidence; no recommendations.")
+              "data-backed candidates; do not invent additional picks.")
 
 
 if __name__ == "__main__":
