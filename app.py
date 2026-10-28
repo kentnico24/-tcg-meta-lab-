@@ -4,7 +4,10 @@ import pandas as pd
 import streamlit as st
 from deck_names import deck_name, city_deck_name
 from domestic_matchups import city_final_matches, read_verified_cl_matches, player_perspectives
+from domestic_recommendations import recommend
+from zoneinfo import ZoneInfo
 from region_labels import country_group, eligible_player
+from weekly_view import render_weekly_recommendations
 ROOT=pathlib.Path(__file__).parent
 DB=pathlib.Path(os.environ.get('TCG_DB_PATH', str(ROOT/'research.sqlite3')))
 st.set_page_config(page_title='TCG Meta Lab',page_icon='🃏',layout='wide')
@@ -72,8 +75,11 @@ st.title('🃏 TCG Meta Lab')
 st.caption('Android / PC 対応 Web版 v0.7')
 st.caption('デッキ・対面・採用カードを横断する独立型リサーチアプリ | 実データのみを集計')
 
-view=st.radio('分析メニュー', ['対戦勝率・採用カード', 'シティリーグ（国内大会）'],
-              horizontal=True, help='シティリーグは入賞順位・デッキ掲載データ。対戦勝率とは別に集計します。')
+view=st.radio('分析メニュー', ['対戦勝率・採用カード', 'シティリーグ（国内大会）', '今週のおすすめ'],
+              horizontal=True, help='今週のおすすめ：国内シティリーグ直近7日間の入賞内シェア × 世界公開試合の対面勝率。')
+if view=='今週のおすすめ':
+ render_weekly_recommendations(ROOT)
+ st.stop()
 if view=='シティリーグ（国内大会）':
  st.subheader('🇯🇵 シティリーグ（国内大会）')
  st.caption('参照元: Limitless TCG掲載の日本シティリーグ。順位・公開デッキだけを集計し、対戦履歴がない大会から対面勝率を推測しません。')
