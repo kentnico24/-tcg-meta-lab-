@@ -1,0 +1,43 @@
+name: Sync Japanese City League Results
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - '.github/workflows/sync-city-league.yml'
+  schedule:
+    - cron: "10 22 * * *" # 07:10 JST daily
+
+permissions:
+  contents: write
+
+concurrency:
+  group: limitless-city-league-sync
+  cancel-in-progress: false
+
+jobs:
+  sync-city:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: true
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - run: pip install -r requirements.txt
+      - name: Collect published Japanese City League placings
+        run: python city_league_sync.py --since 2026-09-01 --pages 3 --max-events 12 --delay 3
+      - name: Save verified results without overwriting match data
+        run: |
+          test -s city_league_results.csv
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add city_league_results.csv
+          if ! git diff --cached --quiet; then
+            git commit -m "Update Japanese City League placements"
+            git pull --rebase
+            git push
+          fi

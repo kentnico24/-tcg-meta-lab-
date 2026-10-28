@@ -42,6 +42,9 @@ jobs:
       - name: Export matches to CSV
         run: python export_matches.py
 
+      - name: Export player-country annotations
+        run: python export_countries.py
+
       - name: Commit updated data
         run: |
           git config user.name "github-actions[bot]"
@@ -51,7 +54,7 @@ jobs:
             exit 1
           fi
 
-          git add matches_snapshot.csv sync_state.json
+          git add matches_snapshot.csv match_countries.csv sync_state.json
           if ! git diff --cached --quiet; then
             git commit -m "Update Limitless match data"
             git push
