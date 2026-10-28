@@ -114,6 +114,8 @@ def sync_tournament(conn, t, delay):
         rows.append((key, t.get('name', tid), t.get('date', ''), deck_a, deck_b, outcome,
                      json.dumps(cards(pa.get('decklist')), ensure_ascii=False),
                      json.dumps(cards(pb.get('decklist')), ensure_ascii=False), 'limitless-play:' + tid))
+    if len({r[0] for r in rows}) != len(rows):
+        raise ValueError('Ambiguous duplicate match keys for tournament ' + tid)
     # Merge atomically and reject incomplete refreshes.
     previous = conn.execute('SELECT COUNT(*) FROM games WHERE source=?', ('limitless-play:' + tid,)).fetchone()[0]
     if previous > len({r[0] for r in rows}):
@@ -124,11 +126,41 @@ def sync_tournament(conn, t, delay):
     return len(rows)
 
 
+def select_events(events, known_ids, limit, now=None):
+    """Reserve refresh slots while prioritizing never-collected tournaments.
+
+    Failed tournaments enter a bounded retry cooldown so one malformed event
+    cannot monopolize the nightly quota.
+    """
+    now = time.time() if now is None else now
+    eligible = [t for t in events.values()
+                if t.get('retry_after', 0) <= now]
+    pending = sorted(
+        (t for t in eligible if str(t['id']) not in known_ids and not t.get('checked')),
+        key=lambda t: (t['date'], str(t['id'])))
+    rechecks = sorted(
+        (t for t in eligible if t not in pending),
+        key=lambda t: (t.get('checked', ''), t['date'], str(t['id'])))
+    refresh_slots = min(len(rechecks), max(1, limit // 5)) if pending else limit
+    selected = pending[:max(0, limit - refresh_slots)] + rechecks[:refresh_slots]
+    # Fill unused slots if either side has fewer candidates.
+    selected_ids = {str(t['id']) for t in selected}
+    for t in pending + rechecks:
+        if len(selected) >= limit:
+            break
+        if str(t['id']) not in selected_ids:
+            selected.append(t)
+            selected_ids.add(str(t['id']))
+    return selected
+
+
 def main():
     global DEADLINE, REQUEST_DELAY
     parser = argparse.ArgumentParser()
     parser.add_argument('--pages', type=int, default=2)
     parser.add_argument('--limit', type=int, default=50)
+    parser.add_argument('--recent-pages', type=int, default=0,
+                        help='Always re-scan this many newest pages before backfill')
     parser.add_argument('--max-tournaments', type=int, default=10)
     parser.add_argument('--delay', type=float, default=2.0)
     parser.add_argument('--refresh', action='store_true', help='Compatibility: existing events are always rechecked')
@@ -136,7 +168,7 @@ def main():
     parser.add_argument('--max-seconds', type=float, default=600)
     parser.add_argument('--state', type=Path, default=Path(__file__).with_name('sync_state.json'))
     args = parser.parse_args()
-    if args.pages < 1 or args.limit < 1 or args.max_tournaments < 1 or args.max_seconds <= 0:
+    if args.pages < 1 or args.recent_pages < 0 or args.limit < 1 or args.max_tournaments < 1 or args.max_seconds <= 0:
         parser.error('Collection limits must be positive')
     REQUEST_DELAY = max(1.0, args.delay)
     DEADLINE = time.monotonic() + args.max_seconds
@@ -150,30 +182,84 @@ def main():
         # Snapshot sources are also eligible for later corrections on fresh runners.
         for tid, event, played_at in conn.execute("SELECT substr(source,16),event,played_at FROM games WHERE source LIKE 'limitless-play:%' GROUP BY source"):
             events.setdefault(tid, {'id': tid, 'name': event, 'date': played_at, 'checked': ''})
-        for _ in range(args.pages):
-            tournaments = fetch('/tournaments', {'game': 'PTCG', 'format': 'STANDARD', 'page': state['page'], 'limit': min(100, args.limit)})
+        known_ids = {str(row[0]) for row in conn.execute(
+            "SELECT DISTINCT substr(source, 16) FROM games "
+            "WHERE source LIKE 'limitless-play:%'")}
+        cursor = max(1, int(state.get('page', 1)))
+        # Always check the newest tournaments, independently of the historical
+        # pagination cursor. Otherwise new events may go unnoticed for weeks.
+        pages = list(range(1, args.recent_pages + 1))
+        pages.extend(p for p in range(cursor, cursor + args.pages)
+                     if p not in pages)
+        next_cursor = cursor
+        for page in pages:
+            tournaments = fetch('/tournaments', {
+                'game': 'PTCG', 'format': 'STANDARD', 'page': page,
+                'limit': min(100, args.limit)})
             if not isinstance(tournaments, list):
                 raise ValueError('Invalid tournaments response')
+            reached_start = not tournaments
             for t in tournaments:
                 if not isinstance(t, dict) or not t.get('id') or not t.get('date'):
                     raise ValueError('Invalid tournament metadata')
-                if date.fromisoformat(t['date'][:10]) >= args.since:
-                    tid = str(t['id'])
-                    events[tid] = {**t, 'checked': events.get(tid, {}).get('checked', '')}
-            if not tournaments or any(date.fromisoformat(t['date'][:10]) < args.since for t in tournaments):
-                state['page'] = 1
+                event_date = date.fromisoformat(str(t['date'])[:10])
+                if event_date < args.since:
+                    reached_start = True
+                    continue
+                tid = str(t['id'])
+                previous = events.get(tid, {})
+                events[tid] = {
+                    **t,
+                    'checked': previous.get('checked', ''),
+                    'failures': previous.get('failures', 0),
+                    'retry_after': previous.get('retry_after', 0),
+                }
+            if page >= cursor:
+                next_cursor = 1 if reached_start else page + 1
+            if reached_start:
+                if page < cursor:
+                    next_cursor = 1
                 break
-            state['page'] += 1
-        eligible = [t for t in events.values() if date.fromisoformat(t['date'][:10]) >= args.since]
-        # Oldest check first: newly discovered and previously failed events get priority.
-        for t in sorted(eligible, key=lambda t: (t.get('checked', ''), str(t['id'])))[:args.max_tournaments]:
-            count = sync_tournament(conn, t, REQUEST_DELAY)
+        state['page'] = next_cursor
+
+        eligible = {tid: t for tid, t in events.items()
+                    if date.fromisoformat(str(t['date'])[:10]) >= args.since}
+        selected = select_events(eligible, known_ids, args.max_tournaments)
+        successes = 0
+        failures = 0
+        for t in selected:
+            if time.monotonic() + 15 >= DEADLINE:
+                print('Runtime budget nearly exhausted; remaining events will be retried', flush=True)
+                break
+            try:
+                count = sync_tournament(conn, t, REQUEST_DELAY)
+            except Exception as exc:
+                # Do not lose successful events because one event is temporarily
+                # inaccessible, changed layout, or has an incomplete response.
+                failures += 1
+                attempts = min(20, int(t.get('failures', 0)) + 1)
+                cooldown = min(7 * 86400, 6 * 3600 * 2 ** min(5, attempts - 1))
+                t['failures'] = attempts
+                t['retry_after'] = int(time.time() + cooldown)
+                error = str(exc).replace('\n', ' ')[:250]
+                print(f"::warning::Tournament {t['id']} failed ({type(exc).__name__}): {error}", flush=True)
+                if time.monotonic() >= DEADLINE:
+                    break
+                continue
+            successes += 1
             t['checked'] = time.strftime('%Y-%m-%dT%H:%M:%SZ', time.gmtime())
+            t['failures'] = 0
+            t['retry_after'] = 0
             print(f"{t['id']}: {count} usable matches", flush=True)
-        # Only advance discovery/check state after a successful bounded batch.
+        # Only advance discovery/check state after successful page discovery.
         temp = args.state.with_suffix('.tmp')
-        temp.write_text(json.dumps(state, ensure_ascii=False, indent=2) + '\n')
+        temp.write_text(json.dumps(state, ensure_ascii=False, indent=2) + '\n',
+                        encoding='utf-8')
         os.replace(temp, args.state)
+        total = conn.execute('SELECT COUNT(*) FROM games').fetchone()[0]
+        print(f'Sync finished: {successes} successful, {failures} failed, '
+              f'{len(eligible)} eligible tournaments, {total} saved matches', flush=True)
+
 
 
 if __name__ == '__main__':
