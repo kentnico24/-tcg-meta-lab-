@@ -207,6 +207,10 @@ def rank_recommendations(placements, matches, as_of, n=5):
     a 16-game prior. Recommendations require matchup evidence and coverage.
     Score is an *estimated suitability index*, NOT observed Japan winrate.
     """
+    # Country-specific placements are used twice (recent share and season
+    # candidate eligibility). Snapshot generators such as csv.DictReader once
+    # so the CLI report and the Streamlit DataFrame calculate identical picks.
+    placements = list(placements)
     meta = domestic_meta(placements, as_of)
     global_stats = worldwide_matchups(matches, as_of)
     threats = sorted(meta["shares"].items(), key=lambda pair: (-pair[1], pair[0]))[:TOP_THREATS]
