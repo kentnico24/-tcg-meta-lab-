@@ -68,7 +68,7 @@ def city_final_matches(rows):
 
 
 def read_verified_cl_matches(path):
-    """Read independently confirmed CL/PJCS matches; empty until available."""
+    """Read independently confirmed CL/PJCS matches; absent file means unavailable."""
     path = Path(path)
     if not path.exists():
         return []
