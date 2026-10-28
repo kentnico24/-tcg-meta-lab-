@@ -85,6 +85,20 @@ if snapshot.exists():
  try:
   df=pd.read_csv(snapshot,dtype=str).fillna('')
   st.success(f'Limitless実データ: {len(df):,} 試合を読み込みました（公開API由来）')
+  # Show actual collection coverage rather than implying the whole season is present.
+  progress_file = ROOT / 'sync_state.json'
+  if progress_file.exists():
+   try:
+    progress = json.loads(progress_file.read_text(encoding='utf-8'))
+    report = progress.get('last_sync', {})
+    tournaments = progress.get('events', {})
+    discovered = report.get('discovered_tournaments', len(tournaments))
+    checked = report.get('checked_tournaments', sum(bool(t.get('checked')) for t in tournaments.values()))
+    oldest = report.get('oldest_match_date') or str(df.played_at.min())[:10]
+    boundary = '9月1日まで大会一覧を探索済み' if progress.get('season_boundary_seen') else '過去大会を探索中'
+    st.caption(f'収集状況：大会 {checked:,} / {discovered:,} 件を確認済み・最古の保存試合 {oldest}・{boundary}（全試合取得完了を意味しません）')
+   except (OSError, ValueError, TypeError, KeyError):
+    pass
  except Exception as exc:
   st.error(f'スナップショットの読み込みに失敗: {exc}')
   df=pd.read_sql_query('SELECT * FROM games',c)
