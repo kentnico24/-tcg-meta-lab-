@@ -7,6 +7,7 @@ from domestic_matchups import city_final_matches, read_verified_cl_matches, play
 from domestic_recommendations import recommend
 from zoneinfo import ZoneInfo
 from region_labels import country_group, eligible_player
+from weekly_view import render_weekly_recommendations
 ROOT=pathlib.Path(__file__).parent
 DB=pathlib.Path(os.environ.get('TCG_DB_PATH', str(ROOT/'research.sqlite3')))
 st.set_page_config(page_title='TCG Meta Lab',page_icon='🃏',layout='wide')
@@ -74,76 +75,10 @@ st.title('🃏 TCG Meta Lab')
 st.caption('Android / PC 対応 Web版 v0.7')
 st.caption('デッキ・対面・採用カードを横断する独立型リサーチアプリ | 実データのみを集計')
 
-view=st.radio('分析メニュー', ['今週のおすすめ', '対戦勝率・採用カード', 'シティリーグ（国内大会）'],
-              horizontal=True, help='おすすめは国内シティリーグの直近7日入賞シェアを重みに、世界のLimitless Play公開対戦勝率を参考にします。')
-
-@st.cache_data(show_spinner=False)
-def load_recommendation_csv(path, modified, columns):
- return pd.read_csv(path, dtype=str, keep_default_na=False, usecols=list(columns))
-
+view=st.radio('分析メニュー', ['対戦勝率・採用カード', 'シティリーグ（国内大会）', '今週のおすすめ'],
+              horizontal=True, help='今週のおすすめ：国内シティリーグ直近7日間の入賞内シェア × 世界公開試合の対面勝率。')
 if view=='今週のおすすめ':
- st.subheader('🇯🇵 直近7日の国内環境から選ぶ おすすめ5デッキ')
- st.caption('国内シェア：日本開催シティリーグの上位入賞デッキのみ。対面相性：Limitless Playの世界公開試合のみ。海外のデッキ使用数は国内シェアに混ぜません。')
- today_jst=datetime.now(ZoneInfo('Asia/Tokyo')).date()
- jp_source=ROOT/'city_league_results.csv'
- world_source=ROOT/'matches_snapshot.csv'
- if not jp_source.exists() or not world_source.exists():
-  st.info('国内大会の入賞記録または世界の公開対戦データがまだ準備できていません。')
-  st.stop()
- try:
-  city_source=load_recommendation_csv(str(jp_source),jp_source.stat().st_mtime_ns,
-                  ('key','date','event_url','deck'))
-  world_source_df=load_recommendation_csv(str(world_source),world_source.stat().st_mtime_ns,
-                  ('id','played_at','deck_a','deck_b','winner','source'))
-  with st.spinner('国内の入賞シェアと世界の実対戦成績を照合中…'):
-   report=recommend(city_source.to_dict('records'),
-                    world_source_df.to_dict('records'),today_jst,limit=5)
- except (OSError,ValueError,KeyError) as exc:
-  st.error(f'おすすめの計算に使用するデータを読み込めませんでした: {exc}')
-  st.stop()
- jp=report['japan']
- world=report['world']
- st.caption(f"国内入賞デッキ集計期間：{jp['start']} 〜 {jp['end']}（日本時間）")
- a,b,c=st.columns(3)
- a.metric('国内の掲載大会',f"{jp['events']:,}大会")
- b.metric('国内の入賞記録',f"{jp['placements']:,}件")
- c.metric('世界の公開対戦',f"{world['matches']:,}試合")
- st.caption(f"世界の対面実績の対象期間：{world['start']} 〜 {world['end']}。期間が違うため、直近の国内環境での勝率を保証する数値ではありません。")
- st.subheader('国内シティリーグ・入賞デッキ内のシェア率')
- if jp['shares']:
-  share_rows=[{'デッキ系統':city_deck_name(family),
-               '入賞記録数':jp['counts'][family],
-               '入賞シェア':f"{share*100:.1f}%"}
-              for family,share in sorted(jp['shares'].items(),key=lambda x:(-x[1],x[0]))]
-  st.dataframe(pd.DataFrame(share_rows).head(15),use_container_width=True,hide_index=True)
-  st.caption('「入賞シェア」は掲載された上位入賞デッキを母数とした構成比。大会の全参加者の使用率ではありません。構築違いは主軸ポケモンによる系統へまとめています。')
- else:
-  st.info('この7日間に公開されたシティリーグの入賞データがないため、国内の最新シェア率は算出できません。')
- st.subheader('いまの国内環境に向けたおすすめ')
- picks=report['recommendations']
- if not picks:
-  st.warning('根拠となる国内入賞記録・世界の対面試合がまだ足りず、信頼できる候補を5つ選べません。架空の勝率では補いません。')
- else:
-  st.caption('順位は「国内入賞シェア × 世界の対面成績」から計算した参考指数とデータのカバー率で決定。勝率が100%に近い少数対面を過大評価しないよう、各対面を50%へ控えめに補正しています。')
-  for idx,pick in enumerate(picks,1):
-   st.markdown(f"#### {idx}位：{deck_name(pick['deck'])}")
-   c1,c2,c3=st.columns(3)
-   c1.metric('対環境・参考指数',f"{pick['meta_score']:.1f}点",help='50点を五分とする相性指数。総合勝率の予測値や保証値ではありません。')
-   c2.metric('対面が確認できた国内シェア',f"{pick['matched_share']:.1f}%")
-   c3.metric('関連する世界対戦',f"{pick['matched_games']:,}試合")
-   st.caption(f"世界での対象デッキ総登場数：{pick['world_matches']:,}試合相当。国内大会での実際の勝率ではありません。")
-   with st.expander('このデッキをおすすめする根拠（世界の実測対面）'):
-    evidence=[{'国内で多いデッキ系統':city_deck_name(x['family']),
-               '国内入賞シェア':f"{x['jp_share']:.1f}%",
-               '世界の対面勝率':f"{x['world_win_rate']:.1f}%",
-               '対面試合数':x['games'],
-               '補正後の参考値':f"{x['conservative_rate']:.1f}%"}
-              for x in pick['evidence']]
-    st.dataframe(pd.DataFrame(evidence),use_container_width=True,hide_index=True)
-  if len(picks)<5:
-   st.info(f"データ条件を満たした候補は{len(picks)}タイプでした。根拠の薄いデッキを無理に5つへ水増ししていません。")
-  st.caption(f"評価可能だった世界デッキタイプ：{report['scored_candidates']}。国内大会の勝率が未公開の部分は世界成績を参考にするため、構築差・カードプール・地域差の影響があります。")
- st.caption('毎朝の国内シティリーグ同期（7:10 JST）と世界公開試合同期（6:20 JST）の保存CSVから自動再計算。日付の切り替わりや公開データの更新時に表示が変わります。GitHub Actionsが失敗・遅延した日は最新データが更新されないことがあります。')
+ render_weekly_recommendations(ROOT)
  st.stop()
 if view=='シティリーグ（国内大会）':
  st.subheader('🇯🇵 シティリーグ（国内大会）')
