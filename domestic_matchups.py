@@ -18,7 +18,9 @@ MATCH_COLUMNS = [
     "deck_a", "deck_b", "winner", "source_url",
 ]
 TRUSTED_CL_HOSTS = {"pokemon-card.com", "www.pokemon-card.com",
-                    "limitlesstcg.com", "www.limitlesstcg.com"}
+                    "limitlesstcg.com", "www.limitlesstcg.com",
+                    "pokekameshi.com", "www.pokekameshi.com",
+                    "pokecahack.com", "www.pokecahack.com"}
 
 
 def city_final_matches(rows):
@@ -66,7 +68,7 @@ def city_final_matches(rows):
 
 
 def read_verified_cl_matches(path):
-    """Read independently confirmed CL/PJCS matches; empty until available."""
+    """Read independently confirmed CL/PJCS matches; absent file means unavailable."""
     path = Path(path)
     if not path.exists():
         return []

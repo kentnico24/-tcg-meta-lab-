@@ -82,6 +82,17 @@ class DomesticResultsTests(unittest.TestCase):
             self.assertTrue(match["deck_a"] and match["deck_b"])
             self.assertEqual(match["winner"], "a")
 
+    def test_cl2027_yokohama_has_three_source_linked_finals(self):
+        entries = read_verified_cl_matches(ROOT / "cl_verified_matches.csv")
+        self.assertEqual(len(entries), 3)
+        self.assertEqual({x["event_type"] for x in entries}, {"CL"})
+        self.assertEqual({x["date"] for x in entries}, {"2026-09-22"})
+        self.assertEqual({x["stage"] for x in entries}, {"決勝"})
+        self.assertEqual({x["winner"] for x in entries}, {"a"})
+        self.assertEqual({x["event_name"].split()[-1] for x in entries},
+                         {"マスターリーグ", "ジュニアリーグ", "シニアリーグ"})
+        self.assertEqual(len(player_perspectives(entries)), 6)
+
     def test_cl_source_needs_verified_match_rows(self):
         with tempfile.TemporaryDirectory() as folder:
             file = Path(folder) / "cl_verified_matches.csv"
