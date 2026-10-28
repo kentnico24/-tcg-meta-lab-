@@ -192,6 +192,9 @@ def select_events(events, known_events, limit, oldest_first=False):
     refresh = [e for e in unique if e["event_url"] in known_events]
     pending.sort(key=lambda e: (e["date"], e["id"]))
     refresh.sort(key=lambda e: (e["date"], e["id"]), reverse=True)
+    if oldest_first and not pending:
+        # After the initial backlog is cleared, stay gentle on the source.
+        return refresh[:min(10, limit)]
     if not oldest_first:
         pending.reverse()
     refresh_quota = min(3, len(refresh), limit // 10)
