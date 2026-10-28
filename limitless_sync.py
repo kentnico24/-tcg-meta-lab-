@@ -141,7 +141,7 @@ def select_events(events, known_ids, limit, now=None):
     rechecks = sorted(
         (t for t in eligible if t not in pending),
         key=lambda t: (t.get('checked', ''), t['date'], str(t['id'])))
-    refresh_slots = min(len(rechecks), max(1, limit // 5)) if pending else limit
+    refresh_slots = min(len(rechecks), max(1, limit // 5), limit - 1) if pending else limit
     selected = pending[:max(0, limit - refresh_slots)] + rechecks[:refresh_slots]
     # Fill unused slots if either side has fewer candidates.
     selected_ids = {str(t['id']) for t in selected}
@@ -162,13 +162,15 @@ def main():
     parser.add_argument('--recent-pages', type=int, default=0,
                         help='Always re-scan this many newest pages before backfill')
     parser.add_argument('--max-tournaments', type=int, default=10)
+    parser.add_argument('--caught-up-refresh', type=int, default=25,
+                        help='Maximum daily rechecks once the entire season is discovered and initial backlog is cleared')
     parser.add_argument('--delay', type=float, default=2.0)
     parser.add_argument('--refresh', action='store_true', help='Compatibility: existing events are always rechecked')
     parser.add_argument('--since', type=date.fromisoformat, default=date(2026, 9, 1))
     parser.add_argument('--max-seconds', type=float, default=600)
     parser.add_argument('--state', type=Path, default=Path(__file__).with_name('sync_state.json'))
     args = parser.parse_args()
-    if args.pages < 1 or args.recent_pages < 0 or args.limit < 1 or args.max_tournaments < 1 or args.max_seconds <= 0:
+    if args.pages < 1 or args.recent_pages < 0 or args.limit < 1 or args.max_tournaments < 1 or args.caught_up_refresh < 1 or args.max_seconds <= 0:
         parser.error('Collection limits must be positive')
     REQUEST_DELAY = max(1.0, args.delay)
     DEADLINE = time.monotonic() + args.max_seconds
@@ -192,6 +194,7 @@ def main():
         pages.extend(p for p in range(cursor, cursor + args.pages)
                      if p not in pages)
         next_cursor = cursor
+        boundary_reached = False
         for page in pages:
             tournaments = fetch('/tournaments', {
                 'game': 'PTCG', 'format': 'STANDARD', 'page': page,
@@ -217,14 +220,21 @@ def main():
             if page >= cursor:
                 next_cursor = 1 if reached_start else page + 1
             if reached_start:
+                boundary_reached = True
                 if page < cursor:
                     next_cursor = 1
                 break
         state['page'] = next_cursor
+        state['season_boundary_seen'] = bool(state.get('season_boundary_seen') or boundary_reached)
 
         eligible = {tid: t for tid, t in events.items()
                     if date.fromisoformat(str(t['date'])[:10]) >= args.since}
-        selected = select_events(eligible, known_ids, args.max_tournaments)
+        pending_count = sum(1 for t in eligible.values()
+                            if str(t['id']) not in known_ids and not t.get('checked'))
+        quota = args.max_tournaments
+        if state['season_boundary_seen'] and pending_count == 0:
+            quota = min(quota, args.caught_up_refresh)
+        selected = select_events(eligible, known_ids, quota)
         successes = 0
         failures = 0
         for t in selected:
@@ -251,14 +261,28 @@ def main():
             t['failures'] = 0
             t['retry_after'] = 0
             print(f"{t['id']}: {count} usable matches", flush=True)
-        # Only advance discovery/check state after successful page discovery.
+        total, oldest, newest = conn.execute(
+            'SELECT COUNT(*), MIN(played_at), MAX(played_at) FROM games').fetchone()
+        state['last_sync'] = {
+            'at_utc': time.strftime('%Y-%m-%dT%H:%M:%SZ', time.gmtime()),
+            'saved_matches': total,
+            'oldest_match_date': str(oldest or '')[:10],
+            'newest_match_date': str(newest or '')[:10],
+            'discovered_tournaments': len(eligible),
+            'checked_tournaments': sum(bool(t.get('checked')) for t in eligible.values()),
+            'pending_tournaments': sum(not t.get('checked') for t in eligible.values()),
+            'successful_tournaments': successes,
+            'failed_tournaments': failures,
+        }
+        # Persist the successful work even if some individual tournaments failed.
+        # The subsequent exporter refuses to remove any pre-existing match IDs.
         temp = args.state.with_suffix('.tmp')
         temp.write_text(json.dumps(state, ensure_ascii=False, indent=2) + '\n',
                         encoding='utf-8')
         os.replace(temp, args.state)
-        total = conn.execute('SELECT COUNT(*) FROM games').fetchone()[0]
         print(f'Sync finished: {successes} successful, {failures} failed, '
-              f'{len(eligible)} eligible tournaments, {total} saved matches', flush=True)
+              f'{len(eligible)} eligible tournaments, {total} saved matches; '
+              f'oldest={str(oldest or "")[:10]}', flush=True)
 
 
 
