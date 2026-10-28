@@ -8,6 +8,7 @@ from zoneinfo import ZoneInfo
 from region_labels import country_group, eligible_player
 from weekly_view import render_weekly_recommendations
 from matrix_style import matrix_cell_css
+from matchup_sort import MATCHUP_SORT_OPTIONS, sort_matchup_rows
 ROOT=pathlib.Path(__file__).parent
 DB=pathlib.Path(os.environ.get('TCG_DB_PATH', str(ROOT/'research.sqlite3')))
 st.set_page_config(page_title='TCG Meta Lab',page_icon='🃏',layout='wide')
@@ -328,11 +329,14 @@ else:
  st.info('このデッキで比較できる登録国データはありません。')
 st.caption('同じオンライン大会に参加した国内・海外登録者を、それぞれのプレイヤー視点で集計しています。国内大会と海外大会を区別した統計ではありません。')
 st.subheader('対面別勝率')
-summary=pd.DataFrame([{'対面':name,**stats(g)} for name,g in p.groupby('opponent')]).sort_values('試合数',ascending=False)
+matchup_sort=st.selectbox('対面表の並び替え',MATCHUP_SORT_OPTIONS,key='matchup_sort_order',help='勝率の高い順・低い順、試合数の多い順・少ない順を選べます。')
+matchup_rows=[{'対面':name,**stats(g)} for name,g in p.groupby('opponent')]
+summary=pd.DataFrame(sort_matchup_rows(matchup_rows,matchup_sort))
 display_summary=summary.assign(対面=summary['対面'].map(deck_name))
 st.dataframe(display_summary,use_container_width=True,hide_index=True)
 st.bar_chart(display_summary.set_index('対面')['勝率'])
 st.download_button('対面別集計CSV',summary.to_csv(index=False).encode('utf-8-sig'),file_name='matchups.csv')
+st.caption('勝率順に並び替える際は試合数も確認してください。少数試合では勝率が大きくぶれることがあります。')
 st.subheader('採用カード別の分析')
 p=p.copy();p['parsed_cards']=p.cards.apply(lambda x:normalize_list(x))
 cardnames=sorted({k for d in p.parsed_cards for k in d})
