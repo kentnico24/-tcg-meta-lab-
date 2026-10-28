@@ -126,7 +126,7 @@ def valid_city_event(url):
 
 def domestic_meta(placements, as_of):
     """Shares use ONLY published Japan City League placements, NEVER matches."""
-    start = max(CITY_2027_START, as_of - timedelta(days=LOCAL_DAYS-1))
+    start = max(CITY_2027_START, as_of - timedelta(days=LOCAL_DAYS - 1))
     counts = Counter()
     days = set()
     events = set()
@@ -207,11 +207,13 @@ def rank_recommendations(placements, matches, as_of, n=5):
     """
     meta = domestic_meta(placements, as_of)
     global_stats = worldwide_matchups(matches, as_of)
-    empty = {"meta": meta, "world": global_stats, "threats": [],
+    threats = sorted(meta["shares"].items(), key=lambda pair: (-pair[1], pair[0]))[:TOP_THREATS]
+    empty = {"meta": meta, "world": global_stats,
+             "threats": [{"family": f, "share": share, "count": meta["counts"][f],
+                          "label": family_label(f)} for f, share in threats],
              "recommendations": [], "eligible": 0}
     if not meta["total"] or not global_stats["matches"]:
         return empty
-    threats = sorted(meta["shares"].items(), key=lambda pair: (-pair[1], pair[0]))[:TOP_THREATS]
     # Domestic viability is observed during the current season, not inferred
     # from foreign-only wins or from nationwide player country codes.
     local_cutoff = max(CITY_2027_START, as_of-timedelta(days=ELIGIBILITY_DAYS-1))
@@ -238,8 +240,8 @@ def rank_recommendations(placements, matches, as_of, n=5):
         observed = []
         for opponent, share in threats:
             if candidate == opponent:
-                # Same broad family: without build-specific data this is 50%.
-                coverage += share
+                # A mirror family remains 50% neutral, but is *not* counted
+                # as covered by observed cross-archetype matchups.
                 continue
             wins, number = global_stats["pairs"].get((candidate,opponent),(0.0,0))
             if number < MIN_PAIR_MATCHES:
@@ -269,7 +271,4 @@ def rank_recommendations(placements, matches, as_of, n=5):
             "confidence": ("中" if sample>=50 and coverage>=0.55 else "低"),
         })
     candidates.sort(key=lambda x:(-x["index"],-x["coverage"],-x["world_n"],-x["domestic_placements"],x["family"]))
-    return {"meta":meta, "world":global_stats,
-            "threats":[{"family":f,"share":s,"count":meta["counts"][f],
-                        "label":family_label(f)} for f,s in threats],
-            "recommendations":candidates[:n], "eligible":len(candidates)}
+    return {**empty, "recommendations": candidates[:n], "eligible": len(candidates)}
