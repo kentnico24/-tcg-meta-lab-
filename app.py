@@ -300,21 +300,23 @@ known_sides=int(df.country_a.map(lambda x: country_group(x)!='不明').sum()+df.
 st.caption(f'登録国を確認できたプレイヤー視点: {known_sides:,} / {2*len(df):,} 件。国情報の追加収集は毎日の自動同期で進みます。')
 st.caption('地域分類はLimitlessに登録された各プレイヤーの国です。日本国内開催の大会を特定する機能ではありません。国未登録の参加者は「国不明」に分類します。')
 
+# Automatically identify this as a proper deck type, not a manual checkbox.
+# The raw match snapshot is NEVER edited: both participants are classified
+# consistently for deck dropdowns, opponent tables and the full matrix.
+df=df.copy()
+for side in ('a','b'):
+ deck_column='deck_'+side
+ list_column='decklist_'+side
+ mask=df[deck_column].eq('Dragapult')
+ if mask.any():
+  df.loc[mask,deck_column]=df.loc[mask,list_column].map(
+   lambda value:classify_dragapult('Dragapult',normalize_list(value)))
+hammer_game_sides=int(df.deck_a.eq('Dragapult [Crushing Hammer]').sum()+df.deck_b.eq('Dragapult [Crushing Hammer]').sum())
+st.caption(f'クラハンドラパは独立デッキとして自動集計（採用確認済みの対戦：{hammer_game_sides:,}件）。'
+           '通常のドラパルトにはクラハン非採用とリスト未確認を含みます。'
+           'ドラパルト・ヨノワールなどの複合型はそれぞれ別デッキです。')
+
 with st.expander('集計条件',expanded=True):
- split_hammer=st.checkbox('ドラパルトをクラハン採用・非採用で分ける',value=True,
-                          help='通常の「Dragapult」のみ、デッキリストにクラッシュハンマーが1枚以上あればクラハンドラパと判定します。リストが不明な試合は別区分として表示します。')
- if split_hammer:
-  # The original match snapshot stays unchanged: classification applies
-  # only to these in-memory columns and to BOTH sides of the pairing.
-  df=df.copy()
-  for side in ('a','b'):
-   deck_column='deck_'+side
-   list_column='decklist_'+side
-   mask=df[deck_column].eq('Dragapult')
-   if mask.any():
-    df.loc[mask,deck_column]=df.loc[mask,list_column].map(
-     lambda value:classify_dragapult('Dragapult',normalize_list(value)))
-  st.caption('クラハンドラパ＝クラッシュハンマー1枚以上採用の通常ドラパルト。非採用・リスト不明は別表示。ドラパルト・ヨノワール等の派生型は従来の名前のままです。')
  region=st.selectbox('分析する地域（プレイヤー登録国）',['すべて','国内','海外','国内同士','国不明'],help='国内＝日本登録プレイヤー、海外＝日本以外の登録プレイヤー、国内同士＝対戦者双方が日本登録。開催地や実際の地域大会を意味しません。')
  e=sorted(x for x in df.event.unique() if x)
  events=st.multiselect('大会',e,default=e)
