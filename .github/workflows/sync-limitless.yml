@@ -9,6 +9,10 @@ on:
 permissions:
   contents: write
 
+concurrency:
+  group: limitless-data-sync
+  cancel-in-progress: false
+
 jobs:
   sync:
     runs-on: ubuntu-latest
@@ -28,7 +32,7 @@ jobs:
 
 
       - name: Fetch Limitless data
-        run: python limitless_sync.py
+        run: python limitless_sync.py --since 2026-09-01 --pages 2 --max-tournaments 10 --max-seconds 600
 
       - name: Export matches to CSV
         run: python export_matches.py
@@ -42,7 +46,7 @@ jobs:
             exit 1
           fi
 
-          git add matches_snapshot.csv
+          git add matches_snapshot.csv sync_state.json
           if ! git diff --cached --quiet; then
             git commit -m "Update Limitless match data"
             git push
