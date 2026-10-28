@@ -54,7 +54,7 @@ def stats(g):
  n=len(g);w=float(g.result.sum());lo,hi=wilson(w,n)
  return {'試合数':n,'勝率':round(w/n*100,1) if n else 0,'95%下限':round(lo*100,1),'95%上限':round(hi*100,1),'勝ち相当':w}
 st.title('🃏 TCG Meta Lab')
-st.caption('Android / PC 対応 Web版 v0.6')
+st.caption('Android / PC 対応 Web版 v0.7')
 st.caption('デッキ・対面・採用カードを横断する独立型リサーチアプリ | 実データのみを集計')
 with st.sidebar:
  st.header('データ管理')
@@ -78,7 +78,17 @@ with st.sidebar:
  st.download_button('CSVひな形を取得','id,event,played_at,deck_a,deck_b,winner,decklist_a,decklist_b,source\nexample-001,Example,2026-10-01,Deck A,Deck B,a,"{""Card X"":2}","{""Card Y"":3}",manual\n',file_name='match_template.csv',mime='text/csv')
  st.caption('勝者 winner は a / b / draw。カードリストはJSON辞書（カード名:枚数）。CSVのIDは試合ごとに一意にしてください。')
  st.caption('Limitless Playの公開API同期: `python limitless_sync.py` を実行してください。取得できないデッキ・対戦は集計から除外します。')
-df=pd.read_sql_query('SELECT * FROM games',c)
+# Hosted deployments load the latest GitHub Actions snapshot first.
+snapshot=ROOT/'matches_snapshot.csv'
+if snapshot.exists():
+ try:
+  df=pd.read_csv(snapshot,dtype=str).fillna('')
+  st.success(f'Limitless実データ: {len(df):,} 試合を読み込みました（公開API由来）')
+ except Exception as exc:
+  st.error(f'スナップショットの読み込みに失敗: {exc}')
+  df=pd.read_sql_query('SELECT * FROM games',c)
+else:
+ df=pd.read_sql_query('SELECT * FROM games',c)
 if df.empty:
  demo_path=ROOT/'demo_synthetic.csv'
  if demo_path.exists():
