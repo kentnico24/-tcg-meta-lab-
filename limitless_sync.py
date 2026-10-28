@@ -10,6 +10,9 @@ import urllib.request
 from pathlib import Path
 from datetime import date
 from snapshot_store import restore
+from country_store import (initialize as initialize_countries,
+                           upsert_countries, restore_countries)
+from region_labels import normalize_country
 
 BASE = 'https://play.limitlesstcg.com/api'
 DB = Path(os.environ.get('TCG_DB_PATH', str(Path(__file__).with_name('research.sqlite3'))))
@@ -75,6 +78,7 @@ def cards(decklist):
 def initialize(conn):
     conn.execute('''CREATE TABLE IF NOT EXISTS games(id TEXT PRIMARY KEY,event TEXT,played_at TEXT,deck_a TEXT,deck_b TEXT,winner TEXT,decklist_a TEXT,decklist_b TEXT,source TEXT)''')
     conn.execute('''CREATE TABLE IF NOT EXISTS synced_tournaments(id TEXT PRIMARY KEY, date TEXT, synced_at TEXT, matches INTEGER)''')
+    initialize_countries(conn)
     conn.commit()
 
 
@@ -92,6 +96,7 @@ def sync_tournament(conn, t, delay):
     existing = {(r[0].rsplit(':', 1)[0] if len(r[0].split(':')) == 5 else r[0]): r[0] for r in conn.execute(
         'SELECT id FROM games WHERE source=?', ('limitless-play:' + tid,))}
     rows = []
+    regions = []
     for idx, match in enumerate(pairings):
         a, b = str(match.get('player1') or ''), str(match.get('player2') or '')
         winner = str(match.get('winner', ''))
@@ -114,6 +119,8 @@ def sync_tournament(conn, t, delay):
         rows.append((key, t.get('name', tid), t.get('date', ''), deck_a, deck_b, outcome,
                      json.dumps(cards(pa.get('decklist')), ensure_ascii=False),
                      json.dumps(cards(pb.get('decklist')), ensure_ascii=False), 'limitless-play:' + tid))
+        regions.append((key, normalize_country(pa.get('country')),
+                        normalize_country(pb.get('country'))))
     if len({r[0] for r in rows}) != len(rows):
         raise ValueError('Ambiguous duplicate match keys for tournament ' + tid)
     # Merge atomically and reject incomplete refreshes.
@@ -122,6 +129,7 @@ def sync_tournament(conn, t, delay):
         raise ValueError('Refusing reduced refresh for tournament ' + tid)
     with conn:
         conn.executemany(f'INSERT OR REPLACE INTO games {COLUMNS} VALUES (?,?,?,?,?,?,?,?,?)', rows)
+        upsert_countries(conn, regions)
         conn.execute('INSERT OR REPLACE INTO synced_tournaments VALUES (?,?,datetime("now"),?)', (tid, t.get('date', ''), len(rows)))
     return len(rows)
 
@@ -179,6 +187,9 @@ def main():
         initialize(conn)
         restored = restore(conn, Path(__file__).with_name('matches_snapshot.csv'))
         print(f'Restored {restored} snapshot matches', flush=True)
+        restored_regions = restore_countries(
+            conn, Path(__file__).with_name('match_countries.csv'))
+        print(f'Restored {restored_regions} player-country annotations', flush=True)
         state = json.loads(args.state.read_text()) if args.state.exists() else {'page': 1, 'events': {}}
         events = state['events']
         # Snapshot sources are also eligible for later corrections on fresh runners.
