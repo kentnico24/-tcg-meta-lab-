@@ -26,11 +26,14 @@ jobs:
       - name: Install dependencies
         run: pip install -r requirements.txt
 
+
       - name: Fetch Limitless data
         run: python limitless_sync.py
 
+      - name: Export matches to CSV
+        run: python export_matches.py
+
       - name: Commit updated data
-        
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
