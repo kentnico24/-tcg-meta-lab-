@@ -123,6 +123,39 @@ class WeeklyMetaTests(unittest.TestCase):
         self.assertEqual(result["recommendations"], [])
         self.assertEqual(result["eligible"], 0)
 
+    def test_one_or_two_domestic_events_cannot_drive_recommendations(self):
+        single_event = [city("dragapult", index=i, event=6000)
+                        for i in range(16)]
+        world_data = [world("Mega Lucario", "Dragapult", "a", i)
+                      for i in range(50)]
+        a = rank_recommendations(single_event, world_data, AS_OF)
+        self.assertEqual(a["meta"]["events"], 1)
+        self.assertEqual(a["recommendations"], [])
+        two_events = single_event + [
+            city("lucario-mega", index=i, event=6001)
+            for i in range(16)
+        ]
+        b = rank_recommendations(two_events, world_data, AS_OF)
+        self.assertEqual(b["meta"]["events"], 2)
+        self.assertEqual(b["recommendations"], [])
+
+    def test_mirror_family_never_counts_as_real_matchup_coverage(self):
+        city_rows = (
+            [city("dragapult", index=i, event=6000) for i in range(12)]
+            + [city("alakazam", index=i, event=6001) for i in range(12)]
+            + [city("dragapult dusknoir", index=i, event=6002) for i in range(12)]
+        )
+        world_rows = [
+            world("Dragapult", "Alakazam Dudunsparce", "a", i)
+            for i in range(30)
+        ]
+        got = rank_recommendations(city_rows, world_rows, AS_OF)
+        candidate = next(
+            x for x in got["recommendations"] if x["family"] == "Dragapult"
+        )
+        self.assertAlmostEqual(candidate["coverage"], 12 / 36)
+        self.assertLess(candidate["index"], 1.0)
+
     def test_current_production_snapshots_are_kept_separate(self):
         # Real-file smoke check protects data integration, not a fixed rank.
         with (ROOT/"city_league_results.csv").open(encoding="utf-8",newline="") as fp:
