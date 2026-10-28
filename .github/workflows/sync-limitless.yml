@@ -3,6 +3,11 @@ name: Sync Limitless Data
 
 on:
   workflow_dispatch:
+  # Execute one live verification after workflow improvements are merged.
+  push:
+    branches: [main]
+    paths:
+      - '.github/workflows/sync-limitless.yml'
   schedule:
     - cron: "20 21 * * *"
 
@@ -32,7 +37,7 @@ jobs:
 
 
       - name: Fetch Limitless data
-        run: python limitless_sync.py --since 2026-09-01 --pages 2 --max-tournaments 10 --max-seconds 600
+        run: python limitless_sync.py --since 2026-09-01 --recent-pages 1 --pages 3 --max-tournaments 30 --max-seconds 900
 
       - name: Export matches to CSV
         run: python export_matches.py
