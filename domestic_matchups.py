@@ -18,7 +18,9 @@ MATCH_COLUMNS = [
     "deck_a", "deck_b", "winner", "source_url",
 ]
 TRUSTED_CL_HOSTS = {"pokemon-card.com", "www.pokemon-card.com",
-                    "limitlesstcg.com", "www.limitlesstcg.com"}
+                    "limitlesstcg.com", "www.limitlesstcg.com",
+                    "pokekameshi.com", "www.pokekameshi.com",
+                    "pokecahack.com", "www.pokecahack.com"}
 
 
 def city_final_matches(rows):
