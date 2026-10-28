@@ -1,37 +1,33 @@
-"""Optional card-inclusion-based subtyping for the plain Dragapult deck.
+"""Recognize Crushing Hammer Dragapult as a first-class deck archetype.
 
-The raw Limitless archetype name remains unchanged in stored snapshots.
-All labels here are local, per-match perspectives only.
+The original Limitless Play archetype and lists remain unchanged in saved
+matches. Only a verifiable Crushing Hammer inclusion creates a new category.
+Other plain Dragapult matches retain their original name; unknown lists are
+NOT claimed to be confirmed non-Hammer lists.
 """
 
 DRAGAPULT_HAMMER = "Dragapult [Crushing Hammer]"
-DRAGAPULT_NO_HAMMER = "Dragapult [No Crushing Hammer]"
-DRAGAPULT_UNVERIFIED = "Dragapult [List Unknown]"
+DRAGAPULT_BASE = "Dragapult"
 CRUSHING_HAMMER_NAMES = frozenset(("crushing hammer", "クラッシュハンマー"))
 
 
 def classify_dragapult(deck, cards):
-    """Split ONLY plain Dragapult; leave other named combinations unchanged.
+    """Give verified Crushing Hammer Dragapult its own searchable deck type.
 
-    cards is a normalized nonempty {card_name: quantity} mapping. A missing or
-    invalid list is *not* assumed to contain zero Crushing Hammers.
+    The unmodified Dragapult archetype is the fallback for missing lists,
+    lists without Hammer, or malformed card quantities. Compound named
+    archetypes like Dragapult Dusknoir remain their original separate type.
     """
-    if deck != "Dragapult":
+    if deck != DRAGAPULT_BASE or not isinstance(cards, dict):
         return deck
-    if not isinstance(cards, dict) or not cards:
-        return DRAGAPULT_UNVERIFIED
-    usable = False
-    hammers = 0
-    for key, qty in cards.items():
+    for name, quantity in cards.items():
+        if str(name).strip().casefold() not in CRUSHING_HAMMER_NAMES:
+            continue
         try:
-            number = int(qty)
-        except (TypeError, ValueError, OverflowError):
+            # Booleans are not meaningful decklist quantities.
+            amount = 0 if isinstance(quantity, bool) else int(quantity)
+        except (ValueError, TypeError, OverflowError):
             continue
-        if number < 0:
-            continue
-        usable = usable or number > 0
-        if str(key).strip().casefold() in CRUSHING_HAMMER_NAMES:
-            hammers += number
-    if not usable:
-        return DRAGAPULT_UNVERIFIED
-    return DRAGAPULT_HAMMER if hammers > 0 else DRAGAPULT_NO_HAMMER
+        if amount > 0:
+            return DRAGAPULT_HAMMER
+    return deck
