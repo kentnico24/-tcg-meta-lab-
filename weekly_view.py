@@ -9,7 +9,8 @@ from weekly_recommendations import rank_recommendations, family_label
 
 
 @st.cache_data(ttl=1800, show_spinner=False)
-def calculate_weekly(local_path, world_path, local_mtime, world_mtime, as_of):
+def calculate_weekly(local_path, world_path, local_mtime, world_mtime, as_of,
+                     min_total_matches):
     """Cache by both snapshot mtimes and Japan-local current date."""
     city = pd.read_csv(
         local_path, dtype=str, keep_default_na=False,
@@ -20,7 +21,8 @@ def calculate_weekly(local_path, world_path, local_mtime, world_mtime, as_of):
         usecols=["id", "played_at", "deck_a", "deck_b", "winner", "source"],
     )
     return rank_recommendations(city.to_dict("records"),
-                                world.to_dict("records"), as_of, n=5)
+                                world.to_dict("records"), as_of, n=5,
+                                min_total_matches=min_total_matches)
 
 
 def render_weekly_recommendations(root):
@@ -37,6 +39,18 @@ def render_weekly_recommendations(root):
     if not city_path.exists() or not world_path.exists():
         st.warning("国内シティリーグ結果または世界の対戦CSVが未取得のため、おすすめを計算できません。")
         return
+    minimum = st.slider(
+        "おすすめの最低試合数（世界の対象対面・合計）",
+        min_value=10, max_value=100, value=30, step=10,
+        key="weekly_minimum_world_matchups",
+        help=("国内のシェア上位デッキとの対戦を合計した、世界の実対戦数です。"
+              "個々の対面に40試合ずつ必要という意味ではありません。"),
+    )
+    st.caption(
+        f"条件：対象対面の合計 **{minimum}試合以上**。"
+        "スライダーを動かすとおすすめを再計算します。"
+        "条件が厳しいと5タイプそろわない場合があります。"
+    )
     try:
         japan_today = datetime.now(timezone(timedelta(hours=9))).date()
         result = calculate_weekly(
@@ -44,6 +58,7 @@ def render_weekly_recommendations(root):
             city_path.stat().st_mtime_ns,
             world_path.stat().st_mtime_ns,
             japan_today,
+            minimum,
         )
         meta = result["meta"]
         world = result["world"]
@@ -98,9 +113,8 @@ def render_weekly_recommendations(root):
         )
         if not result["recommendations"]:
             st.warning(
-                "国内の入賞実績と世界の対面試合数が不足しているため、"
-                "根拠を示せるおすすめはまだありません。"
-                "両方のデータが増えると自動的に追加されます。"
+                f"対象対面の合計{minimum}試合以上などの条件を満たすおすすめがありません。"
+                "最低試合数を下げるか、次回のデータ更新を確認してください。"
             )
         for index, item in enumerate(result["recommendations"], 1):
             st.markdown(f"#### {index}位　{item['label']}")
@@ -136,7 +150,7 @@ def render_weekly_recommendations(root):
                              use_container_width=True, hide_index=True)
             st.divider()
         st.caption(
-            f"データ条件を満たす候補：{result['eligible']}タイプ。最大5タイプを表示。"
+            f"合計{minimum}試合以上などの条件を満たす候補：{result['eligible']}タイプ。最大5タイプを表示。"
             "候補は国内シティリーグ今季の入賞実績があるタイプに限ります。"
         )
         st.caption(
