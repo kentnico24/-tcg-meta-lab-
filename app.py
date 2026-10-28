@@ -76,6 +76,21 @@ def stats(g):
 st.title('🃏 TCG Meta Lab')
 st.caption('Android / PC 対応 Web版 v0.7')
 st.caption('デッキ・対面・採用カードを横断する独立型リサーチアプリ | 実データのみを集計')
+if not WRITES_ENABLED:
+ st.caption('🧪 試験公開中｜閲覧専用・ログイン不要（公開設定の場合）')
+with st.expander('はじめての方へ｜TCG Meta Lab の使い方', expanded=False):
+ st.markdown('''
+**TCG Meta Lab は、公開されたポケモンカードの大会記録を調べる試験版アプリです。**
+
+1. **対戦勝率・採用カード**：デッキを選び、相手ごとの勝率や採用カードの傾向を比較。クラハンドラパも選べます。
+2. **シティリーグ（国内大会）**：国内の公開入賞結果と掲載デッキのシェアを確認。
+3. **今週のおすすめ**：国内直近7日間の公開入賞内シェアと、世界の公開試合の対面実績を組み合わせて参考候補を確認。
+
+集計条件の変更や結果CSVのダウンロードは自由に試せます。**対戦結果の勝率は公開試合の観測値で、実際の勝利を保証する予測ではありません。** 国内入賞内シェアは大会参加者全体の使用率ではありません。
+''')
+ st.caption('試験公開中のため、公開データの不足・更新遅延・表示上の不具合があり得ます。管理者以外は試合データの同期・取り込みができません。')
+ st.caption('不具合や改善案は、このURLを送った人へ「利用メニュー・操作・表示内容」を伝えてください。スクリーンショットは個人情報を隠して共有してください。')
+
 
 view=st.radio('分析メニュー', ['対戦勝率・採用カード', 'シティリーグ（国内大会）', '今週のおすすめ'],
               horizontal=True, help='今週のおすすめ：国内シティリーグ直近7日間の入賞内シェア × 世界公開試合の対面勝率。')
@@ -225,27 +240,31 @@ if view=='シティリーグ（国内大会）':
   st.error(f'シティリーグ結果を読み込めませんでした: {exc}')
  st.stop()
 with st.sidebar:
- st.header('データ管理')
- st.info('公開Web版ではデータの保存が永続的とは限りません。Streamlit Community Cloudでは再起動時にSQLiteの内容が失われる可能性があります。')
- if not WRITES_ENABLED:
-  st.info('公開閲覧モードです。データ同期・CSV取込は管理者が有効化した場合のみ利用できます。')
- st.subheader('Limitless データ同期')
- sync_count=st.number_input('同期する大会数（最大5）',min_value=1,max_value=5,value=2)
- if st.button('公開APIから大会を同期',disabled=not WRITES_ENABLED,help='実際のAPI仕様・通信状況により失敗する場合があります。'):
-  with st.spinner('大会データを取得しています…'):
-   try:
-    result=subprocess.run([sys.executable,str(ROOT/'limitless_sync.py'),'--pages','1','--max-tournaments',str(sync_count),'--delay','1.5','--max-seconds','120'],capture_output=True,text=True,timeout=180,env=os.environ.copy())
-    if result.returncode: st.error('同期に失敗しました。');st.code((result.stderr or result.stdout)[-2500:])
-    else:
-     st.code(result.stdout[-3000:]);st.cache_data.clear();st.rerun()
-   except subprocess.TimeoutExpired:st.error('同期がタイムアウトしました。')
- upload=st.file_uploader('対戦データCSVを読み込む',type='csv')
- if upload and st.button('インポート',type='primary',disabled=not WRITES_ENABLED):
-  try:st.success(f'{load_csv(upload)} 行を検査・取り込み（重複IDは無視）');st.cache_data.clear();st.rerun()
-  except Exception as e:st.error(str(e))
- st.download_button('CSVひな形を取得','id,event,played_at,deck_a,deck_b,winner,decklist_a,decklist_b,source\nexample-001,Example,2026-10-01,Deck A,Deck B,a,"{""Card X"":2}","{""Card Y"":3}",manual\n',file_name='match_template.csv',mime='text/csv')
- st.caption('勝者 winner は a / b / draw。カードリストはJSON辞書（カード名:枚数）。CSVのIDは試合ごとに一意にしてください。')
- st.caption('Limitless Playの公開API同期: `python limitless_sync.py` を実行してください。取得できないデッキ・対戦は集計から除外します。')
+ if WRITES_ENABLED:
+  st.header('管理者用データ管理')
+  st.caption('管理者が明示的に書き込みを有効化した環境でのみ表示します。公開アプリでは有効化しないでください。')
+  st.subheader('Limitless データ同期')
+  sync_count=st.number_input('同期する大会数（最大5）',min_value=1,max_value=5,value=2)
+  if st.button('公開APIから大会を同期',disabled=not WRITES_ENABLED,help='実際のAPI仕様・通信状況により失敗する場合があります。'):
+   with st.spinner('大会データを取得しています…'):
+    try:
+     result=subprocess.run([sys.executable,str(ROOT/'limitless_sync.py'),'--pages','1','--max-tournaments',str(sync_count),'--delay','1.5','--max-seconds','120'],capture_output=True,text=True,timeout=180,env=os.environ.copy())
+     if result.returncode: st.error('同期に失敗しました。');st.code((result.stderr or result.stdout)[-2500:])
+     else:
+      st.code(result.stdout[-3000:]);st.cache_data.clear();st.rerun()
+    except subprocess.TimeoutExpired:st.error('同期がタイムアウトしました。')
+  upload=st.file_uploader('対戦データCSVを読み込む',type='csv')
+  if upload and st.button('インポート',type='primary',disabled=not WRITES_ENABLED):
+   try:st.success(f'{load_csv(upload)} 行を検査・取り込み（重複IDは無視）');st.cache_data.clear();st.rerun()
+   except Exception as e:st.error(str(e))
+  st.download_button('CSVひな形を取得','id,event,played_at,deck_a,deck_b,winner,decklist_a,decklist_b,source\nexample-001,Example,2026-10-01,Deck A,Deck B,a,"{""Card X"":2}","{""Card Y"":3}",manual\n',file_name='match_template.csv',mime='text/csv')
+  st.caption('勝者 winner は a / b / draw。カードリストはJSON辞書（カード名:枚数）。CSVのIDは試合ごとに一意にしてください。')
+  st.caption('Limitless Playの公開API同期: `python limitless_sync.py` を実行してください。取得できないデッキ・対戦は集計から除外します。')
+ else:
+  st.header('閲覧専用モード')
+  st.info('公開試用版ではデータの同期・CSV取り込みはできません。デッキ分析と集計結果のダウンロードはご利用いただけます。')
+  st.caption('試合データはGitHub Actionsが更新します。アプリ上の操作で保存済みの試合CSVが変更されることはありません。')
+
 # Hosted deployments load the latest GitHub Actions snapshot first.
 snapshot=ROOT/'matches_snapshot.csv'
 if snapshot.exists():
