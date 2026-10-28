@@ -6,6 +6,7 @@ import pandas as pd
 import streamlit as st
 
 from weekly_recommendations import rank_recommendations, family_label
+from weekly_deck_examples import select_domestic_decklists
 
 
 @st.cache_data(ttl=1800, show_spinner=False)
@@ -14,15 +15,23 @@ def calculate_weekly(local_path, world_path, local_mtime, world_mtime, as_of,
     """Cache by both snapshot mtimes and Japan-local current date."""
     city = pd.read_csv(
         local_path, dtype=str, keep_default_na=False,
-        usecols=["key", "date", "deck", "event_url"],
+        usecols=["key", "date", "deck", "event_url", "decklist_url",
+                 "rank", "shop", "player"],
     )
     world = pd.read_csv(
         world_path, dtype=str, keep_default_na=False,
         usecols=["id", "played_at", "deck_a", "deck_b", "winner", "source"],
     )
-    return rank_recommendations(city.to_dict("records"),
-                                world.to_dict("records"), as_of, n=5,
-                                min_total_matches=min_total_matches)
+    city_rows = city.to_dict("records")
+    result = rank_recommendations(city_rows,
+                                  world.to_dict("records"), as_of, n=5,
+                                  min_total_matches=min_total_matches)
+    result["deck_examples"] = {
+        item["family"]: select_domestic_decklists(
+            city_rows, item["family"], as_of, limit=3)
+        for item in result["recommendations"]
+    }
+    return result
 
 
 def render_weekly_recommendations(root):
@@ -135,6 +144,43 @@ def render_weekly_recommendations(root):
                 )
             else:
                 st.caption("明確に有利といえる個別対面は十分に確認できていません。")
+            # Decklist examples are from REAL Japan City League placements,
+            # not from global win-rate evidence. Never invent card quantities.
+            examples = result["deck_examples"].get(item["family"], [])
+            with st.expander(
+                f"📋 {item['label']} の国内大会デッキリスト例（{len(examples)}件）"
+            ):
+                if examples:
+                    st.caption(
+                        "日本のシティリーグで公開された実際の入賞デッキ。"
+                        "各リンク先でカード構成を確認できます。"
+                        "同じデッキタイプでも構築の違いがあり、"
+                        "世界の対面勝率を出した個別の60枚と同一ではありません。"
+                    )
+                    for example_index, example in enumerate(examples, 1):
+                        st.write(
+                            f"**例{example_index}：{example['deck']}**"
+                            f"　{example['date']}・{example['rank']}位"
+                        )
+                        details = " / ".join(
+                            value for value in (
+                                example["shop"], example["player"]
+                            ) if value
+                        )
+                        if details:
+                            st.caption(details)
+                        st.markdown(
+                            f"[**公開デッキリストを見る**]({example['decklist_url']})"
+                            f"　｜　[大会結果を見る]({example['event_url']})"
+                        )
+                        if example_index < len(examples):
+                            st.divider()
+                else:
+                    st.info(
+                        "このデッキタイプの国内入賞リストは、"
+                        "直近60日以内に公開URLを確認できませんでした。"
+                        "デッキリストは推測で作りません。"
+                    )
             with st.expander(f"{item['label']} の世界対面データ内訳"):
                 rows = [
                     {
