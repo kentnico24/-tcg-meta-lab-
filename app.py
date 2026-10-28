@@ -3,6 +3,7 @@ from datetime import datetime
 import pandas as pd
 import streamlit as st
 from deck_names import deck_name, city_deck_name
+from domestic_matchups import city_final_matches, read_verified_cl_matches, player_perspectives
 from region_labels import country_group, eligible_player
 ROOT=pathlib.Path(__file__).parent
 DB=pathlib.Path(os.environ.get('TCG_DB_PATH', str(ROOT/'research.sqlite3')))
@@ -102,6 +103,81 @@ if view=='シティリーグ（国内大会）':
    city_period=st.date_input('シティリーグ開催期間',(start_date,end_date),min_value=start_date,max_value=end_date,key='city_period')
    if isinstance(city_period,tuple) and len(city_period)==2:
     city=city[(city_dates.dt.date>=city_period[0])&(city_dates.dt.date<=city_period[1])]
+  # A City League 1st place necessarily defeated the runner-up in the final.
+  # No other pairing can be reconstructed from a top-16 rankings table.
+  st.subheader('国内公式大会の対面勝率（実際の勝敗）')
+  st.caption('公開された優勝・準優勝から確認できる決勝戦のみを対象とします。予選や、トーナメント表がない準決勝・準々決勝は含みません。')
+  source_choice=st.selectbox('勝率のデータ元',['シティリーグ','CL・PJCS','国内大会すべて'],
+                            help='CL・PJCSの公開された実対戦結果を確認できた場合に追加します。掲載順位だけから勝率を推測しません。')
+  city_matches=city_final_matches(city.to_dict('records'))
+  try:
+   cl_matches=read_verified_cl_matches(ROOT/'cl_verified_matches.csv')
+  except (OSError,ValueError) as error:
+   st.warning(f'CL・PJCSの確認済み試合ファイルを利用できません: {error}')
+   cl_matches=[]
+  if source_choice=='シティリーグ':
+   domestic_matches=city_matches
+  elif source_choice=='CL・PJCS':
+   domestic_matches=cl_matches
+  else:
+   domestic_matches=city_matches+cl_matches
+  if source_choice!='シティリーグ' and not cl_matches:
+   st.info('このシーズンのCL・PJCSで、対戦相手と勝敗を検証できた公開試合はまだ登録されていません。未開催・中止大会の勝率は表示しません。')
+  mirrors=sum(m['deck_a']==m['deck_b'] for m in domestic_matches)
+  nonmirrors=[m for m in domestic_matches if m['deck_a']!=m['deck_b']]
+  m1,m2,m3=st.columns(3)
+  m1.metric('確認済みの対戦',f'{len(domestic_matches):,}試合')
+  m2.metric('対面分析に使える試合',f'{len(nonmirrors):,}試合')
+  m3.metric('同型対戦（除外）',f'{mirrors:,}試合')
+  if nonmirrors:
+   observations=pd.DataFrame(player_perspectives(nonmirrors))
+   all_decks=sorted(observations.deck.unique(),key=city_deck_name)
+   chosen_deck=st.selectbox('対面勝率を調べるデッキ',['すべて']+all_decks,
+                            format_func=lambda x: x if x=='すべて' else city_deck_name(x))
+   st.caption('勝率＝確認できた決勝トーナメントの勝利数 ÷ 試合数。同型対戦は除外。ごく少数の決勝戦だけなので、予選を含むデッキの総合勝率ではありません。')
+   if chosen_deck=='すべて':
+    by_deck=[]
+    for deck_id,g in observations.groupby('deck'):
+     by_deck.append({'デッキ':city_deck_name(deck_id),
+                     '勝利':int(g.win.sum()),'敗北':int(g.loss.sum()),
+                     '引き分け':int(g.draw.sum()),**stats(g)})
+    ranking=pd.DataFrame(by_deck).sort_values(['試合数','勝率'],ascending=[False,False])
+    ranking=ranking[['デッキ','勝利','敗北','引き分け','試合数','勝率','95%下限','95%上限']]
+    st.dataframe(ranking,use_container_width=True,hide_index=True)
+    st.download_button('国内大会の確認済みデッキ別勝率CSV',
+                       ranking.to_csv(index=False).encode('utf-8-sig'),
+                       file_name='japan_tournament_winrates.csv',key='domestic_winrates')
+   else:
+    focus=observations[observations.deck==chosen_deck]
+    shown=stats(focus)
+    v1,v2,v3=st.columns(3)
+    v1.metric('確認済み勝率',f"{shown['勝率']}%")
+    v2.metric('勝敗',f"{int(focus.win.sum())}勝{int(focus.loss.sum())}敗")
+    v3.metric('対戦数',f"{len(focus)}試合")
+    pairs=[]
+    for other,g in focus.groupby('opponent'):
+     pairs.append({'相手デッキ':city_deck_name(other),'勝利':int(g.win.sum()),
+                   '敗北':int(g.loss.sum()),'引き分け':int(g.draw.sum()),
+                   **stats(g)})
+    detail=pd.DataFrame(pairs).sort_values('試合数',ascending=False)
+    st.dataframe(detail,use_container_width=True,hide_index=True)
+    st.download_button('国内大会の確認済み対面勝率CSV',
+                       detail.to_csv(index=False).encode('utf-8-sig'),
+                       file_name='japan_matchup_winrates.csv',key='domestic_matchups')
+   with st.expander('勝敗を確認した大会と対戦カード'):
+    proof=pd.DataFrame(nonmirrors)
+    proof['勝者デッキ']=proof.apply(
+     lambda row: city_deck_name(row.deck_a if row.winner=='a' else row.deck_b),axis=1)
+    proof['敗者デッキ']=proof.apply(
+     lambda row: city_deck_name(row.deck_b if row.winner=='a' else row.deck_a),axis=1)
+    proof=proof.rename(columns={'date':'開催日','event_type':'大会区分',
+                                'stage':'ラウンド','event_name':'会場','source_url':'出典URL'})
+    st.dataframe(proof[['開催日','大会区分','ラウンド','会場','勝者デッキ','敗者デッキ','出典URL']],
+                 use_container_width=True,hide_index=True,
+                 column_config={'出典URL':st.column_config.LinkColumn('大会結果')})
+  else:
+   st.info('この条件では、勝敗と相手デッキが両方判明した異なるデッキ同士の対戦がありません。')
+  st.divider()
   known=city[city.deck.str.strip().ne('')].copy()
   known['デッキ']=known.deck.map(city_deck_name)
   if not known.empty:
