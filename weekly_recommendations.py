@@ -21,6 +21,8 @@ ELIGIBILITY_DAYS = 60
 MIN_PAIR_MATCHES = 5
 MIN_TOTAL_MATCHES = 12
 MIN_COVERAGE = 0.20
+MIN_DOMESTIC_EVENTS = 3
+MIN_DOMESTIC_PLACEMENTS = 32
 PRIOR_MATCHES = 16.0
 TOP_THREATS = 12
 CITY_2027_START = date(2026, 9, 25)
@@ -212,7 +214,9 @@ def rank_recommendations(placements, matches, as_of, n=5):
              "threats": [{"family": f, "share": share, "count": meta["counts"][f],
                           "label": family_label(f)} for f, share in threats],
              "recommendations": [], "eligible": 0}
-    if not meta["total"] or not global_stats["matches"]:
+    if (meta["events"] < MIN_DOMESTIC_EVENTS
+            or meta["total"] < MIN_DOMESTIC_PLACEMENTS
+            or not global_stats["matches"]):
         return empty
     # Domestic viability is observed during the current season, not inferred
     # from foreign-only wins or from nationwide player country codes.
