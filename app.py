@@ -7,6 +7,7 @@ from domestic_matchups import city_final_matches, read_verified_cl_matches, play
 from zoneinfo import ZoneInfo
 from region_labels import country_group, eligible_player
 from weekly_view import render_weekly_recommendations
+from matrix_style import matrix_cell_css
 ROOT=pathlib.Path(__file__).parent
 DB=pathlib.Path(os.environ.get('TCG_DB_PATH', str(ROOT/'research.sqlite3')))
 st.set_page_config(page_title='TCG Meta Lab',page_icon='🃏',layout='wide')
@@ -362,7 +363,10 @@ for name in sorted(set(df.deck_a)|set(df.deck_b)):
 if rows:
  matrix=pd.DataFrame(rows).pivot(index='自分',columns='相手',values='勝率')
  display_matrix=matrix.rename(index=deck_name,columns=deck_name)
- st.dataframe(display_matrix.style.format('{:.1f}%',na_rep='—').background_gradient(cmap='RdYlGn',vmin=0,vmax=100),use_container_width=True)
+ # pandas Styler.background_gradient requires optional matplotlib and
+ # crashes on Streamlit Cloud where that package is not installed.
+ # Styler.map uses only our pure-Python CSS colors.
+ st.dataframe(display_matrix.style.format('{:.1f}%',na_rep='—').map(matrix_cell_css),use_container_width=True)
  st.download_button('マトリクスCSV',matrix.to_csv().encode('utf-8-sig'),file_name='matchup_matrix.csv')
 else:st.info('条件に合うデッキ対面がありません。')
 st.divider()

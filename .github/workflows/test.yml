@@ -12,7 +12,7 @@ jobs:
         with:
           python-version: '3.11'
       - run: pip install 'beautifulsoup4>=4.12,<5'
-      - run: python -m compileall -q app.py limitless_sync.py export_matches.py snapshot_store.py deck_names.py country_store.py region_labels.py export_countries.py city_league_sync.py domestic_matchups.py weekly_recommendations.py weekly_deck_examples.py weekly_view.py report_weekly_meta.py tests
+      - run: python -m compileall -q app.py limitless_sync.py export_matches.py snapshot_store.py deck_names.py country_store.py region_labels.py export_countries.py city_league_sync.py domestic_matchups.py weekly_recommendations.py weekly_deck_examples.py weekly_view.py matrix_style.py report_weekly_meta.py tests
       - run: python -m unittest discover -s tests -v
       - name: Preview seven-day Japan-meta recommendations from current snapshots
         run: python report_weekly_meta.py
