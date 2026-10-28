@@ -9,6 +9,7 @@ from region_labels import country_group, eligible_player
 from weekly_view import render_weekly_recommendations
 from matrix_style import matrix_cell_css
 from matchup_sort import MATCHUP_SORT_OPTIONS, sort_matchup_rows
+from deck_variants import classify_dragapult
 ROOT=pathlib.Path(__file__).parent
 DB=pathlib.Path(os.environ.get('TCG_DB_PATH', str(ROOT/'research.sqlite3')))
 st.set_page_config(page_title='TCG Meta Lab',page_icon='🃏',layout='wide')
@@ -300,6 +301,20 @@ st.caption(f'登録国を確認できたプレイヤー視点: {known_sides:,} /
 st.caption('地域分類はLimitlessに登録された各プレイヤーの国です。日本国内開催の大会を特定する機能ではありません。国未登録の参加者は「国不明」に分類します。')
 
 with st.expander('集計条件',expanded=True):
+ split_hammer=st.checkbox('ドラパルトをクラハン採用・非採用で分ける',value=True,
+                          help='通常の「Dragapult」のみ、デッキリストにクラッシュハンマーが1枚以上あればクラハンドラパと判定します。リストが不明な試合は別区分として表示します。')
+ if split_hammer:
+  # The original match snapshot stays unchanged: classification applies
+  # only to these in-memory columns and to BOTH sides of the pairing.
+  df=df.copy()
+  for side in ('a','b'):
+   deck_column='deck_'+side
+   list_column='decklist_'+side
+   mask=df[deck_column].eq('Dragapult')
+   if mask.any():
+    df.loc[mask,deck_column]=df.loc[mask,list_column].map(
+     lambda value:classify_dragapult('Dragapult',normalize_list(value)))
+  st.caption('クラハンドラパ＝クラッシュハンマー1枚以上採用の通常ドラパルト。非採用・リスト不明は別表示。ドラパルト・ヨノワール等の派生型は従来の名前のままです。')
  region=st.selectbox('分析する地域（プレイヤー登録国）',['すべて','国内','海外','国内同士','国不明'],help='国内＝日本登録プレイヤー、海外＝日本以外の登録プレイヤー、国内同士＝対戦者双方が日本登録。開催地や実際の地域大会を意味しません。')
  e=sorted(x for x in df.event.unique() if x)
  events=st.multiselect('大会',e,default=e)

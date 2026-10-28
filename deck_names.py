@@ -7,6 +7,9 @@ guessing. No paid translation service or API key is required.
 
 DECK_NAMES_JA = {
     "Basic Box": "ベーシックBOX",
+    "Dragapult [Crushing Hammer]": "クラハンドラパ",
+    "Dragapult [No Crushing Hammer]": "ドラパルト（クラハン非採用）",
+    "Dragapult [List Unknown]": "ドラパルト（採用不明）",
     "Charizard": "リザードン",
     "Festival Lead": "おまつりおんど",
     "Gardevoir": "サーナイト",
