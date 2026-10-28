@@ -2,7 +2,7 @@ import sqlite3, json, math, pathlib, io, os, subprocess, sys
 from datetime import datetime
 import pandas as pd
 import streamlit as st
-from deck_names import deck_name
+from deck_names import deck_name, city_deck_name
 from region_labels import country_group, eligible_player
 ROOT=pathlib.Path(__file__).parent
 DB=pathlib.Path(os.environ.get('TCG_DB_PATH', str(ROOT/'research.sqlite3')))
@@ -103,7 +103,7 @@ if view=='シティリーグ（国内大会）':
    if isinstance(city_period,tuple) and len(city_period)==2:
     city=city[(city_dates.dt.date>=city_period[0])&(city_dates.dt.date<=city_period[1])]
   known=city[city.deck.str.strip().ne('')].copy()
-  known['デッキ']=known.deck.map(deck_name)
+  known['デッキ']=known.deck.map(city_deck_name)
   if not known.empty:
    st.subheader('入賞デッキの掲載数')
    summary=known.groupby('デッキ').agg(入賞記録数=('key','size'),掲載大会数=('event_url','nunique')).reset_index().sort_values('入賞記録数',ascending=False)
@@ -113,7 +113,7 @@ if view=='シティリーグ（国内大会）':
    st.warning('この条件ではデッキ名が判明した入賞情報がありません。')
   st.subheader('大会ごとの入賞結果')
   shown=city.copy()
-  shown['デッキ']=shown.deck.map(lambda x: deck_name(x) if x else '不明')
+  shown['デッキ']=shown.deck.map(lambda x: city_deck_name(x) if x else '不明')
   shown=shown.rename(columns={'date':'開催日','prefecture':'都道府県','shop':'店舗','rank':'順位','player':'プレイヤー','event_url':'大会URL','decklist_url':'デッキリストURL'})
   st.dataframe(shown[['開催日','都道府県','店舗','順位','デッキ','プレイヤー','大会URL','デッキリストURL']],use_container_width=True,hide_index=True,
                column_config={'大会URL':st.column_config.LinkColumn('大会ページ'),'デッキリストURL':st.column_config.LinkColumn('デッキリスト')})

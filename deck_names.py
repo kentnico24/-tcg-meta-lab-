@@ -100,6 +100,22 @@ _COMPONENTS = {
     "Yanmega": "メガヤンマ",
     "Zoroark": "ゾロアーク",
     "Zygarde": "ジガルデ",
+    "Azumarill": "マリルリ",
+    "Banette": "ジュペッタ",
+    "Dipplin": "カミッチュ",
+    "Flareon": "ブースター",
+    "Gourgeist": "パンプジン",
+    "Kangaskhan": "ガルーラ",
+    "Meowth": "ニャース",
+    "Munkidori": "マシマシラ",
+    "Noctowl": "ヨルノズク",
+    "Pecharunt": "モモワロウ",
+    "Porygon2": "ポリゴン2",
+    "Rayquaza": "レックウザ",
+    "Roserade": "ロズレイド",
+    "Solrock": "ソルロック",
+    "Talonflame": "ファイアロー",
+    "Thwackey": "バチンキー",
 }
 
 
@@ -138,4 +154,37 @@ def deck_name(name):
             return name
         translated.append(match)
         i += size
+    return "・".join(translated)
+
+
+def city_deck_name(name):
+    """Translate City League sprite IDs, including mega suffixes.
+
+    This is separate from the English display-name translator because the
+    City League website uses lowercase hyphenated Pokémon sprite identifiers.
+    Unrecognized identifiers remain untouched; no deck names are invented.
+    """
+    if not isinstance(name, str) or not name.strip():
+        return name
+    special = {"raging-bolt": "タケルライコ", "ho-oh": "ホウオウ"}
+    translated = []
+    for slug in name.lower().split():
+        if slug in special:
+            translated.append(special[slug])
+            continue
+        for suffix in ("-mega-x", "-mega-y", "-mega"):
+            if slug.endswith(suffix):
+                base = slug[:-len(suffix)]
+                japanese = deck_name(base.title())
+                if japanese == base.title():
+                    return name
+                variant = suffix[-1].upper() if suffix in ("-mega-x", "-mega-y") else ""
+                translated.append("メガ" + japanese + variant)
+                break
+        else:
+            base = slug.replace("-", " ").title()
+            japanese = deck_name(base)
+            if japanese == base:
+                return name
+            translated.append(japanese)
     return "・".join(translated)

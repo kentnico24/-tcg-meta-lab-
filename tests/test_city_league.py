@@ -68,5 +68,25 @@ class CityLeagueTests(unittest.TestCase):
             self.assertEqual(path.read_bytes(), before)
 
 
+class CityDeckLabelTests(unittest.TestCase):
+    def test_sprite_codes_translate_japanese(self):
+        from deck_names import city_deck_name
+        examples = {
+            'dragapult': 'ドラパルト',
+            'dragapult dudunsparce': 'ドラパルト・ノココッチ',
+            'alakazam dudunsparce': 'フーディン・ノココッチ',
+            'garchomp roserade': 'ガブリアス・ロズレイド',
+            'lucario-mega hariyama': 'メガルカリオ・ハリテヤマ',
+            'charizard-mega-y charizard-mega-x': 'メガリザードンY・メガリザードンX',
+            'raging-bolt ogerpon': 'タケルライコ・オーガポン',
+            'rayquaza-mega ho-oh': 'メガレックウザ・ホウオウ',
+            'toxtricity pecharunt': 'ストリンダー・モモワロウ',
+        }
+        for english, japanese in examples.items():
+            with self.subTest(english=english):
+                self.assertEqual(city_deck_name(english), japanese)
+        self.assertEqual(city_deck_name('unknown pokemon'), 'unknown pokemon')
+
+
 if __name__ == '__main__':
     unittest.main()
