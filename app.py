@@ -3,6 +3,7 @@ from datetime import datetime
 import pandas as pd
 import streamlit as st
 from deck_names import deck_name
+from region_labels import country_group, eligible_player
 ROOT=pathlib.Path(__file__).parent
 DB=pathlib.Path(os.environ.get('TCG_DB_PATH', str(ROOT/'research.sqlite3')))
 st.set_page_config(page_title='TCG Meta Lab',page_icon='🃏',layout='wide')
@@ -46,11 +47,23 @@ def wilson(w,n):
  if not n:return (0,0)
  z=1.96;p=w/n;d=1+z*z/n;mid=(p+z*z/(2*n))/d;err=z*math.sqrt(p*(1-p)/n+z*z/(4*n*n))/d
  return max(0,mid-err),min(1,mid+err)
-def perspective(df,deck):
+def perspective(df,deck,region='すべて'):
  a=df[df.deck_a==deck].copy();b=df[df.deck_b==deck].copy()
+ if region!='すべて':
+  a=a[a.apply(lambda r: eligible_player(r.country_a,r.country_b,'a',region),axis=1)]
+  b=b[b.apply(lambda r: eligible_player(r.country_a,r.country_b,'b',region),axis=1)]
  a['opponent']=a.deck_b;a['result']=a.winner.map({'a':1.,'b':0.,'draw':.5});a['cards']=a.decklist_a
  b['opponent']=b.deck_a;b['result']=b.winner.map({'a':0.,'b':1.,'draw':.5});b['cards']=b.decklist_b
+ a['player_country']=a.country_a
+ b['player_country']=b.country_b
  return pd.concat([a,b],ignore_index=True)
+
+def available_decks(df,region):
+ if region=='すべて':
+  return sorted(set(df.deck_a)|set(df.deck_b),key=deck_name)
+ a=df[df.apply(lambda r: eligible_player(r.country_a,r.country_b,'a',region),axis=1)]
+ b=df[df.apply(lambda r: eligible_player(r.country_a,r.country_b,'b',region),axis=1)]
+ return sorted(set(a.deck_a)|set(b.deck_b),key=deck_name)
 def stats(g):
  n=len(g);w=float(g.result.sum());lo,hi=wilson(w,n)
  return {'試合数':n,'勝率':round(w/n*100,1) if n else 0,'95%下限':round(lo*100,1),'95%上限':round(hi*100,1),'勝ち相当':w}
@@ -113,7 +126,28 @@ if df.empty:
  st.warning('まだ対戦データがありません。左側からCSVを読み込むと分析が始まります。')
  st.markdown('### できること\n- デッキ別の全対面勝率と95%信頼区間\n- 対面を指定した詳細分析\n- カード採用有無・採用枚数ごとの勝率比較\n- 大会名・期間による絞り込み\n- 集計結果のCSV出力')
  st.stop()
+# Country annotations are a separate snapshot so the original match CSV,
+# historical match keys, and exports never change.
+country_file=ROOT/'match_countries.csv'
+df=df.drop(columns=['country_a','country_b'],errors='ignore')
+if country_file.exists():
+ try:
+  country_frame=pd.read_csv(country_file,dtype=str,keep_default_na=False)
+  if list(country_frame.columns)!=['id','country_a','country_b']:
+   raise ValueError('国情報CSVの列が一致しません')
+  df=df.merge(country_frame,on='id',how='left',validate='one_to_one')
+ except (OSError,ValueError,KeyError) as exc:
+  st.warning(f'国別データの読み込みに失敗したため、国情報を不明として表示します: {exc}')
+  df['country_a']='';df['country_b']=''
+else:
+ df['country_a']='';df['country_b']=''
+df[['country_a','country_b']]=df[['country_a','country_b']].fillna('')
+known_sides=int(df.country_a.map(lambda x: country_group(x)!='不明').sum()+df.country_b.map(lambda x: country_group(x)!='不明').sum())
+st.caption(f'登録国を確認できたプレイヤー視点: {known_sides:,} / {2*len(df):,} 件。国情報の追加収集は毎日の自動同期で進みます。')
+st.caption('地域分類はLimitlessに登録された各プレイヤーの国です。日本国内開催の大会を特定する機能ではありません。国未登録の参加者は「国不明」に分類します。')
+
 with st.expander('集計条件',expanded=True):
+ region=st.selectbox('分析する地域（プレイヤー登録国）',['すべて','国内','海外','国内同士','国不明'],help='国内＝日本登録プレイヤー、海外＝日本以外の登録プレイヤー、国内同士＝対戦者双方が日本登録。開催地や実際の地域大会を意味しません。')
  e=sorted(x for x in df.event.unique() if x)
  events=st.multiselect('大会',e,default=e)
  if events:df=df[df.event.isin(events)]
@@ -121,14 +155,26 @@ with st.expander('集計条件',expanded=True):
  if dates.notna().any():
   lo=dates.min().date();hi=dates.max().date();period=st.date_input('開催期間',(lo,hi),min_value=lo,max_value=hi)
   if isinstance(period,tuple) and len(period)==2:df=df[(dates.dt.date>=period[0])&(dates.dt.date<=period[1])]
- decks=sorted(set(df.deck_a)|set(df.deck_b),key=deck_name)
+ decks=available_decks(df,region)
  if not decks:st.warning('条件に一致する試合がありません');st.stop()
  deck=st.selectbox('分析するデッキ',decks,format_func=deck_name)
-p=perspective(df,deck)
-if p.empty:st.warning('対象試合がありません');st.stop()
+p=perspective(df,deck,region)
+if p.empty:st.warning('この地域の条件に一致する試合がありません。地域を「すべて」に変更してみてください。');st.stop()
 allopp=sorted(p.opponent.unique(),key=deck_name);opp=st.selectbox('対面を選択',['すべて']+allopp,format_func=deck_name)
 if opp!='すべて':p=p[p.opponent==opp]
 s=stats(p);m1,m2,m3=st.columns(3);m1.metric('勝率',f"{s['勝率']}%");m2.metric('試合数',f"{s['試合数']:,}");m3.metric('95%信頼区間',f"{s['95%下限']}–{s['95%上限']}%")
+st.subheader('国内・海外の成績比較')
+comparison=perspective(df,deck)
+region_rows=[]
+for region_name in ('国内','海外','不明'):
+ subgroup=comparison[comparison.player_country.map(country_group)==region_name]
+ if not subgroup.empty:
+  region_rows.append({'登録国区分':region_name,**stats(subgroup)})
+if region_rows:
+ st.dataframe(pd.DataFrame(region_rows),use_container_width=True,hide_index=True)
+else:
+ st.info('このデッキで比較できる登録国データはありません。')
+st.caption('同じオンライン大会に参加した国内・海外登録者を、それぞれのプレイヤー視点で集計しています。国内大会と海外大会を区別した統計ではありません。')
 st.subheader('対面別勝率')
 summary=pd.DataFrame([{'対面':name,**stats(g)} for name,g in p.groupby('opponent')]).sort_values('試合数',ascending=False)
 display_summary=summary.assign(対面=summary['対面'].map(deck_name))
@@ -158,7 +204,7 @@ st.subheader('全デッキ対面マトリクス')
 min_games=st.slider('マトリクスの最低試合数',1,100,5)
 rows=[]
 for name in sorted(set(df.deck_a)|set(df.deck_b)):
- q=perspective(df,name)
+ q=perspective(df,name,region)
  for other,g in q.groupby('opponent'):
   if len(g)>=min_games:
    rows.append({'自分':name,'相手':other,'勝率':stats(g)['勝率'],'試合数':len(g)})
