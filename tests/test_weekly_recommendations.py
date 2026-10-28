@@ -115,6 +115,49 @@ class WeeklyMetaTests(unittest.TestCase):
         self.assertEqual(len({r["family"] for r in got["recommendations"]}),
                          len(got["recommendations"]))
 
+    def test_slider_threshold_filters_total_supported_world_matchups(self):
+        placements = [city("dragapult", index=i, event=5000+i//16)
+                      for i in range(48)]
+        placements += [city("alakazam dudunsparce", index=200+i,
+                            event=5200) for i in range(8)]
+        placements += [city("lucario-mega hariyama", index=300+i,
+                            event=5300) for i in range(4)]
+        # Mega Lucario has 40 supported games vs Dragapult and 12 vs
+        # Alakazam, hence 52 *combined*, not 52 for every individual pairing.
+        matches = [world("Mega Lucario", "Dragapult", "a", i)
+                   for i in range(40)]
+        matches += [world("Mega Lucario", "Alakazam Dusknoir", "b", 100+i)
+                    for i in range(12)]
+        previous = None
+        base_meta = None
+        for threshold in (10, 20, 30, 40, 50, 60, 100):
+            result = rank_recommendations(
+                placements, matches, AS_OF, min_total_matches=threshold)
+            if base_meta is None:
+                base_meta = result["meta"]["shares"]
+            self.assertEqual(base_meta, result["meta"]["shares"])
+            self.assertLessEqual(len(result["recommendations"]), 5)
+            self.assertTrue(all(r["world_n"] >= threshold
+                                for r in result["recommendations"]))
+            if previous is not None:
+                self.assertLessEqual(result["eligible"], previous)
+            previous = result["eligible"]
+            has_counter = any(x["family"] == "Mega Lucario"
+                              for x in result["recommendations"])
+            self.assertEqual(has_counter, threshold <= 50)
+            if threshold >= 60:
+                self.assertEqual(result["recommendations"], [])
+
+    def test_invalid_minimum_world_matchup_threshold_is_rejected(self):
+        placements = [city("dragapult", index=i) for i in range(4)]
+        matches = [world("Dragapult", "Mega Lucario", "a", i)
+                   for i in range(4)]
+        for invalid in (0, -10, True, 30.5, "40"):
+            with self.subTest(invalid=invalid):
+                with self.assertRaisesRegex(ValueError, "positive integer"):
+                    rank_recommendations(placements, matches, AS_OF,
+                                         min_total_matches=invalid)
+
     def test_insufficient_and_unmatched_world_data_never_generate_fake_rates(self):
         rows = [city("dragapult", index=i) for i in range(10)]
         rows += [city("zoroark", index=20+i) for i in range(3)]

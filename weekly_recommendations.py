@@ -19,7 +19,7 @@ WORLD_DAYS = 30
 LOCAL_DAYS = 7
 ELIGIBILITY_DAYS = 60
 MIN_PAIR_MATCHES = 5
-MIN_TOTAL_MATCHES = 12
+MIN_TOTAL_MATCHES = 30  # Default slider threshold: combined supported world matchups
 MIN_COVERAGE = 0.20
 MIN_DOMESTIC_EVENTS = 3
 MIN_DOMESTIC_PLACEMENTS = 32
@@ -200,13 +200,17 @@ def worldwide_matchups(matches, as_of):
             "matches": kept}
 
 
-def rank_recommendations(placements, matches, as_of, n=5):
+def rank_recommendations(placements, matches, as_of, n=5, min_total_matches=MIN_TOTAL_MATCHES):
     """Rank supported domestic archetypes vs weighted last-7-day JP meta.
 
     Unknown matchups count 50%, observed rates are shrunk towards 50% by
     a 16-game prior. Recommendations require matchup evidence and coverage.
     Score is an *estimated suitability index*, NOT observed Japan winrate.
+    min_total_matches applies to the sum of observed matchups against
+    domestic top-threat families (not to every individual pairing).
     """
+    if not isinstance(min_total_matches, int) or isinstance(min_total_matches, bool) or min_total_matches < 1:
+        raise ValueError('Minimum worldwide matchup count must be a positive integer')
     # Country-specific placements are used twice (recent share and season
     # candidate eligibility). Snapshot generators such as csv.DictReader once
     # so the CLI report and the Streamlit DataFrame calculate identical picks.
@@ -266,7 +270,7 @@ def rank_recommendations(placements, matches, as_of, n=5):
             })
         # Penalize missing coverage. Low sample sizes never get a 100% score.
         score = predicted - 0.015*(1.0-coverage)
-        if sample < MIN_TOTAL_MATCHES or coverage < MIN_COVERAGE:
+        if sample < min_total_matches or coverage < MIN_COVERAGE:
             continue
         observed.sort(key=lambda r: (-r["contribution"], -r["share"]))
         candidates.append({
