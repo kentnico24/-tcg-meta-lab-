@@ -70,6 +70,57 @@ def stats(g):
 st.title('🃏 TCG Meta Lab')
 st.caption('Android / PC 対応 Web版 v0.7')
 st.caption('デッキ・対面・採用カードを横断する独立型リサーチアプリ | 実データのみを集計')
+
+view=st.radio('分析メニュー', ['対戦勝率・採用カード', 'シティリーグ（国内大会）'],
+              horizontal=True, help='シティリーグは入賞順位・デッキ掲載データ。対戦勝率とは別に集計します。')
+if view=='シティリーグ（国内大会）':
+ st.subheader('🇯🇵 シティリーグ（国内大会）')
+ st.caption('参照元: Limitless TCG掲載の日本シティリーグ。順位・公開デッキだけを集計し、対戦履歴がない大会から対面勝率を推測しません。')
+ st.markdown('[シティリーグ大会一覧（Limitless）](https://limitlesstcg.com/tournaments/jp)')
+ city_file=ROOT/'city_league_results.csv'
+ if not city_file.exists():
+  st.info('シティリーグの入賞データはまだ同期されていません。取得に成功すると、この画面に大会結果とデッキ掲載数を表示します。')
+  st.stop()
+ try:
+  city=pd.read_csv(city_file,dtype=str,keep_default_na=False)
+  expected={'key','date','prefecture','shop','rank','deck','player','event_url','decklist_url'}
+  if not expected.issubset(city.columns):
+   raise ValueError('シティリーグCSVの列が一致しません')
+  if city.empty:
+   st.info('登録されたシティリーグの入賞データはまだありません。')
+   st.stop()
+  st.success(f'シティリーグ：{city.event_url.nunique():,}大会 / {len(city):,}入賞記録')
+  st.caption(f'保存されている期間：{city.date.min()} 〜 {city.date.max()}。全シティリーグの網羅を意味するものではありません。')
+  prefectures=sorted(x for x in city.prefecture.unique() if x)
+  selected_pref=st.selectbox('都道府県',['すべて']+prefectures)
+  if selected_pref!='すべて':
+   city=city[city.prefecture==selected_pref]
+  city_dates=pd.to_datetime(city.date,errors='coerce')
+  if city_dates.notna().any():
+   start_date=city_dates.min().date()
+   end_date=city_dates.max().date()
+   city_period=st.date_input('シティリーグ開催期間',(start_date,end_date),min_value=start_date,max_value=end_date,key='city_period')
+   if isinstance(city_period,tuple) and len(city_period)==2:
+    city=city[(city_dates.dt.date>=city_period[0])&(city_dates.dt.date<=city_period[1])]
+  known=city[city.deck.str.strip().ne('')].copy()
+  known['デッキ']=known.deck.map(deck_name)
+  if not known.empty:
+   st.subheader('入賞デッキの掲載数')
+   summary=known.groupby('デッキ').agg(入賞記録数=('key','size'),掲載大会数=('event_url','nunique')).reset_index().sort_values('入賞記録数',ascending=False)
+   st.dataframe(summary,use_container_width=True,hide_index=True)
+   st.caption(f'デッキ名を特定できた {len(known):,} 件のみ。全参加者の使用率や対面勝率ではありません。')
+  else:
+   st.warning('この条件ではデッキ名が判明した入賞情報がありません。')
+  st.subheader('大会ごとの入賞結果')
+  shown=city.copy()
+  shown['デッキ']=shown.deck.map(lambda x: deck_name(x) if x else '不明')
+  shown=shown.rename(columns={'date':'開催日','prefecture':'都道府県','shop':'店舗','rank':'順位','player':'プレイヤー','event_url':'大会URL','decklist_url':'デッキリストURL'})
+  st.dataframe(shown[['開催日','都道府県','店舗','順位','デッキ','プレイヤー','大会URL','デッキリストURL']],use_container_width=True,hide_index=True,
+               column_config={'大会URL':st.column_config.LinkColumn('大会ページ'),'デッキリストURL':st.column_config.LinkColumn('デッキリスト')})
+  st.caption('シティリーグとLimitless Playのオンライン試合は別の集計源です。勝率表にシティリーグ入賞件数を混ぜません。')
+ except (OSError,ValueError,KeyError,TypeError) as exc:
+  st.error(f'シティリーグ結果を読み込めませんでした: {exc}')
+ st.stop()
 with st.sidebar:
  st.header('データ管理')
  st.info('公開Web版ではデータの保存が永続的とは限りません。Streamlit Community Cloudでは再起動時にSQLiteの内容が失われる可能性があります。')
