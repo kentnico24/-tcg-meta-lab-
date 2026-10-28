@@ -203,8 +203,11 @@ def main():
     unique = list({e["event_url"]: e for e in events}.values())
     pending = [e for e in unique if e["event_url"] not in known_events]
     refresh = [e for e in unique if e["event_url"] in known_events]
-    selected = pending[:max(1, args.max_events - 2)]
-    selected += refresh[:min(2, args.max_events - len(selected))]
+    refresh_slots = min(3, len(refresh), max(0, args.max_events // 6))
+    selected = pending[:args.max_events - refresh_slots]
+    selected += refresh[:refresh_slots]
+    if len(selected) < args.max_events:
+        selected += pending[len(pending[:args.max_events - refresh_slots]):][:args.max_events - len(selected)]
     if not selected:
         print("No new City League events in index")
         return
