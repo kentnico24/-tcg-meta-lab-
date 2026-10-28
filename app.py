@@ -96,13 +96,26 @@ if view=='シティリーグ（国内大会）':
   selected_pref=st.selectbox('都道府県',['すべて']+prefectures)
   if selected_pref!='すべて':
    city=city[city.prefecture==selected_pref]
+  try:
+   cl_matches=read_verified_cl_matches(ROOT/'cl_verified_matches.csv')
+  except (OSError,ValueError) as error:
+   st.warning(f'CL・PJCSの確認済み試合ファイルを利用できません: {error}')
+   cl_matches=[]
+  if selected_pref!='すべて':
+   # Verified CL matches have no structured prefecture metadata yet; never
+   # silently mix a nationwide CL with an explicitly selected City prefecture.
+   cl_matches=[]
+   st.caption('都道府県の絞り込みはシティリーグにのみ対応しています。CLを分析するときは都道府県を「すべて」にしてください。')
   city_dates=pd.to_datetime(city.date,errors='coerce')
-  if city_dates.notna().any():
-   start_date=city_dates.min().date()
-   end_date=city_dates.max().date()
-   city_period=st.date_input('シティリーグ開催期間',(start_date,end_date),min_value=start_date,max_value=end_date,key='city_period')
+  all_days=list(city_dates.dropna().dt.date)
+  all_days.extend(pd.to_datetime([m['date'] for m in cl_matches]).date)
+  if all_days:
+   start_date=min(all_days)
+   end_date=max(all_days)
+   city_period=st.date_input('国内大会の開催期間',(start_date,end_date),min_value=start_date,max_value=end_date,key='city_period')
    if isinstance(city_period,tuple) and len(city_period)==2:
     city=city[(city_dates.dt.date>=city_period[0])&(city_dates.dt.date<=city_period[1])]
+    cl_matches=[m for m in cl_matches if city_period[0]<=pd.to_datetime(m['date']).date()<=city_period[1]]
   # A City League 1st place necessarily defeated the runner-up in the final.
   # No other pairing can be reconstructed from a top-16 rankings table.
   st.subheader('国内公式大会の対面勝率（実際の勝敗）')
@@ -110,11 +123,6 @@ if view=='シティリーグ（国内大会）':
   source_choice=st.selectbox('勝率のデータ元',['シティリーグ','CL・PJCS','国内大会すべて'],
                             help='CL・PJCSの公開された実対戦結果を確認できた場合に追加します。掲載順位だけから勝率を推測しません。')
   city_matches=city_final_matches(city.to_dict('records'))
-  try:
-   cl_matches=read_verified_cl_matches(ROOT/'cl_verified_matches.csv')
-  except (OSError,ValueError) as error:
-   st.warning(f'CL・PJCSの確認済み試合ファイルを利用できません: {error}')
-   cl_matches=[]
   if source_choice=='シティリーグ':
    domestic_matches=city_matches
   elif source_choice=='CL・PJCS':
@@ -122,7 +130,9 @@ if view=='シティリーグ（国内大会）':
   else:
    domestic_matches=city_matches+cl_matches
   if source_choice!='シティリーグ' and not cl_matches:
-   st.info('このシーズンのCL・PJCSで、対戦相手と勝敗を検証できた公開試合はまだ登録されていません。未開催・中止大会の勝率は表示しません。')
+   st.info('この条件に一致するCL・PJCSの確認済み対戦はありません。開催期間や都道府県の絞り込みも確認してください。')
+  if source_choice!='シティリーグ' and cl_matches:
+   st.caption('CL2027横浜とシティリーグでは使用可能なカード・大会形式が異なる場合があります。合算するときは集計期間と環境差に注意してください。')
   mirrors=sum(m['deck_a']==m['deck_b'] for m in domestic_matches)
   nonmirrors=[m for m in domestic_matches if m['deck_a']!=m['deck_b']]
   m1,m2,m3=st.columns(3)
