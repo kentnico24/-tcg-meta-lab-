@@ -10,6 +10,7 @@ remain in the meta denominator and contribute a neutral 50% to predictions.
 """
 from collections import Counter, defaultdict
 from datetime import date, timedelta
+from urllib.parse import urlparse
 import re
 
 from deck_names import city_deck_name, deck_name
@@ -112,6 +113,17 @@ def date_in_window(value, first, last):
     return first <= day <= last
 
 
+
+def valid_city_event(url):
+    """Accept only the public Japanese City League tournament index."""
+    if not isinstance(url, str):
+        return False
+    parsed = urlparse(url)
+    return (parsed.scheme == "https"
+            and parsed.netloc == "limitlesstcg.com"
+            and re.fullmatch(r"/tournaments/jp/[0-9]+", parsed.path) is not None)
+
+
 def domestic_meta(placements, as_of):
     """Shares use ONLY published Japan City League placements, NEVER matches."""
     start = max(CITY_2027_START, as_of - timedelta(days=LOCAL_DAYS-1))
@@ -124,7 +136,7 @@ def domestic_meta(placements, as_of):
         if not date_in_window(r.get("date", ""), start, as_of):
             continue
         key = (r.get("event_url"), r.get("key"))
-        if not key[0] or not key[1] or key in seen:
+        if not valid_city_event(key[0]) or not key[1] or key in seen:
             continue
         seen.add(key)
         events.add(key[0])
@@ -209,7 +221,7 @@ def rank_recommendations(placements, matches, as_of, n=5):
         if not date_in_window(r.get("date",""),local_cutoff,as_of):
             continue
         key = (r.get("event_url"),r.get("key"))
-        if not key[0] or not key[1] or key in seen:
+        if not valid_city_event(key[0]) or not key[1] or key in seen:
             continue
         seen.add(key)
         family = city_family(r.get("deck",""))
