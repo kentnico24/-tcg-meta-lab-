@@ -2,6 +2,7 @@ import sqlite3, json, math, pathlib, io, os, subprocess, sys
 from datetime import datetime
 import pandas as pd
 import streamlit as st
+from deck_names import deck_name
 ROOT=pathlib.Path(__file__).parent
 DB=pathlib.Path(os.environ.get('TCG_DB_PATH', str(ROOT/'research.sqlite3')))
 st.set_page_config(page_title='TCG Meta Lab',page_icon='🃏',layout='wide')
@@ -66,7 +67,7 @@ with st.sidebar:
  if st.button('公開APIから大会を同期',disabled=not WRITES_ENABLED,help='実際のAPI仕様・通信状況により失敗する場合があります。'):
   with st.spinner('大会データを取得しています…'):
    try:
-    result=subprocess.run([sys.executable,str(ROOT/'limitless_sync.py'),'--pages','1','--max-tournaments',str(sync_count),'--delay','1.5'],capture_output=True,text=True,timeout=180,env=os.environ.copy())
+    result=subprocess.run([sys.executable,str(ROOT/'limitless_sync.py'),'--pages','1','--max-tournaments',str(sync_count),'--delay','1.5','--max-seconds','120'],capture_output=True,text=True,timeout=180,env=os.environ.copy())
     if result.returncode: st.error('同期に失敗しました。');st.code((result.stderr or result.stdout)[-2500:])
     else:
      st.code(result.stdout[-3000:]);st.cache_data.clear();st.rerun()
@@ -108,16 +109,17 @@ with st.expander('集計条件',expanded=True):
   if isinstance(period,tuple) and len(period)==2:df=df[(dates.dt.date>=period[0])&(dates.dt.date<=period[1])]
  decks=sorted(set(df.deck_a)|set(df.deck_b))
  if not decks:st.warning('条件に一致する試合がありません');st.stop()
- deck=st.selectbox('分析するデッキ',decks)
+ deck=st.selectbox('分析するデッキ',decks,format_func=deck_name)
 p=perspective(df,deck)
 if p.empty:st.warning('対象試合がありません');st.stop()
-allopp=sorted(p.opponent.unique());opp=st.selectbox('対面を選択',['すべて']+allopp)
+allopp=sorted(p.opponent.unique());opp=st.selectbox('対面を選択',['すべて']+allopp,format_func=deck_name)
 if opp!='すべて':p=p[p.opponent==opp]
 s=stats(p);m1,m2,m3=st.columns(3);m1.metric('勝率',f"{s['勝率']}%");m2.metric('試合数',f"{s['試合数']:,}");m3.metric('95%信頼区間',f"{s['95%下限']}–{s['95%上限']}%")
 st.subheader('対面別勝率')
 summary=pd.DataFrame([{'対面':name,**stats(g)} for name,g in p.groupby('opponent')]).sort_values('試合数',ascending=False)
-st.dataframe(summary,use_container_width=True,hide_index=True)
-st.bar_chart(summary.set_index('対面')['勝率'])
+display_summary=summary.assign(対面=summary['対面'].map(deck_name))
+st.dataframe(display_summary,use_container_width=True,hide_index=True)
+st.bar_chart(display_summary.set_index('対面')['勝率'])
 st.download_button('対面別集計CSV',summary.to_csv(index=False).encode('utf-8-sig'),file_name='matchups.csv')
 st.subheader('採用カード別の分析')
 p=p.copy();p['parsed_cards']=p.cards.apply(lambda x:normalize_list(x))
@@ -148,7 +150,8 @@ for name in sorted(set(df.deck_a)|set(df.deck_b)):
    rows.append({'自分':name,'相手':other,'勝率':stats(g)['勝率'],'試合数':len(g)})
 if rows:
  matrix=pd.DataFrame(rows).pivot(index='自分',columns='相手',values='勝率')
- st.dataframe(matrix.style.format('{:.1f}%',na_rep='—').background_gradient(cmap='RdYlGn',vmin=0,vmax=100),use_container_width=True)
+ display_matrix=matrix.rename(index=deck_name,columns=deck_name)
+ st.dataframe(display_matrix.style.format('{:.1f}%',na_rep='—').background_gradient(cmap='RdYlGn',vmin=0,vmax=100),use_container_width=True)
  st.download_button('マトリクスCSV',matrix.to_csv().encode('utf-8-sig'),file_name='matchup_matrix.csv')
 else:st.info('条件に合うデッキ対面がありません。')
 st.divider()
