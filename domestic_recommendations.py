@@ -187,8 +187,7 @@ def recommend(city_records, world_records, as_of, limit=5):
         relevant = []
         for family, share in weights.items():
             if family == world_archetype(candidate):
-                # Against itself, a deck family is defined as 50:50.
-                represented += share
+                # Neutral mirror family; not counted as proven coverage.
                 continue
             n, wins = world["outcomes"].get((candidate, family), (0, 0))
             if n < MIN_PAIR_SAMPLES:
