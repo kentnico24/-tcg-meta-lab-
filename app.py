@@ -4,7 +4,6 @@ import pandas as pd
 import streamlit as st
 from deck_names import deck_name, city_deck_name
 from domestic_matchups import city_final_matches, read_verified_cl_matches, player_perspectives
-from domestic_recommendations import recommend
 from zoneinfo import ZoneInfo
 from region_labels import country_group, eligible_player
 from weekly_view import render_weekly_recommendations
