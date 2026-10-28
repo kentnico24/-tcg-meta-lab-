@@ -119,10 +119,12 @@ if view=='シティリーグ（国内大会）':
   if all_days:
    start_date=min(all_days)
    end_date=max(all_days)
-   city_period=st.date_input('国内大会の開催期間',(start_date,end_date),min_value=start_date,max_value=end_date,key='city_period')
+   city_period=st.date_input('国内大会の開催期間',(start_date,end_date),min_value=datetime(2026,9,1).date(),max_value=max(end_date,datetime(2026,9,1).date()),key='city_period',help='9月1日から指定できます。結果が未取得の期間を選んでも、勝率は推測せず確認済み試合だけを表示します。')
    if isinstance(city_period,tuple) and len(city_period)==2:
     city=city[(city_dates.dt.date>=city_period[0])&(city_dates.dt.date<=city_period[1])]
     cl_matches=[m for m in cl_matches if city_period[0]<=pd.to_datetime(m['date']).date()<=city_period[1]]
+   if city.empty and not cl_matches:
+    st.info('選択した開催期間には、まだ確認済みの国内大会結果がありません。追加取得後に表示されます。')
   # A City League 1st place necessarily defeated the runner-up in the final.
   # No other pairing can be reconstructed from a top-16 rankings table.
   st.subheader('国内公式大会の対面勝率（実際の勝敗）')
