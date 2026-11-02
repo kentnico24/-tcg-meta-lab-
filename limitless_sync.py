@@ -8,7 +8,8 @@ import urllib.error
 import urllib.parse
 import urllib.request
 from pathlib import Path
-from datetime import date
+from datetime import date, datetime, timedelta
+from zoneinfo import ZoneInfo
 from snapshot_store import restore
 from country_store import (initialize as initialize_countries,
                            upsert_countries, restore_countries)
@@ -134,24 +135,45 @@ def sync_tournament(conn, t, delay):
     return len(rows)
 
 
-def select_events(events, known_ids, limit, now=None):
-    """Reserve refresh slots while prioritizing never-collected tournaments.
+def select_events(events, known_ids, limit, now=None, latest_days=0, today=None):
+    """Order all eligible tournaments: recent first, then historical, then rechecks.
 
-    Failed tournaments enter a bounded retry cooldown so one malformed event
-    cannot monopolize the nightly quota.
+    With latest_days > 0, the tournament count is unlimited when limit=0.
+    Retry cooldowns prevent repeatedly broken tournaments from blocking progress.
+    The old limited scheduling remains available for legacy/manual invocations.
     """
     now = time.time() if now is None else now
     eligible = [t for t in events.values()
                 if t.get('retry_after', 0) <= now]
-    pending = sorted(
-        (t for t in eligible if str(t['id']) not in known_ids and not t.get('checked')),
-        key=lambda t: (t['date'], str(t['id'])))
-    rechecks = sorted(
-        (t for t in eligible if t not in pending),
-        key=lambda t: (t.get('checked', ''), t['date'], str(t['id'])))
+    pending = [t for t in eligible
+               if str(t['id']) not in known_ids and not t.get('checked')]
+
+    if latest_days:
+        today = today or datetime.now(ZoneInfo('Asia/Tokyo')).date()
+        cutoff = today - timedelta(days=latest_days - 1)
+        recent = lambda t: date.fromisoformat(str(t['date'])[:10]) >= cutoff
+        pending_ids = {str(t['id']) for t in pending}
+        recent_pending = sorted((t for t in pending if recent(t)),
+                                key=lambda t: (t['date'], str(t['id'])), reverse=True)
+        historical_pending = sorted((t for t in pending if not recent(t)),
+                                    key=lambda t: (t['date'], str(t['id'])))
+        # Recent results can gain pairings after first publication: recheck once
+        # per JST day, before spending remaining runtime on historical backlog.
+        to_recheck = [t for t in eligible
+                      if str(t['id']) not in pending_ids
+                      and str(t.get('checked', ''))[:10] < today.isoformat()]
+        recent_rechecks = sorted((t for t in to_recheck if recent(t)),
+                                 key=lambda t: (t.get('checked', ''), t['date'], str(t['id'])))
+        historical_rechecks = sorted((t for t in to_recheck if not recent(t)),
+                                     key=lambda t: (t.get('checked', ''), t['date'], str(t['id'])))
+        selected = recent_pending + recent_rechecks + historical_pending + historical_rechecks
+        return selected[:limit] if limit else selected
+
+    pending.sort(key=lambda t: (t['date'], str(t['id'])))
+    rechecks = sorted((t for t in eligible if t not in pending),
+                      key=lambda t: (t.get('checked', ''), t['date'], str(t['id'])))
     refresh_slots = min(len(rechecks), max(1, limit // 5), limit - 1) if pending else limit
     selected = pending[:max(0, limit - refresh_slots)] + rechecks[:refresh_slots]
-    # Fill unused slots if either side has fewer candidates.
     selected_ids = {str(t['id']) for t in selected}
     for t in pending + rechecks:
         if len(selected) >= limit:
@@ -168,8 +190,11 @@ def main():
     parser.add_argument('--pages', type=int, default=2)
     parser.add_argument('--limit', type=int, default=50)
     parser.add_argument('--recent-pages', type=int, default=0,
-                        help='Always re-scan this many newest pages before backfill')
-    parser.add_argument('--max-tournaments', type=int, default=10)
+                        help='Legacy fixed count of newest discovery pages')
+    parser.add_argument('--latest-days', type=int, default=0,
+                        help='Prioritize every discoverable event from the last N JST days')
+    parser.add_argument('--max-tournaments', type=int, default=10,
+                        help='Maximum events per run; 0 means no count cap')
     parser.add_argument('--caught-up-refresh', type=int, default=25,
                         help='Maximum daily rechecks once the entire season is discovered and initial backlog is cleared')
     parser.add_argument('--delay', type=float, default=2.0)
@@ -178,7 +203,7 @@ def main():
     parser.add_argument('--max-seconds', type=float, default=600)
     parser.add_argument('--state', type=Path, default=Path(__file__).with_name('sync_state.json'))
     args = parser.parse_args()
-    if args.pages < 1 or args.recent_pages < 0 or args.limit < 1 or args.max_tournaments < 1 or args.caught_up_refresh < 1 or args.max_seconds <= 0:
+    if args.pages < 1 or args.recent_pages < 0 or args.latest_days < 0 or args.limit < 1 or args.max_tournaments < 0 or args.caught_up_refresh < 1 or args.max_seconds <= 0:
         parser.error('Collection limits must be positive')
     REQUEST_DELAY = max(1.0, args.delay)
     DEADLINE = time.monotonic() + args.max_seconds
@@ -199,24 +224,24 @@ def main():
             "SELECT DISTINCT substr(source, 16) FROM games "
             "WHERE source LIKE 'limitless-play:%'")}
         cursor = max(1, int(state.get('page', 1)))
-        # Always check the newest tournaments, independently of the historical
-        # pagination cursor. Otherwise new events may go unnoticed for weeks.
-        pages = list(range(1, args.recent_pages + 1))
-        pages.extend(p for p in range(cursor, cursor + args.pages)
-                     if p not in pages)
-        next_cursor = cursor
-        boundary_reached = False
-        for page in pages:
+        today_jst = datetime.now(ZoneInfo('Asia/Tokyo')).date()
+        latest_cutoff = (max(args.since, today_jst - timedelta(days=args.latest_days - 1))
+                         if args.latest_days else None)
+
+        def discover_page(page):
             tournaments = fetch('/tournaments', {
                 'game': 'PTCG', 'format': 'STANDARD', 'page': page,
                 'limit': min(100, args.limit)})
             if not isinstance(tournaments, list):
                 raise ValueError('Invalid tournaments response')
             reached_start = not tournaments
+            crossed_latest = not tournaments
             for t in tournaments:
                 if not isinstance(t, dict) or not t.get('id') or not t.get('date'):
                     raise ValueError('Invalid tournament metadata')
                 event_date = date.fromisoformat(str(t['date'])[:10])
+                if latest_cutoff and event_date < latest_cutoff:
+                    crossed_latest = True
                 if event_date < args.since:
                     reached_start = True
                     continue
@@ -228,6 +253,38 @@ def main():
                     'failures': previous.get('failures', 0),
                     'retry_after': previous.get('retry_after', 0),
                 }
+            return reached_start, crossed_latest
+
+        # Discover *all* recent pages, not just the first 50 events. Preserve
+        # enough of the 20-minute budget to actually retrieve pairings.
+        recent_scanned = set()
+        boundary_reached = False
+        if latest_cutoff:
+            scan_until = time.monotonic() + min(180, args.max_seconds / 4)
+            page = 1
+            while time.monotonic() < scan_until and time.monotonic() + 60 < DEADLINE:
+                reached_start, crossed_latest = discover_page(page)
+                recent_scanned.add(page)
+                boundary_reached |= reached_start
+                if crossed_latest or reached_start:
+                    break
+                page += 1
+
+        # Continue the saved historical discovery cursor; avoid duplicate reads
+        # of pages already scanned in the recent phase.
+        pages = list(range(1, args.recent_pages + 1))
+        pages.extend(p for p in range(cursor, cursor + args.pages)
+                     if p not in pages)
+        next_cursor = cursor
+        for page in pages:
+            if page in recent_scanned:
+                if page >= cursor:
+                    next_cursor = page + 1
+                continue
+            if time.monotonic() + 60 >= DEADLINE:
+                print('Discovery time budget exhausted; syncing known events', flush=True)
+                break
+            reached_start, _ = discover_page(page)
             if page >= cursor:
                 next_cursor = 1 if reached_start else page + 1
             if reached_start:
@@ -245,7 +302,8 @@ def main():
         quota = args.max_tournaments
         if state['season_boundary_seen'] and pending_count == 0:
             quota = min(quota, args.caught_up_refresh)
-        selected = select_events(eligible, known_ids, quota)
+        selected = select_events(eligible, known_ids, quota,
+                                 latest_days=args.latest_days, today=today_jst)
         successes = 0
         failures = 0
         for t in selected:
@@ -282,6 +340,8 @@ def main():
             'discovered_tournaments': len(eligible),
             'checked_tournaments': sum(bool(t.get('checked')) for t in eligible.values()),
             'pending_tournaments': sum(not t.get('checked') for t in eligible.values()),
+            'latest_cutoff_jst': latest_cutoff.isoformat() if latest_cutoff else None,
+            'latest_pending_tournaments': sum(not t.get('checked') and date.fromisoformat(str(t['date'])[:10]) >= latest_cutoff for t in eligible.values()) if latest_cutoff else None,
             'successful_tournaments': successes,
             'failed_tournaments': failures,
         }
