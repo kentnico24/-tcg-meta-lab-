@@ -37,7 +37,7 @@ jobs:
 
 
       - name: Fetch Limitless data
-        run: python limitless_sync.py --since 2026-09-01 --recent-pages 1 --pages 30 --max-tournaments 90 --max-seconds 1200 --caught-up-refresh 25
+        run: python limitless_sync.py --since 2026-09-01 --latest-days 7 --pages 30 --max-tournaments 0 --max-seconds 1200
 
       - name: Export matches to CSV
         run: python export_matches.py
