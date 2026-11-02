@@ -55,7 +55,7 @@ class LatestFirstCollectionTests(unittest.TestCase):
             db = folder / 'matches.db'
             state.write_text(json.dumps({'page': 3, 'events': {}}))
             argv = ['sync', '--since', '2026-09-01', '--pages', '1',
-                    '--latest-days', '7', '--max-tournaments', '0',
+                    '--latest-days', '7', '--max-tournaments', '3',
                     '--state', str(state)]
             with patch.object(sync, 'DB', db), patch('sys.argv', argv), \
                     patch.object(sync, 'fetch', side_effect=[[newest], [recent, old], [old]]) as fetch, \
