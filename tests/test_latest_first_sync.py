@@ -57,7 +57,9 @@ class LatestFirstCollectionTests(unittest.TestCase):
             argv = ['sync', '--since', '2026-09-01', '--pages', '1',
                     '--latest-days', '7', '--max-tournaments', '3',
                     '--state', str(state)]
-            with patch.object(sync, 'DB', db), patch('sys.argv', argv), \
+            with patch.object(sync, 'DB', db), patch.object(sync, 'restore', return_value=0), \
+                    patch.object(sync, 'restore_countries', return_value=0), \
+                    patch('sys.argv', argv), \
                     patch.object(sync, 'fetch', side_effect=[[newest], [recent, old], [old]]) as fetch, \
                     patch.object(sync, 'sync_tournament', return_value=1) as collect:
                 sync.main()
