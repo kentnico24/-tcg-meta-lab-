@@ -8,5 +8,5 @@ if __name__ == '__main__':
     if not DB.exists():
         raise FileNotFoundError(DB)
     with sqlite3.connect(DB) as conn:
-        count = export(conn, Path(__file__).with_name('matches_snapshot.csv'))
+        count = export(conn, Path(__file__).with_name('matches_snapshot.csv.gz'))
     print(f'Exported {count} matches')

@@ -39,7 +39,7 @@ jobs:
       - name: Fetch Limitless data
         run: python limitless_sync.py --since 2026-09-01 --latest-days 7 --pages 30 --max-tournaments 0 --max-seconds 1200
 
-      - name: Export matches to CSV
+      - name: Export matches to compressed CSV
         run: python export_matches.py
 
       - name: Export player-country annotations
@@ -49,12 +49,12 @@ jobs:
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          if [ ! -f matches_snapshot.csv ]; then
-            echo "::error::matches_snapshot.csv was not created"
+          if [ ! -s matches_snapshot.csv.gz ]; then
+            echo "::error::matches_snapshot.csv.gz was not created"
             exit 1
           fi
 
-          git add matches_snapshot.csv match_countries.csv sync_state.json
+          git add matches_snapshot.csv.gz match_countries.csv sync_state.json
           if ! git diff --cached --quiet; then
             git commit -m "Update Limitless match data"
             # City League syncs and source-code merges can advance main while

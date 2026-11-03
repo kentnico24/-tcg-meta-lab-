@@ -9,6 +9,7 @@ from pathlib import Path
 from zoneinfo import ZoneInfo
 
 from weekly_recommendations import rank_recommendations
+from snapshot_store import preferred_snapshot, open_snapshot_text
 
 ROOT = Path(__file__).resolve().parent
 
@@ -16,9 +17,7 @@ ROOT = Path(__file__).resolve().parent
 def main():
     as_of = datetime.now(ZoneInfo("Asia/Tokyo")).date()
     with (ROOT / "city_league_results.csv").open(
-            newline="", encoding="utf-8") as city, (
-            ROOT / "matches_snapshot.csv").open(
-            newline="", encoding="utf-8") as world:
+            newline="", encoding="utf-8") as city, open_snapshot_text(preferred_snapshot(ROOT)) as world:
         report = rank_recommendations(csv.DictReader(city),
                                       csv.DictReader(world), as_of, n=5)
     jp = report["meta"]

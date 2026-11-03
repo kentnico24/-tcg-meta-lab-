@@ -10,6 +10,7 @@ from weekly_view import render_weekly_recommendations
 from matrix_style import matrix_cell_css
 from matchup_sort import MATCHUP_SORT_OPTIONS, sort_matchup_rows
 from deck_variants import classify_dragapult
+from snapshot_store import preferred_snapshot
 ROOT=pathlib.Path(__file__).parent
 DB=pathlib.Path(os.environ.get('TCG_DB_PATH', str(ROOT/'research.sqlite3')))
 st.set_page_config(page_title='TCG Meta Lab',page_icon='🃏',layout='wide')
@@ -266,7 +267,7 @@ with st.sidebar:
   st.caption('試合データはGitHub Actionsが更新します。アプリ上の操作で保存済みの試合CSVが変更されることはありません。')
 
 # Hosted deployments load the latest GitHub Actions snapshot first.
-snapshot=ROOT/'matches_snapshot.csv'
+snapshot=preferred_snapshot(ROOT)
 if snapshot.exists():
  try:
   df=pd.read_csv(snapshot,dtype=str).fillna('')

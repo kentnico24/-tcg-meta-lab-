@@ -6,6 +6,7 @@ import pandas as pd
 import streamlit as st
 
 from weekly_recommendations import rank_recommendations, family_label
+from snapshot_store import preferred_snapshot
 from weekly_deck_examples import select_domestic_decklists
 
 
@@ -44,7 +45,7 @@ def render_weekly_recommendations(root):
     )
     root = Path(root)
     city_path = root / "city_league_results.csv"
-    world_path = root / "matches_snapshot.csv"
+    world_path = preferred_snapshot(root)
     if not city_path.exists() or not world_path.exists():
         st.warning("国内シティリーグ結果または世界の対戦CSVが未取得のため、おすすめを計算できません。")
         return

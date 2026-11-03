@@ -10,7 +10,7 @@ import urllib.request
 from pathlib import Path
 from datetime import date, datetime, timedelta
 from zoneinfo import ZoneInfo
-from snapshot_store import restore
+from snapshot_store import restore, preferred_snapshot
 from country_store import (initialize as initialize_countries,
                            upsert_countries, restore_countries)
 from region_labels import normalize_country
@@ -210,7 +210,7 @@ def main():
     DB.parent.mkdir(parents=True, exist_ok=True)
     with sqlite3.connect(DB, timeout=30) as conn:
         initialize(conn)
-        restored = restore(conn, Path(__file__).with_name('matches_snapshot.csv'))
+        restored = restore(conn, preferred_snapshot(Path(__file__).parent))
         print(f'Restored {restored} snapshot matches', flush=True)
         restored_regions = restore_countries(
             conn, Path(__file__).with_name('match_countries.csv'))
