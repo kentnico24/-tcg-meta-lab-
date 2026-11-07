@@ -1,4 +1,388 @@
 key,date,prefecture,shop,rank,deck,player,event_url,decklist_url
+5215:9,2026-11-07,Niigata,トーナメントセンターバトロコ新潟万代,10,garchomp roserade,れるちー,https://limitlesstcg.com/tournaments/jp/5215,https://limitlesstcg.com/decks/list/jp/77593
+5215:8,2026-11-07,Niigata,トーナメントセンターバトロコ新潟万代,9,honchkrow porygon2,もー,https://limitlesstcg.com/tournaments/jp/5215,https://limitlesstcg.com/decks/list/jp/77592
+5215:7,2026-11-07,Niigata,トーナメントセンターバトロコ新潟万代,8,zoroark,はとぽっぽ,https://limitlesstcg.com/tournaments/jp/5215,https://limitlesstcg.com/decks/list/jp/77591
+5215:6,2026-11-07,Niigata,トーナメントセンターバトロコ新潟万代,7,dragapult blaziken,ミルラ,https://limitlesstcg.com/tournaments/jp/5215,https://limitlesstcg.com/decks/list/jp/77590
+5215:5,2026-11-07,Niigata,トーナメントセンターバトロコ新潟万代,6,dragapult dusknoir,こうたろう,https://limitlesstcg.com/tournaments/jp/5215,https://limitlesstcg.com/decks/list/jp/74174
+5215:4,2026-11-07,Niigata,トーナメントセンターバトロコ新潟万代,5,dragapult,S????,https://limitlesstcg.com/tournaments/jp/5215,https://limitlesstcg.com/decks/list/jp/74842
+5215:3,2026-11-07,Niigata,トーナメントセンターバトロコ新潟万代,4,kangaskhan-mega meowth,ぎゃもっく,https://limitlesstcg.com/tournaments/jp/5215,https://limitlesstcg.com/decks/list/jp/77589
+5215:2,2026-11-07,Niigata,トーナメントセンターバトロコ新潟万代,3,ogerpon hydrapple,くろくま,https://limitlesstcg.com/tournaments/jp/5215,https://limitlesstcg.com/decks/list/jp/77588
+5215:15,2026-11-07,Niigata,トーナメントセンターバトロコ新潟万代,16,grimmsnarl dudunsparce,もも,https://limitlesstcg.com/tournaments/jp/5215,https://limitlesstcg.com/decks/list/jp/77598
+5215:14,2026-11-07,Niigata,トーナメントセンターバトロコ新潟万代,15,dragapult dudunsparce,ライ,https://limitlesstcg.com/tournaments/jp/5215,https://limitlesstcg.com/decks/list/jp/72607
+5215:13,2026-11-07,Niigata,トーナメントセンターバトロコ新潟万代,14,dragapult kangaskhan-mega,たーぼう,https://limitlesstcg.com/tournaments/jp/5215,https://limitlesstcg.com/decks/list/jp/77597
+5215:12,2026-11-07,Niigata,トーナメントセンターバトロコ新潟万代,13,dragapult dusknoir,パンダ,https://limitlesstcg.com/tournaments/jp/5215,https://limitlesstcg.com/decks/list/jp/77596
+5215:11,2026-11-07,Niigata,トーナメントセンターバトロコ新潟万代,12,alakazam dudunsparce,りょう,https://limitlesstcg.com/tournaments/jp/5215,https://limitlesstcg.com/decks/list/jp/77595
+5215:10,2026-11-07,Niigata,トーナメントセンターバトロコ新潟万代,11,dusknoir lopunny-mega,tk,https://limitlesstcg.com/tournaments/jp/5215,https://limitlesstcg.com/decks/list/jp/77594
+5215:1,2026-11-07,Niigata,トーナメントセンターバトロコ新潟万代,2,ogerpon arboliva,seeker,https://limitlesstcg.com/tournaments/jp/5215,https://limitlesstcg.com/decks/list/jp/77587
+5215:0,2026-11-07,Niigata,トーナメントセンターバトロコ新潟万代,1,kangaskhan-mega crustle,りゅういち,https://limitlesstcg.com/tournaments/jp/5215,https://limitlesstcg.com/decks/list/jp/77586
+5214:9,2026-11-07,Ishikawa,北国書林　松任店,10,dragapult,ゆうとん,https://limitlesstcg.com/tournaments/jp/5214,https://limitlesstcg.com/decks/list/jp/74842
+5214:8,2026-11-07,Ishikawa,北国書林　松任店,9,garchomp roserade,ポルンが,https://limitlesstcg.com/tournaments/jp/5214,https://limitlesstcg.com/decks/list/jp/77579
+5214:7,2026-11-07,Ishikawa,北国書林　松任店,8,kangaskhan-mega rayquaza-mega,あせろら,https://limitlesstcg.com/tournaments/jp/5214,https://limitlesstcg.com/decks/list/jp/77205
+5214:6,2026-11-07,Ishikawa,北国書林　松任店,7,dragapult,アルファ,https://limitlesstcg.com/tournaments/jp/5214,https://limitlesstcg.com/decks/list/jp/74842
+5214:5,2026-11-07,Ishikawa,北国書林　松任店,6,hydrapple ogerpon,リア,https://limitlesstcg.com/tournaments/jp/5214,https://limitlesstcg.com/decks/list/jp/77578
+5214:4,2026-11-07,Ishikawa,北国書林　松任店,5,dragapult,うえしむ,https://limitlesstcg.com/tournaments/jp/5214,https://limitlesstcg.com/decks/list/jp/74842
+5214:3,2026-11-07,Ishikawa,北国書林　松任店,4,zoroark,ター,https://limitlesstcg.com/tournaments/jp/5214,https://limitlesstcg.com/decks/list/jp/77577
+5214:2,2026-11-07,Ishikawa,北国書林　松任店,3,alakazam dudunsparce,ケケ,https://limitlesstcg.com/tournaments/jp/5214,https://limitlesstcg.com/decks/list/jp/77576
+5214:15,2026-11-07,Ishikawa,北国書林　松任店,16,dudunsparce lopunny-mega,せんき,https://limitlesstcg.com/tournaments/jp/5214,https://limitlesstcg.com/decks/list/jp/77585
+5214:14,2026-11-07,Ishikawa,北国書林　松任店,15,zoroark pecharunt,うがああああ,https://limitlesstcg.com/tournaments/jp/5214,https://limitlesstcg.com/decks/list/jp/77584
+5214:13,2026-11-07,Ishikawa,北国書林　松任店,14,slowking kangaskhan-mega,じゃがりこ,https://limitlesstcg.com/tournaments/jp/5214,https://limitlesstcg.com/decks/list/jp/77583
+5214:12,2026-11-07,Ishikawa,北国書林　松任店,13,sharpedo-mega pecharunt,たいら。,https://limitlesstcg.com/tournaments/jp/5214,https://limitlesstcg.com/decks/list/jp/77582
+5214:11,2026-11-07,Ishikawa,北国書林　松任店,12,ogerpon kangaskhan-mega,ディグダ,https://limitlesstcg.com/tournaments/jp/5214,https://limitlesstcg.com/decks/list/jp/77581
+5214:10,2026-11-07,Ishikawa,北国書林　松任店,11,kangaskhan-mega talonflame,椿研究室☆臣〈omi〉,https://limitlesstcg.com/tournaments/jp/5214,https://limitlesstcg.com/decks/list/jp/77580
+5214:1,2026-11-07,Ishikawa,北国書林　松任店,2,ogerpon arboliva,パーティ野郎,https://limitlesstcg.com/tournaments/jp/5214,https://limitlesstcg.com/decks/list/jp/76020
+5214:0,2026-11-07,Ishikawa,北国書林　松任店,1,dragapult,サヤト,https://limitlesstcg.com/tournaments/jp/5214,https://limitlesstcg.com/decks/list/jp/76759
+5213:9,2026-11-07,Gifu,カードショップ　海賊船-starch-,10,dudunsparce lopunny-mega,ジャマイカ,https://limitlesstcg.com/tournaments/jp/5213,https://limitlesstcg.com/decks/list/jp/77570
+5213:8,2026-11-07,Gifu,カードショップ　海賊船-starch-,9,mew starmie-mega,ゴロー,https://limitlesstcg.com/tournaments/jp/5213,https://limitlesstcg.com/decks/list/jp/77569
+5213:7,2026-11-07,Gifu,カードショップ　海賊船-starch-,8,dragapult,りくた,https://limitlesstcg.com/tournaments/jp/5213,https://limitlesstcg.com/decks/list/jp/74934
+5213:6,2026-11-07,Gifu,カードショップ　海賊船-starch-,7,garchomp roserade,栄心,https://limitlesstcg.com/tournaments/jp/5213,https://limitlesstcg.com/decks/list/jp/77568
+5213:5,2026-11-07,Gifu,カードショップ　海賊船-starch-,6,dragapult,スコチキ,https://limitlesstcg.com/tournaments/jp/5213,https://limitlesstcg.com/decks/list/jp/77220
+5213:4,2026-11-07,Gifu,カードショップ　海賊船-starch-,5,ogerpon hydrapple,にゃんちきぽ,https://limitlesstcg.com/tournaments/jp/5213,https://limitlesstcg.com/decks/list/jp/77567
+5213:3,2026-11-07,Gifu,カードショップ　海賊船-starch-,4,dragapult dudunsparce,ちんすこう,https://limitlesstcg.com/tournaments/jp/5213,https://limitlesstcg.com/decks/list/jp/77566
+5213:2,2026-11-07,Gifu,カードショップ　海賊船-starch-,3,garchomp roserade,いっくんだでぃ,https://limitlesstcg.com/tournaments/jp/5213,https://limitlesstcg.com/decks/list/jp/77565
+5213:15,2026-11-07,Gifu,カードショップ　海賊船-starch-,16,dragapult,#N,https://limitlesstcg.com/tournaments/jp/5213,https://limitlesstcg.com/decks/list/jp/77575
+5213:14,2026-11-07,Gifu,カードショップ　海賊船-starch-,15,dragapult,うさ,https://limitlesstcg.com/tournaments/jp/5213,https://limitlesstcg.com/decks/list/jp/76759
+5213:13,2026-11-07,Gifu,カードショップ　海賊船-starch-,14,metagross excadrill-mega,ナオキ,https://limitlesstcg.com/tournaments/jp/5213,https://limitlesstcg.com/decks/list/jp/77574
+5213:12,2026-11-07,Gifu,カードショップ　海賊船-starch-,13,spidops mewtwo,ドリス,https://limitlesstcg.com/tournaments/jp/5213,https://limitlesstcg.com/decks/list/jp/77573
+5213:11,2026-11-07,Gifu,カードショップ　海賊船-starch-,12,kangaskhan-mega ogerpon,アオパ,https://limitlesstcg.com/tournaments/jp/5213,https://limitlesstcg.com/decks/list/jp/77572
+5213:10,2026-11-07,Gifu,カードショップ　海賊船-starch-,11,dusknoir diancie-mega,マグロ,https://limitlesstcg.com/tournaments/jp/5213,https://limitlesstcg.com/decks/list/jp/77571
+5213:1,2026-11-07,Gifu,カードショップ　海賊船-starch-,2,rayquaza-mega kangaskhan-mega,ヤマサカ,https://limitlesstcg.com/tournaments/jp/5213,https://limitlesstcg.com/decks/list/jp/77564
+5213:0,2026-11-07,Gifu,カードショップ　海賊船-starch-,1,lucario-mega hariyama,あかわいん,https://limitlesstcg.com/tournaments/jp/5213,https://limitlesstcg.com/decks/list/jp/77563
+5212:9,2026-11-07,Ibaraki,WonderGOO PLUS つくば店,10,dragapult blaziken,らむね,https://limitlesstcg.com/tournaments/jp/5212,https://limitlesstcg.com/decks/list/jp/77558
+5212:8,2026-11-07,Ibaraki,WonderGOO PLUS つくば店,9,kangaskhan-mega slowking,ひかまる,https://limitlesstcg.com/tournaments/jp/5212,https://limitlesstcg.com/decks/list/jp/77557
+5212:7,2026-11-07,Ibaraki,WonderGOO PLUS つくば店,8,dragapult dusknoir,不発,https://limitlesstcg.com/tournaments/jp/5212,https://limitlesstcg.com/decks/list/jp/77556
+5212:6,2026-11-07,Ibaraki,WonderGOO PLUS つくば店,7,dragapult dusknoir,らいおん,https://limitlesstcg.com/tournaments/jp/5212,https://limitlesstcg.com/decks/list/jp/77555
+5212:5,2026-11-07,Ibaraki,WonderGOO PLUS つくば店,6,zoroark pecharunt,スカイ,https://limitlesstcg.com/tournaments/jp/5212,https://limitlesstcg.com/decks/list/jp/77554
+5212:4,2026-11-07,Ibaraki,WonderGOO PLUS つくば店,5,dragapult,つばりん,https://limitlesstcg.com/tournaments/jp/5212,https://limitlesstcg.com/decks/list/jp/77553
+5212:3,2026-11-07,Ibaraki,WonderGOO PLUS つくば店,4,lucario-mega solrock,O（オー）,https://limitlesstcg.com/tournaments/jp/5212,https://limitlesstcg.com/decks/list/jp/77552
+5212:2,2026-11-07,Ibaraki,WonderGOO PLUS つくば店,3,zoroark dudunsparce,うすちよ,https://limitlesstcg.com/tournaments/jp/5212,https://limitlesstcg.com/decks/list/jp/77551
+5212:15,2026-11-07,Ibaraki,WonderGOO PLUS つくば店,16,greninja-mega dusknoir,けいどん,https://limitlesstcg.com/tournaments/jp/5212,https://limitlesstcg.com/decks/list/jp/77562
+5212:14,2026-11-07,Ibaraki,WonderGOO PLUS つくば店,15,ogerpon venusaur-mega,がみー,https://limitlesstcg.com/tournaments/jp/5212,https://limitlesstcg.com/decks/list/jp/77561
+5212:13,2026-11-07,Ibaraki,WonderGOO PLUS つくば店,14,banette dudunsparce,ぱすた,https://limitlesstcg.com/tournaments/jp/5212,https://limitlesstcg.com/decks/list/jp/77560
+5212:12,2026-11-07,Ibaraki,WonderGOO PLUS つくば店,13,dragapult dudunsparce,めこ,https://limitlesstcg.com/tournaments/jp/5212,https://limitlesstcg.com/decks/list/jp/77291
+5212:11,2026-11-07,Ibaraki,WonderGOO PLUS つくば店,12,ogerpon hydrapple,フクロウ,https://limitlesstcg.com/tournaments/jp/5212,https://limitlesstcg.com/decks/list/jp/73485
+5212:10,2026-11-07,Ibaraki,WonderGOO PLUS つくば店,11,lopunny-mega dudunsparce,えび,https://limitlesstcg.com/tournaments/jp/5212,https://limitlesstcg.com/decks/list/jp/77559
+5212:1,2026-11-07,Ibaraki,WonderGOO PLUS つくば店,2,metagross excadrill-mega,ホリデー,https://limitlesstcg.com/tournaments/jp/5212,https://limitlesstcg.com/decks/list/jp/77550
+5212:0,2026-11-07,Ibaraki,WonderGOO PLUS つくば店,1,dragapult dudunsparce,n,https://limitlesstcg.com/tournaments/jp/5212,https://limitlesstcg.com/decks/list/jp/77549
+5211:9,2026-11-07,Fukushima,カードゲームのシーガル郡山店,10,dragapult dudunsparce,ロロ,https://limitlesstcg.com/tournaments/jp/5211,https://limitlesstcg.com/decks/list/jp/73148
+5211:8,2026-11-07,Fukushima,カードゲームのシーガル郡山店,9,dragapult,きみじー,https://limitlesstcg.com/tournaments/jp/5211,https://limitlesstcg.com/decks/list/jp/75383
+5211:7,2026-11-07,Fukushima,カードゲームのシーガル郡山店,8,kangaskhan-mega rayquaza-mega,さんちゃ,https://limitlesstcg.com/tournaments/jp/5211,https://limitlesstcg.com/decks/list/jp/77543
+5211:6,2026-11-07,Fukushima,カードゲームのシーガル郡山店,7,dragapult blaziken,じろう,https://limitlesstcg.com/tournaments/jp/5211,https://limitlesstcg.com/decks/list/jp/77542
+5211:5,2026-11-07,Fukushima,カードゲームのシーガル郡山店,6,banette dudunsparce,マキ,https://limitlesstcg.com/tournaments/jp/5211,https://limitlesstcg.com/decks/list/jp/77541
+5211:4,2026-11-07,Fukushima,カードゲームのシーガル郡山店,5,dudunsparce starmie-mega,部長,https://limitlesstcg.com/tournaments/jp/5211,https://limitlesstcg.com/decks/list/jp/77540
+5211:3,2026-11-07,Fukushima,カードゲームのシーガル郡山店,4,zoroark,カントク,https://limitlesstcg.com/tournaments/jp/5211,https://limitlesstcg.com/decks/list/jp/77539
+5211:2,2026-11-07,Fukushima,カードゲームのシーガル郡山店,3,garchomp roserade,あのほら,https://limitlesstcg.com/tournaments/jp/5211,https://limitlesstcg.com/decks/list/jp/77538
+5211:15,2026-11-07,Fukushima,カードゲームのシーガル郡山店,16,dragapult,ゆかまい,https://limitlesstcg.com/tournaments/jp/5211,https://limitlesstcg.com/decks/list/jp/74968
+5211:14,2026-11-07,Fukushima,カードゲームのシーガル郡山店,15,zoroark pecharunt,しょうたろう,https://limitlesstcg.com/tournaments/jp/5211,https://limitlesstcg.com/decks/list/jp/77548
+5211:13,2026-11-07,Fukushima,カードゲームのシーガル郡山店,14,lucario-mega dudunsparce,たわし,https://limitlesstcg.com/tournaments/jp/5211,https://limitlesstcg.com/decks/list/jp/77547
+5211:12,2026-11-07,Fukushima,カードゲームのシーガル郡山店,13,dragapult blaziken,Dai,https://limitlesstcg.com/tournaments/jp/5211,https://limitlesstcg.com/decks/list/jp/77546
+5211:11,2026-11-07,Fukushima,カードゲームのシーガル郡山店,12,alakazam dudunsparce,カネキ,https://limitlesstcg.com/tournaments/jp/5211,https://limitlesstcg.com/decks/list/jp/77545
+5211:10,2026-11-07,Fukushima,カードゲームのシーガル郡山店,11,lucario-mega dudunsparce,あしゅー,https://limitlesstcg.com/tournaments/jp/5211,https://limitlesstcg.com/decks/list/jp/77544
+5211:1,2026-11-07,Fukushima,カードゲームのシーガル郡山店,2,zoroark,アームストロング,https://limitlesstcg.com/tournaments/jp/5211,https://limitlesstcg.com/decks/list/jp/77537
+5211:0,2026-11-07,Fukushima,カードゲームのシーガル郡山店,1,ogerpon arboliva,たんじ,https://limitlesstcg.com/tournaments/jp/5211,https://limitlesstcg.com/decks/list/jp/76874
+5210:9,2026-11-07,Mie,TSUTAYA鈴鹿中央通店,10,dragapult blaziken,ALPaCa,https://limitlesstcg.com/tournaments/jp/5210,https://limitlesstcg.com/decks/list/jp/77003
+5210:8,2026-11-07,Mie,TSUTAYA鈴鹿中央通店,9,dragapult dusknoir,きよし(^-^)/,https://limitlesstcg.com/tournaments/jp/5210,https://limitlesstcg.com/decks/list/jp/76577
+5210:7,2026-11-07,Mie,TSUTAYA鈴鹿中央通店,8,garchomp roserade,プラはる,https://limitlesstcg.com/tournaments/jp/5210,https://limitlesstcg.com/decks/list/jp/77533
+5210:6,2026-11-07,Mie,TSUTAYA鈴鹿中央通店,7,lucario-mega hariyama,腹筋,https://limitlesstcg.com/tournaments/jp/5210,https://limitlesstcg.com/decks/list/jp/77532
+5210:5,2026-11-07,Mie,TSUTAYA鈴鹿中央通店,6,lucario-mega hariyama,ぽんズ,https://limitlesstcg.com/tournaments/jp/5210,https://limitlesstcg.com/decks/list/jp/77531
+5210:4,2026-11-07,Mie,TSUTAYA鈴鹿中央通店,5,metagross empoleon,かわずん,https://limitlesstcg.com/tournaments/jp/5210,https://limitlesstcg.com/decks/list/jp/77530
+5210:3,2026-11-07,Mie,TSUTAYA鈴鹿中央通店,4,dragapult,ゆう,https://limitlesstcg.com/tournaments/jp/5210,https://limitlesstcg.com/decks/list/jp/74842
+5210:2,2026-11-07,Mie,TSUTAYA鈴鹿中央通店,3,grimmsnarl dudunsparce,じら,https://limitlesstcg.com/tournaments/jp/5210,https://limitlesstcg.com/decks/list/jp/77529
+5210:15,2026-11-07,Mie,TSUTAYA鈴鹿中央通店,16,banette dhelmise,リュースケ,https://limitlesstcg.com/tournaments/jp/5210,https://limitlesstcg.com/decks/list/jp/77536
+5210:14,2026-11-07,Mie,TSUTAYA鈴鹿中央通店,15,dragapult,ふくいとかいりゅー,https://limitlesstcg.com/tournaments/jp/5210,https://limitlesstcg.com/decks/list/jp/74842
+5210:13,2026-11-07,Mie,TSUTAYA鈴鹿中央通店,14,dragapult blaziken,からあげ,https://limitlesstcg.com/tournaments/jp/5210,https://limitlesstcg.com/decks/list/jp/77003
+5210:12,2026-11-07,Mie,TSUTAYA鈴鹿中央通店,13,honchkrow porygon2,ちーくん,https://limitlesstcg.com/tournaments/jp/5210,https://limitlesstcg.com/decks/list/jp/77535
+5210:11,2026-11-07,Mie,TSUTAYA鈴鹿中央通店,12,zoroark,ちーちち,https://limitlesstcg.com/tournaments/jp/5210,https://limitlesstcg.com/decks/list/jp/77534
+5210:10,2026-11-07,Mie,TSUTAYA鈴鹿中央通店,11,zoroark pecharunt,GT,https://limitlesstcg.com/tournaments/jp/5210,https://limitlesstcg.com/decks/list/jp/76026
+5210:1,2026-11-07,Mie,TSUTAYA鈴鹿中央通店,2,dragapult,フトゥー,https://limitlesstcg.com/tournaments/jp/5210,https://limitlesstcg.com/decks/list/jp/76929
+5210:0,2026-11-07,Mie,TSUTAYA鈴鹿中央通店,1,dragapult blaziken,りきちょり,https://limitlesstcg.com/tournaments/jp/5210,https://limitlesstcg.com/decks/list/jp/72403
+5209:9,2026-11-07,Fukuoka,TSUTAYA AVクラブ太宰府店,10,kangaskhan-mega rayquaza-mega,sEi,https://limitlesstcg.com/tournaments/jp/5209,https://limitlesstcg.com/decks/list/jp/77523
+5209:8,2026-11-07,Fukuoka,TSUTAYA AVクラブ太宰府店,9,grimmsnarl munkidori,ナハト,https://limitlesstcg.com/tournaments/jp/5209,https://limitlesstcg.com/decks/list/jp/77522
+5209:7,2026-11-07,Fukuoka,TSUTAYA AVクラブ太宰府店,8,thwackey seaking,きゃんち,https://limitlesstcg.com/tournaments/jp/5209,https://limitlesstcg.com/decks/list/jp/77521
+5209:6,2026-11-07,Fukuoka,TSUTAYA AVクラブ太宰府店,7,sharpedo-mega pecharunt,みやんちゅ,https://limitlesstcg.com/tournaments/jp/5209,https://limitlesstcg.com/decks/list/jp/77191
+5209:5,2026-11-07,Fukuoka,TSUTAYA AVクラブ太宰府店,6,metagross genesect,うっちー,https://limitlesstcg.com/tournaments/jp/5209,https://limitlesstcg.com/decks/list/jp/77520
+5209:4,2026-11-07,Fukuoka,TSUTAYA AVクラブ太宰府店,5,sharpedo-mega toxtricity,ボブすけ,https://limitlesstcg.com/tournaments/jp/5209,https://limitlesstcg.com/decks/list/jp/77519
+5209:3,2026-11-07,Fukuoka,TSUTAYA AVクラブ太宰府店,4,greninja-mega kangaskhan-mega,りりぃ,https://limitlesstcg.com/tournaments/jp/5209,https://limitlesstcg.com/decks/list/jp/76479
+5209:2,2026-11-07,Fukuoka,TSUTAYA AVクラブ太宰府店,3,alakazam dudunsparce,neady,https://limitlesstcg.com/tournaments/jp/5209,https://limitlesstcg.com/decks/list/jp/77518
+5209:15,2026-11-07,Fukuoka,TSUTAYA AVクラブ太宰府店,16,toxtricity pecharunt,takumi,https://limitlesstcg.com/tournaments/jp/5209,https://limitlesstcg.com/decks/list/jp/77528
+5209:14,2026-11-07,Fukuoka,TSUTAYA AVクラブ太宰府店,15,dragapult dusknoir,れむ,https://limitlesstcg.com/tournaments/jp/5209,https://limitlesstcg.com/decks/list/jp/77527
+5209:13,2026-11-07,Fukuoka,TSUTAYA AVクラブ太宰府店,14,starmie-mega froslass-mega,ヤーマン,https://limitlesstcg.com/tournaments/jp/5209,https://limitlesstcg.com/decks/list/jp/77526
+5209:12,2026-11-07,Fukuoka,TSUTAYA AVクラブ太宰府店,13,chandelure-mega,ゆゆ,https://limitlesstcg.com/tournaments/jp/5209,https://limitlesstcg.com/decks/list/jp/77525
+5209:11,2026-11-07,Fukuoka,TSUTAYA AVクラブ太宰府店,12,dragapult dudunsparce,woot,https://limitlesstcg.com/tournaments/jp/5209,https://limitlesstcg.com/decks/list/jp/77524
+5209:10,2026-11-07,Fukuoka,TSUTAYA AVクラブ太宰府店,11,dragapult,kbtit,https://limitlesstcg.com/tournaments/jp/5209,https://limitlesstcg.com/decks/list/jp/74781
+5209:1,2026-11-07,Fukuoka,TSUTAYA AVクラブ太宰府店,2,dragapult,たなしん,https://limitlesstcg.com/tournaments/jp/5209,https://limitlesstcg.com/decks/list/jp/74968
+5209:0,2026-11-07,Fukuoka,TSUTAYA AVクラブ太宰府店,1,ogerpon kangaskhan-mega,ぽるんが,https://limitlesstcg.com/tournaments/jp/5209,https://limitlesstcg.com/decks/list/jp/77517
+5208:9,2026-11-07,Ōsaka,トイコンプ高槻店,10,alakazam dudunsparce,ぱちぱち,https://limitlesstcg.com/tournaments/jp/5208,https://limitlesstcg.com/decks/list/jp/77510
+5208:8,2026-11-07,Ōsaka,トイコンプ高槻店,9,dusknoir kangaskhan-mega,ゆんゆん,https://limitlesstcg.com/tournaments/jp/5208,https://limitlesstcg.com/decks/list/jp/75005
+5208:7,2026-11-07,Ōsaka,トイコンプ高槻店,8,kangaskhan-mega talonflame,ひなたろー,https://limitlesstcg.com/tournaments/jp/5208,https://limitlesstcg.com/decks/list/jp/77509
+5208:6,2026-11-07,Ōsaka,トイコンプ高槻店,7,slowking kangaskhan-mega,かど,https://limitlesstcg.com/tournaments/jp/5208,https://limitlesstcg.com/decks/list/jp/77508
+5208:5,2026-11-07,Ōsaka,トイコンプ高槻店,6,dragapult,エモンゴロウ,https://limitlesstcg.com/tournaments/jp/5208,https://limitlesstcg.com/decks/list/jp/77507
+5208:4,2026-11-07,Ōsaka,トイコンプ高槻店,5,ogerpon kangaskhan-mega,スピン,https://limitlesstcg.com/tournaments/jp/5208,https://limitlesstcg.com/decks/list/jp/77506
+5208:3,2026-11-07,Ōsaka,トイコンプ高槻店,4,dragapult blaziken,ユウヒウサギ,https://limitlesstcg.com/tournaments/jp/5208,https://limitlesstcg.com/decks/list/jp/72926
+5208:2,2026-11-07,Ōsaka,トイコンプ高槻店,3,metagross genesect,RU,https://limitlesstcg.com/tournaments/jp/5208,https://limitlesstcg.com/decks/list/jp/77505
+5208:15,2026-11-07,Ōsaka,トイコンプ高槻店,16,garchomp roserade,lancelot,https://limitlesstcg.com/tournaments/jp/5208,https://limitlesstcg.com/decks/list/jp/77516
+5208:14,2026-11-07,Ōsaka,トイコンプ高槻店,15,ogerpon kangaskhan-mega,ニック,https://limitlesstcg.com/tournaments/jp/5208,https://limitlesstcg.com/decks/list/jp/77515
+5208:13,2026-11-07,Ōsaka,トイコンプ高槻店,14,alakazam dudunsparce,コサイトウ,https://limitlesstcg.com/tournaments/jp/5208,https://limitlesstcg.com/decks/list/jp/77514
+5208:12,2026-11-07,Ōsaka,トイコンプ高槻店,13,ogerpon sinistcha,アツキ,https://limitlesstcg.com/tournaments/jp/5208,https://limitlesstcg.com/decks/list/jp/77513
+5208:11,2026-11-07,Ōsaka,トイコンプ高槻店,12,thwackey seaking,ハタ,https://limitlesstcg.com/tournaments/jp/5208,https://limitlesstcg.com/decks/list/jp/77512
+5208:10,2026-11-07,Ōsaka,トイコンプ高槻店,11,ceruledge armarouge,nkt526,https://limitlesstcg.com/tournaments/jp/5208,https://limitlesstcg.com/decks/list/jp/77511
+5208:1,2026-11-07,Ōsaka,トイコンプ高槻店,2,alakazam dudunsparce,adn,https://limitlesstcg.com/tournaments/jp/5208,https://limitlesstcg.com/decks/list/jp/77504
+5208:0,2026-11-07,Ōsaka,トイコンプ高槻店,1,dragapult dudunsparce,だい,https://limitlesstcg.com/tournaments/jp/5208,https://limitlesstcg.com/decks/list/jp/76348
+5207:9,2026-11-07,Mie,三洋堂書店 星川店,10,ogerpon hydrapple,ゴトー,https://limitlesstcg.com/tournaments/jp/5207,https://limitlesstcg.com/decks/list/jp/77500
+5207:8,2026-11-07,Mie,三洋堂書店 星川店,9,dragapult blaziken,りょう,https://limitlesstcg.com/tournaments/jp/5207,https://limitlesstcg.com/decks/list/jp/77499
+5207:7,2026-11-07,Mie,三洋堂書店 星川店,8,lucario-mega hariyama,ゆや,https://limitlesstcg.com/tournaments/jp/5207,https://limitlesstcg.com/decks/list/jp/77498
+5207:6,2026-11-07,Mie,三洋堂書店 星川店,7,dragapult,ヤナナz,https://limitlesstcg.com/tournaments/jp/5207,https://limitlesstcg.com/decks/list/jp/77497
+5207:5,2026-11-07,Mie,三洋堂書店 星川店,6,ogerpon meganium,サリオス,https://limitlesstcg.com/tournaments/jp/5207,https://limitlesstcg.com/decks/list/jp/77496
+5207:4,2026-11-07,Mie,三洋堂書店 星川店,5,kangaskhan-mega slowking,エレシア,https://limitlesstcg.com/tournaments/jp/5207,https://limitlesstcg.com/decks/list/jp/77495
+5207:3,2026-11-07,Mie,三洋堂書店 星川店,4,lucario-mega solrock,ラグ,https://limitlesstcg.com/tournaments/jp/5207,https://limitlesstcg.com/decks/list/jp/77494
+5207:2,2026-11-07,Mie,三洋堂書店 星川店,3,ogerpon hydrapple,王様,https://limitlesstcg.com/tournaments/jp/5207,https://limitlesstcg.com/decks/list/jp/77493
+5207:15,2026-11-07,Mie,三洋堂書店 星川店,16,alakazam dudunsparce,おにもつ,https://limitlesstcg.com/tournaments/jp/5207,https://limitlesstcg.com/decks/list/jp/77503
+5207:14,2026-11-07,Mie,三洋堂書店 星川店,15,dragapult dusknoir,ガッちゃん,https://limitlesstcg.com/tournaments/jp/5207,https://limitlesstcg.com/decks/list/jp/74734
+5207:13,2026-11-07,Mie,三洋堂書店 星川店,14,dragapult dudunsparce,YUYA,https://limitlesstcg.com/tournaments/jp/5207,https://limitlesstcg.com/decks/list/jp/77035
+5207:12,2026-11-07,Mie,三洋堂書店 星川店,13,dragapult,ハナチカ,https://limitlesstcg.com/tournaments/jp/5207,https://limitlesstcg.com/decks/list/jp/77502
+5207:11,2026-11-07,Mie,三洋堂書店 星川店,12,kangaskhan-mega rayquaza-mega,みーさん,https://limitlesstcg.com/tournaments/jp/5207,https://limitlesstcg.com/decks/list/jp/77501
+5207:10,2026-11-07,Mie,三洋堂書店 星川店,11,dragapult dudunsparce,よちょ,https://limitlesstcg.com/tournaments/jp/5207,https://limitlesstcg.com/decks/list/jp/74465
+5207:1,2026-11-07,Mie,三洋堂書店 星川店,2,metagross genesect,プレミおじさん,https://limitlesstcg.com/tournaments/jp/5207,https://limitlesstcg.com/decks/list/jp/75312
+5207:0,2026-11-07,Mie,三洋堂書店 星川店,1,ogerpon arboliva,マールド,https://limitlesstcg.com/tournaments/jp/5207,https://limitlesstcg.com/decks/list/jp/77492
+5206:9,2026-11-07,Kumamoto,遊ING　熊本上通り店,10,lucario-mega dudunsparce,ごり,https://limitlesstcg.com/tournaments/jp/5206,https://limitlesstcg.com/decks/list/jp/77487
+5206:8,2026-11-07,Kumamoto,遊ING　熊本上通り店,9,garchomp roserade,tenpa,https://limitlesstcg.com/tournaments/jp/5206,https://limitlesstcg.com/decks/list/jp/77486
+5206:7,2026-11-07,Kumamoto,遊ING　熊本上通り店,8,dragapult,チヒロ,https://limitlesstcg.com/tournaments/jp/5206,https://limitlesstcg.com/decks/list/jp/75652
+5206:6,2026-11-07,Kumamoto,遊ING　熊本上通り店,7,dragapult,まどぎわ,https://limitlesstcg.com/tournaments/jp/5206,https://limitlesstcg.com/decks/list/jp/75652
+5206:5,2026-11-07,Kumamoto,遊ING　熊本上通り店,6,dragapult,ジジ,https://limitlesstcg.com/tournaments/jp/5206,https://limitlesstcg.com/decks/list/jp/75652
+5206:4,2026-11-07,Kumamoto,遊ING　熊本上通り店,5,lucario-mega solrock,しらす,https://limitlesstcg.com/tournaments/jp/5206,https://limitlesstcg.com/decks/list/jp/77485
+5206:3,2026-11-07,Kumamoto,遊ING　熊本上通り店,4,metagross excadrill-mega,まめだいふく,https://limitlesstcg.com/tournaments/jp/5206,https://limitlesstcg.com/decks/list/jp/77484
+5206:2,2026-11-07,Kumamoto,遊ING　熊本上通り店,3,dragapult,ウルフ,https://limitlesstcg.com/tournaments/jp/5206,https://limitlesstcg.com/decks/list/jp/74842
+5206:15,2026-11-07,Kumamoto,遊ING　熊本上通り店,16,starmie-mega froslass-mega,黒まぐ,https://limitlesstcg.com/tournaments/jp/5206,https://limitlesstcg.com/decks/list/jp/77491
+5206:14,2026-11-07,Kumamoto,遊ING　熊本上通り店,15,dragapult blaziken,ソラ,https://limitlesstcg.com/tournaments/jp/5206,https://limitlesstcg.com/decks/list/jp/77490
+5206:13,2026-11-07,Kumamoto,遊ING　熊本上通り店,14,dragapult dudunsparce,せと,https://limitlesstcg.com/tournaments/jp/5206,https://limitlesstcg.com/decks/list/jp/77180
+5206:12,2026-11-07,Kumamoto,遊ING　熊本上通り店,13,sharpedo-mega toxtricity,まさ,https://limitlesstcg.com/tournaments/jp/5206,https://limitlesstcg.com/decks/list/jp/77489
+5206:11,2026-11-07,Kumamoto,遊ING　熊本上通り店,12,dragapult,タカ,https://limitlesstcg.com/tournaments/jp/5206,https://limitlesstcg.com/decks/list/jp/75652
+5206:10,2026-11-07,Kumamoto,遊ING　熊本上通り店,11,dragapult blaziken,gatsby,https://limitlesstcg.com/tournaments/jp/5206,https://limitlesstcg.com/decks/list/jp/77488
+5206:1,2026-11-07,Kumamoto,遊ING　熊本上通り店,2,mew kangaskhan-mega,はらしゅー,https://limitlesstcg.com/tournaments/jp/5206,https://limitlesstcg.com/decks/list/jp/77483
+5206:0,2026-11-07,Kumamoto,遊ING　熊本上通り店,1,zoroark pecharunt,クリスタル,https://limitlesstcg.com/tournaments/jp/5206,https://limitlesstcg.com/decks/list/jp/77482
+5205:9,2026-11-07,Aichi,BOOKOFF SUPER BAZAAR 248号西友岡崎店,10,dragapult,ゆうせい,https://limitlesstcg.com/tournaments/jp/5205,https://limitlesstcg.com/decks/list/jp/76374
+5205:8,2026-11-07,Aichi,BOOKOFF SUPER BAZAAR 248号西友岡崎店,9,rayquaza-mega kangaskhan-mega,kamo,https://limitlesstcg.com/tournaments/jp/5205,https://limitlesstcg.com/decks/list/jp/77477
+5205:7,2026-11-07,Aichi,BOOKOFF SUPER BAZAAR 248号西友岡崎店,8,ogerpon arboliva,ばこ,https://limitlesstcg.com/tournaments/jp/5205,https://limitlesstcg.com/decks/list/jp/77008
+5205:6,2026-11-07,Aichi,BOOKOFF SUPER BAZAAR 248号西友岡崎店,7,banette sinistcha,ザキオカ,https://limitlesstcg.com/tournaments/jp/5205,https://limitlesstcg.com/decks/list/jp/77476
+5205:5,2026-11-07,Aichi,BOOKOFF SUPER BAZAAR 248号西友岡崎店,6,greninja froslass-mega,はせやん,https://limitlesstcg.com/tournaments/jp/5205,https://limitlesstcg.com/decks/list/jp/77475
+5205:4,2026-11-07,Aichi,BOOKOFF SUPER BAZAAR 248号西友岡崎店,5,meganium-mega ogerpon,ちの,https://limitlesstcg.com/tournaments/jp/5205,https://limitlesstcg.com/decks/list/jp/77474
+5205:3,2026-11-07,Aichi,BOOKOFF SUPER BAZAAR 248号西友岡崎店,4,garchomp roserade,あいたけ,https://limitlesstcg.com/tournaments/jp/5205,https://limitlesstcg.com/decks/list/jp/77473
+5205:2,2026-11-07,Aichi,BOOKOFF SUPER BAZAAR 248号西友岡崎店,3,dipplin thwackey,なっちー,https://limitlesstcg.com/tournaments/jp/5205,https://limitlesstcg.com/decks/list/jp/77472
+5205:15,2026-11-07,Aichi,BOOKOFF SUPER BAZAAR 248号西友岡崎店,16,kangaskhan-mega ogerpon,シムペイ,https://limitlesstcg.com/tournaments/jp/5205,https://limitlesstcg.com/decks/list/jp/77290
+5205:14,2026-11-07,Aichi,BOOKOFF SUPER BAZAAR 248号西友岡崎店,15,metagross excadrill-mega,でりー,https://limitlesstcg.com/tournaments/jp/5205,https://limitlesstcg.com/decks/list/jp/77481
+5205:13,2026-11-07,Aichi,BOOKOFF SUPER BAZAAR 248号西友岡崎店,14,dragapult,どらやき,https://limitlesstcg.com/tournaments/jp/5205,https://limitlesstcg.com/decks/list/jp/74892
+5205:12,2026-11-07,Aichi,BOOKOFF SUPER BAZAAR 248号西友岡崎店,13,metagross excadrill-mega,ヒロヤス,https://limitlesstcg.com/tournaments/jp/5205,https://limitlesstcg.com/decks/list/jp/77480
+5205:11,2026-11-07,Aichi,BOOKOFF SUPER BAZAAR 248号西友岡崎店,12,dragapult dudunsparce,あおせ,https://limitlesstcg.com/tournaments/jp/5205,https://limitlesstcg.com/decks/list/jp/77479
+5205:10,2026-11-07,Aichi,BOOKOFF SUPER BAZAAR 248号西友岡崎店,11,kangaskhan-mega crustle,きなこもち,https://limitlesstcg.com/tournaments/jp/5205,https://limitlesstcg.com/decks/list/jp/77478
+5205:1,2026-11-07,Aichi,BOOKOFF SUPER BAZAAR 248号西友岡崎店,2,zoroark,いしとも,https://limitlesstcg.com/tournaments/jp/5205,https://limitlesstcg.com/decks/list/jp/77471
+5205:0,2026-11-07,Aichi,BOOKOFF SUPER BAZAAR 248号西友岡崎店,1,beedrill dudunsparce,こいこい,https://limitlesstcg.com/tournaments/jp/5205,https://limitlesstcg.com/decks/list/jp/77470
+5204:9,2026-11-07,Hyōgo,トレカショップ竜のしっぽ　姫路店,10,dragapult dudunsparce,ハンバーグ,https://limitlesstcg.com/tournaments/jp/5204,https://limitlesstcg.com/decks/list/jp/77467
+5204:8,2026-11-07,Hyōgo,トレカショップ竜のしっぽ　姫路店,9,dragapult dudunsparce,tomo,https://limitlesstcg.com/tournaments/jp/5204,https://limitlesstcg.com/decks/list/jp/74442
+5204:7,2026-11-07,Hyōgo,トレカショップ竜のしっぽ　姫路店,8,gardevoir-mega kangaskhan-mega,ブレイドラ,https://limitlesstcg.com/tournaments/jp/5204,https://limitlesstcg.com/decks/list/jp/77466
+5204:6,2026-11-07,Hyōgo,トレカショップ竜のしっぽ　姫路店,7,yanmega dudunsparce,えるす,https://limitlesstcg.com/tournaments/jp/5204,https://limitlesstcg.com/decks/list/jp/77465
+5204:5,2026-11-07,Hyōgo,トレカショップ竜のしっぽ　姫路店,6,dragapult,マサティー,https://limitlesstcg.com/tournaments/jp/5204,https://limitlesstcg.com/decks/list/jp/74842
+5204:4,2026-11-07,Hyōgo,トレカショップ竜のしっぽ　姫路店,5,kangaskhan-mega rayquaza-mega,シュン,https://limitlesstcg.com/tournaments/jp/5204,https://limitlesstcg.com/decks/list/jp/77464
+5204:3,2026-11-07,Hyōgo,トレカショップ竜のしっぽ　姫路店,4,alakazam dudunsparce,SureShot,https://limitlesstcg.com/tournaments/jp/5204,https://limitlesstcg.com/decks/list/jp/77463
+5204:2,2026-11-07,Hyōgo,トレカショップ竜のしっぽ　姫路店,3,metagross genesect,きょーしろー,https://limitlesstcg.com/tournaments/jp/5204,https://limitlesstcg.com/decks/list/jp/75312
+5204:15,2026-11-07,Hyōgo,トレカショップ竜のしっぽ　姫路店,16,dragapult,ともひろ,https://limitlesstcg.com/tournaments/jp/5204,https://limitlesstcg.com/decks/list/jp/72661
+5204:14,2026-11-07,Hyōgo,トレカショップ竜のしっぽ　姫路店,15,dragapult blaziken,カレー,https://limitlesstcg.com/tournaments/jp/5204,https://limitlesstcg.com/decks/list/jp/77469
+5204:13,2026-11-07,Hyōgo,トレカショップ竜のしっぽ　姫路店,14,dragapult blaziken,せれな,https://limitlesstcg.com/tournaments/jp/5204,https://limitlesstcg.com/decks/list/jp/77231
+5204:12,2026-11-07,Hyōgo,トレカショップ竜のしっぽ　姫路店,13,kangaskhan-mega rayquaza-mega,かず182,https://limitlesstcg.com/tournaments/jp/5204,https://limitlesstcg.com/decks/list/jp/77468
+5204:11,2026-11-07,Hyōgo,トレカショップ竜のしっぽ　姫路店,12,dragapult meowth,時の将軍,https://limitlesstcg.com/tournaments/jp/5204,https://limitlesstcg.com/decks/list/jp/71218
+5204:10,2026-11-07,Hyōgo,トレカショップ竜のしっぽ　姫路店,11,dragapult dudunsparce,noon,https://limitlesstcg.com/tournaments/jp/5204,https://limitlesstcg.com/decks/list/jp/74938
+5204:1,2026-11-07,Hyōgo,トレカショップ竜のしっぽ　姫路店,2,dragapult blaziken,こちゃ,https://limitlesstcg.com/tournaments/jp/5204,https://limitlesstcg.com/decks/list/jp/77462
+5204:0,2026-11-07,Hyōgo,トレカショップ竜のしっぽ　姫路店,1,dragapult dudunsparce,まこ,https://limitlesstcg.com/tournaments/jp/5204,https://limitlesstcg.com/decks/list/jp/77461
+5203:9,2026-11-07,Kyōto,GIRAFULL京都店,10,dragapult blaziken,テラムラ,https://limitlesstcg.com/tournaments/jp/5203,https://limitlesstcg.com/decks/list/jp/77455
+5203:8,2026-11-07,Kyōto,GIRAFULL京都店,9,lucario-mega hariyama,コウガ,https://limitlesstcg.com/tournaments/jp/5203,https://limitlesstcg.com/decks/list/jp/77454
+5203:7,2026-11-07,Kyōto,GIRAFULL京都店,8,dragapult,のらのこ,https://limitlesstcg.com/tournaments/jp/5203,https://limitlesstcg.com/decks/list/jp/75652
+5203:6,2026-11-07,Kyōto,GIRAFULL京都店,7,dragapult,カズ,https://limitlesstcg.com/tournaments/jp/5203,https://limitlesstcg.com/decks/list/jp/76759
+5203:5,2026-11-07,Kyōto,GIRAFULL京都店,6,garchomp roserade,AKθ,https://limitlesstcg.com/tournaments/jp/5203,https://limitlesstcg.com/decks/list/jp/77453
+5203:4,2026-11-07,Kyōto,GIRAFULL京都店,5,dragapult,ジュンセイ,https://limitlesstcg.com/tournaments/jp/5203,https://limitlesstcg.com/decks/list/jp/74842
+5203:3,2026-11-07,Kyōto,GIRAFULL京都店,4,kangaskhan-mega latias,DEF,https://limitlesstcg.com/tournaments/jp/5203,https://limitlesstcg.com/decks/list/jp/77452
+5203:2,2026-11-07,Kyōto,GIRAFULL京都店,3,ogerpon clefairy,やまたく,https://limitlesstcg.com/tournaments/jp/5203,https://limitlesstcg.com/decks/list/jp/77451
+5203:15,2026-11-07,Kyōto,GIRAFULL京都店,16,kangaskhan-mega crustle,ししまる,https://limitlesstcg.com/tournaments/jp/5203,https://limitlesstcg.com/decks/list/jp/77460
+5203:14,2026-11-07,Kyōto,GIRAFULL京都店,15,dragapult,りょうま,https://limitlesstcg.com/tournaments/jp/5203,https://limitlesstcg.com/decks/list/jp/75652
+5203:13,2026-11-07,Kyōto,GIRAFULL京都店,14,ogerpon hydrapple,とも,https://limitlesstcg.com/tournaments/jp/5203,https://limitlesstcg.com/decks/list/jp/77459
+5203:12,2026-11-07,Kyōto,GIRAFULL京都店,13,toxtricity munkidori,えびかん,https://limitlesstcg.com/tournaments/jp/5203,https://limitlesstcg.com/decks/list/jp/77458
+5203:11,2026-11-07,Kyōto,GIRAFULL京都店,12,beedrill dudunsparce,ケイタ,https://limitlesstcg.com/tournaments/jp/5203,https://limitlesstcg.com/decks/list/jp/77457
+5203:10,2026-11-07,Kyōto,GIRAFULL京都店,11,dragapult dudunsparce,しゅうまる,https://limitlesstcg.com/tournaments/jp/5203,https://limitlesstcg.com/decks/list/jp/77456
+5203:1,2026-11-07,Kyōto,GIRAFULL京都店,2,ogerpon arboliva,Ｋ,https://limitlesstcg.com/tournaments/jp/5203,https://limitlesstcg.com/decks/list/jp/76874
+5203:0,2026-11-07,Kyōto,GIRAFULL京都店,1,dragapult dudunsparce,A,https://limitlesstcg.com/tournaments/jp/5203,https://limitlesstcg.com/decks/list/jp/72694
+5202:9,2026-11-07,Tōkyō,BOOKOFFSUPERBAZAAR町田中央通り店,10,dusknoir dragapult,ゆーり,https://limitlesstcg.com/tournaments/jp/5202,https://limitlesstcg.com/decks/list/jp/77444
+5202:8,2026-11-07,Tōkyō,BOOKOFFSUPERBAZAAR町田中央通り店,9,alakazam dudunsparce,こうたろう,https://limitlesstcg.com/tournaments/jp/5202,https://limitlesstcg.com/decks/list/jp/77443
+5202:7,2026-11-07,Tōkyō,BOOKOFFSUPERBAZAAR町田中央通り店,8,kangaskhan-mega ogerpon,まぐろ,https://limitlesstcg.com/tournaments/jp/5202,https://limitlesstcg.com/decks/list/jp/77290
+5202:6,2026-11-07,Tōkyō,BOOKOFFSUPERBAZAAR町田中央通り店,7,dragapult,あざらし,https://limitlesstcg.com/tournaments/jp/5202,https://limitlesstcg.com/decks/list/jp/77442
+5202:5,2026-11-07,Tōkyō,BOOKOFFSUPERBAZAAR町田中央通り店,6,sharpedo-mega pecharunt,ぜた,https://limitlesstcg.com/tournaments/jp/5202,https://limitlesstcg.com/decks/list/jp/77441
+5202:4,2026-11-07,Tōkyō,BOOKOFFSUPERBAZAAR町田中央通り店,5,zoroark pecharunt,うじ,https://limitlesstcg.com/tournaments/jp/5202,https://limitlesstcg.com/decks/list/jp/77440
+5202:3,2026-11-07,Tōkyō,BOOKOFFSUPERBAZAAR町田中央通り店,4,alakazam dudunsparce,くぼちゃん,https://limitlesstcg.com/tournaments/jp/5202,https://limitlesstcg.com/decks/list/jp/77439
+5202:2,2026-11-07,Tōkyō,BOOKOFFSUPERBAZAAR町田中央通り店,3,ogerpon hydrapple,soil,https://limitlesstcg.com/tournaments/jp/5202,https://limitlesstcg.com/decks/list/jp/77438
+5202:15,2026-11-07,Tōkyō,BOOKOFFSUPERBAZAAR町田中央通り店,16,slowking kangaskhan-mega,とんぴ,https://limitlesstcg.com/tournaments/jp/5202,https://limitlesstcg.com/decks/list/jp/77450
+5202:14,2026-11-07,Tōkyō,BOOKOFFSUPERBAZAAR町田中央通り店,15,kangaskhan-mega rayquaza-mega,喜多見,https://limitlesstcg.com/tournaments/jp/5202,https://limitlesstcg.com/decks/list/jp/77449
+5202:13,2026-11-07,Tōkyō,BOOKOFFSUPERBAZAAR町田中央通り店,14,slowking kangaskhan-mega,けん,https://limitlesstcg.com/tournaments/jp/5202,https://limitlesstcg.com/decks/list/jp/77448
+5202:12,2026-11-07,Tōkyō,BOOKOFFSUPERBAZAAR町田中央通り店,13,lucario-mega dudunsparce,ユウキ,https://limitlesstcg.com/tournaments/jp/5202,https://limitlesstcg.com/decks/list/jp/77447
+5202:11,2026-11-07,Tōkyō,BOOKOFFSUPERBAZAAR町田中央通り店,12,metagross excadrill-mega,まも,https://limitlesstcg.com/tournaments/jp/5202,https://limitlesstcg.com/decks/list/jp/77446
+5202:10,2026-11-07,Tōkyō,BOOKOFFSUPERBAZAAR町田中央通り店,11,dudunsparce lopunny-mega,ピエール,https://limitlesstcg.com/tournaments/jp/5202,https://limitlesstcg.com/decks/list/jp/77445
+5202:1,2026-11-07,Tōkyō,BOOKOFFSUPERBAZAAR町田中央通り店,2,ogerpon kangaskhan-mega,のれん,https://limitlesstcg.com/tournaments/jp/5202,https://limitlesstcg.com/decks/list/jp/77437
+5202:0,2026-11-07,Tōkyō,BOOKOFFSUPERBAZAAR町田中央通り店,1,metagross excadrill-mega,ときどき,https://limitlesstcg.com/tournaments/jp/5202,https://limitlesstcg.com/decks/list/jp/77436
+5201:9,2026-11-07,Hokkaido,ブックオフ　札幌南2条店,10,toxtricity munkidori,しぐれ,https://limitlesstcg.com/tournaments/jp/5201,https://limitlesstcg.com/decks/list/jp/77432
+5201:8,2026-11-07,Hokkaido,ブックオフ　札幌南2条店,9,zoroark,ときたまちゃん,https://limitlesstcg.com/tournaments/jp/5201,https://limitlesstcg.com/decks/list/jp/77431
+5201:7,2026-11-07,Hokkaido,ブックオフ　札幌南2条店,8,kangaskhan-mega crustle,タケシ,https://limitlesstcg.com/tournaments/jp/5201,https://limitlesstcg.com/decks/list/jp/77127
+5201:6,2026-11-07,Hokkaido,ブックオフ　札幌南2条店,7,metagross excadrill-mega,レイ,https://limitlesstcg.com/tournaments/jp/5201,https://limitlesstcg.com/decks/list/jp/77430
+5201:5,2026-11-07,Hokkaido,ブックオフ　札幌南2条店,6,metagross excadrill-mega,みや,https://limitlesstcg.com/tournaments/jp/5201,https://limitlesstcg.com/decks/list/jp/77429
+5201:4,2026-11-07,Hokkaido,ブックオフ　札幌南2条店,5,kangaskhan-mega ogerpon,こじまる,https://limitlesstcg.com/tournaments/jp/5201,https://limitlesstcg.com/decks/list/jp/77428
+5201:3,2026-11-07,Hokkaido,ブックオフ　札幌南2条店,4,dragapult,かえるん,https://limitlesstcg.com/tournaments/jp/5201,https://limitlesstcg.com/decks/list/jp/77427
+5201:2,2026-11-07,Hokkaido,ブックオフ　札幌南2条店,3,kangaskhan-mega rayquaza-mega,さりばん,https://limitlesstcg.com/tournaments/jp/5201,https://limitlesstcg.com/decks/list/jp/77426
+5201:15,2026-11-07,Hokkaido,ブックオフ　札幌南2条店,16,dragapult,ましゅ,https://limitlesstcg.com/tournaments/jp/5201,https://limitlesstcg.com/decks/list/jp/74968
+5201:14,2026-11-07,Hokkaido,ブックオフ　札幌南2条店,15,dragapult,シン,https://limitlesstcg.com/tournaments/jp/5201,https://limitlesstcg.com/decks/list/jp/76759
+5201:13,2026-11-07,Hokkaido,ブックオフ　札幌南2条店,14,ogerpon venusaur-mega,みじゅまる,https://limitlesstcg.com/tournaments/jp/5201,https://limitlesstcg.com/decks/list/jp/77435
+5201:12,2026-11-07,Hokkaido,ブックオフ　札幌南2条店,13,meganium-mega ogerpon,ふー,https://limitlesstcg.com/tournaments/jp/5201,https://limitlesstcg.com/decks/list/jp/74219
+5201:11,2026-11-07,Hokkaido,ブックオフ　札幌南2条店,12,garchomp roserade,すぺありぶ,https://limitlesstcg.com/tournaments/jp/5201,https://limitlesstcg.com/decks/list/jp/77434
+5201:10,2026-11-07,Hokkaido,ブックオフ　札幌南2条店,11,kangaskhan-mega ogerpon,シマ,https://limitlesstcg.com/tournaments/jp/5201,https://limitlesstcg.com/decks/list/jp/77433
+5201:1,2026-11-07,Hokkaido,ブックオフ　札幌南2条店,2,dragapult,shu,https://limitlesstcg.com/tournaments/jp/5201,https://limitlesstcg.com/decks/list/jp/74842
+5201:0,2026-11-07,Hokkaido,ブックオフ　札幌南2条店,1,slowking kangaskhan-mega,雪鬼,https://limitlesstcg.com/tournaments/jp/5201,https://limitlesstcg.com/decks/list/jp/77174
+5200:9,2026-11-07,Saitama,トレカショップKCC,10,garchomp roserade,しろくろ,https://limitlesstcg.com/tournaments/jp/5200,https://limitlesstcg.com/decks/list/jp/77419
+5200:8,2026-11-07,Saitama,トレカショップKCC,9,garchomp roserade,ふくふく,https://limitlesstcg.com/tournaments/jp/5200,https://limitlesstcg.com/decks/list/jp/77418
+5200:7,2026-11-07,Saitama,トレカショップKCC,8,ogerpon kangaskhan-mega,とみー,https://limitlesstcg.com/tournaments/jp/5200,https://limitlesstcg.com/decks/list/jp/77417
+5200:6,2026-11-07,Saitama,トレカショップKCC,7,dragapult dudunsparce,めっとーる,https://limitlesstcg.com/tournaments/jp/5200,https://limitlesstcg.com/decks/list/jp/73148
+5200:5,2026-11-07,Saitama,トレカショップKCC,6,sharpedo-mega pecharunt,ぱるぱる,https://limitlesstcg.com/tournaments/jp/5200,https://limitlesstcg.com/decks/list/jp/77416
+5200:4,2026-11-07,Saitama,トレカショップKCC,5,kangaskhan-mega ogerpon,うと,https://limitlesstcg.com/tournaments/jp/5200,https://limitlesstcg.com/decks/list/jp/77415
+5200:3,2026-11-07,Saitama,トレカショップKCC,4,metagross excadrill-mega,いちまるいち,https://limitlesstcg.com/tournaments/jp/5200,https://limitlesstcg.com/decks/list/jp/77414
+5200:2,2026-11-07,Saitama,トレカショップKCC,3,alakazam dudunsparce,カズ,https://limitlesstcg.com/tournaments/jp/5200,https://limitlesstcg.com/decks/list/jp/77413
+5200:15,2026-11-07,Saitama,トレカショップKCC,16,spidops mewtwo,みじんこ,https://limitlesstcg.com/tournaments/jp/5200,https://limitlesstcg.com/decks/list/jp/77425
+5200:14,2026-11-07,Saitama,トレカショップKCC,15,dragapult dudunsparce,ルカ,https://limitlesstcg.com/tournaments/jp/5200,https://limitlesstcg.com/decks/list/jp/77424
+5200:13,2026-11-07,Saitama,トレカショップKCC,14,dragapult dusknoir,Locke,https://limitlesstcg.com/tournaments/jp/5200,https://limitlesstcg.com/decks/list/jp/77423
+5200:12,2026-11-07,Saitama,トレカショップKCC,13,zoroark,うしし,https://limitlesstcg.com/tournaments/jp/5200,https://limitlesstcg.com/decks/list/jp/77422
+5200:11,2026-11-07,Saitama,トレカショップKCC,12,sinistcha banette,らーくじ,https://limitlesstcg.com/tournaments/jp/5200,https://limitlesstcg.com/decks/list/jp/77421
+5200:10,2026-11-07,Saitama,トレカショップKCC,11,mew starmie-mega,ぽけりう,https://limitlesstcg.com/tournaments/jp/5200,https://limitlesstcg.com/decks/list/jp/77420
+5200:1,2026-11-07,Saitama,トレカショップKCC,2,dragapult dusknoir,こつ,https://limitlesstcg.com/tournaments/jp/5200,https://limitlesstcg.com/decks/list/jp/77412
+5200:0,2026-11-07,Saitama,トレカショップKCC,1,banette dudunsparce,しゅうまい,https://limitlesstcg.com/tournaments/jp/5200,https://limitlesstcg.com/decks/list/jp/77411
+5199:9,2026-11-07,Yamanashi,BOOKOFFSUPERBAZAAR甲府貢川店,10,kangaskhan-mega talonflame,こうたろう,https://limitlesstcg.com/tournaments/jp/5199,https://limitlesstcg.com/decks/list/jp/77407
+5199:8,2026-11-07,Yamanashi,BOOKOFFSUPERBAZAAR甲府貢川店,9,dragapult,まえこう,https://limitlesstcg.com/tournaments/jp/5199,https://limitlesstcg.com/decks/list/jp/74842
+5199:7,2026-11-07,Yamanashi,BOOKOFFSUPERBAZAAR甲府貢川店,8,dusknoir kangaskhan-mega,ミツヤ,https://limitlesstcg.com/tournaments/jp/5199,https://limitlesstcg.com/decks/list/jp/77406
+5199:6,2026-11-07,Yamanashi,BOOKOFFSUPERBAZAAR甲府貢川店,7,garchomp roserade,ユウト,https://limitlesstcg.com/tournaments/jp/5199,https://limitlesstcg.com/decks/list/jp/77405
+5199:5,2026-11-07,Yamanashi,BOOKOFFSUPERBAZAAR甲府貢川店,6,dragapult blaziken,しょう,https://limitlesstcg.com/tournaments/jp/5199,https://limitlesstcg.com/decks/list/jp/77404
+5199:4,2026-11-07,Yamanashi,BOOKOFFSUPERBAZAAR甲府貢川店,5,dragapult,ヤンニョム,https://limitlesstcg.com/tournaments/jp/5199,https://limitlesstcg.com/decks/list/jp/77403
+5199:3,2026-11-07,Yamanashi,BOOKOFFSUPERBAZAAR甲府貢川店,4,kangaskhan-mega ogerpon,あづき,https://limitlesstcg.com/tournaments/jp/5199,https://limitlesstcg.com/decks/list/jp/75757
+5199:2,2026-11-07,Yamanashi,BOOKOFFSUPERBAZAAR甲府貢川店,3,venusaur-mega kangaskhan-mega,ざと,https://limitlesstcg.com/tournaments/jp/5199,https://limitlesstcg.com/decks/list/jp/77402
+5199:15,2026-11-07,Yamanashi,BOOKOFFSUPERBAZAAR甲府貢川店,16,dragapult,ドラメシヤ塩沢,https://limitlesstcg.com/tournaments/jp/5199,https://limitlesstcg.com/decks/list/jp/74968
+5199:14,2026-11-07,Yamanashi,BOOKOFFSUPERBAZAAR甲府貢川店,15,dragapult blaziken,フラット,https://limitlesstcg.com/tournaments/jp/5199,https://limitlesstcg.com/decks/list/jp/77410
+5199:13,2026-11-07,Yamanashi,BOOKOFFSUPERBAZAAR甲府貢川店,14,ogerpon arboliva,らっせる,https://limitlesstcg.com/tournaments/jp/5199,https://limitlesstcg.com/decks/list/jp/77409
+5199:12,2026-11-07,Yamanashi,BOOKOFFSUPERBAZAAR甲府貢川店,13,kangaskhan-mega slowking,アカイシ,https://limitlesstcg.com/tournaments/jp/5199,https://limitlesstcg.com/decks/list/jp/77408
+5199:11,2026-11-07,Yamanashi,BOOKOFFSUPERBAZAAR甲府貢川店,12,ogerpon arboliva,かぷを。,https://limitlesstcg.com/tournaments/jp/5199,https://limitlesstcg.com/decks/list/jp/76886
+5199:10,2026-11-07,Yamanashi,BOOKOFFSUPERBAZAAR甲府貢川店,11,dragapult dusknoir,かのん,https://limitlesstcg.com/tournaments/jp/5199,https://limitlesstcg.com/decks/list/jp/74116
+5199:1,2026-11-07,Yamanashi,BOOKOFFSUPERBAZAAR甲府貢川店,2,kangaskhan-mega talonflame,なちゅ,https://limitlesstcg.com/tournaments/jp/5199,https://limitlesstcg.com/decks/list/jp/76731
+5199:0,2026-11-07,Yamanashi,BOOKOFFSUPERBAZAAR甲府貢川店,1,zoroark,CB,https://limitlesstcg.com/tournaments/jp/5199,https://limitlesstcg.com/decks/list/jp/77401
+5198:9,2026-11-07,Nagano,バトスタ長野駅前店,10,kangaskhan-mega ogerpon,あられ,https://limitlesstcg.com/tournaments/jp/5198,https://limitlesstcg.com/decks/list/jp/77395
+5198:8,2026-11-07,Nagano,バトスタ長野駅前店,9,starmie-mega froslass-mega,シロ,https://limitlesstcg.com/tournaments/jp/5198,https://limitlesstcg.com/decks/list/jp/77394
+5198:7,2026-11-07,Nagano,バトスタ長野駅前店,8,dipplin thwackey,哲学の王様,https://limitlesstcg.com/tournaments/jp/5198,https://limitlesstcg.com/decks/list/jp/77393
+5198:6,2026-11-07,Nagano,バトスタ長野駅前店,7,zoroark,なぎお,https://limitlesstcg.com/tournaments/jp/5198,https://limitlesstcg.com/decks/list/jp/77392
+5198:5,2026-11-07,Nagano,バトスタ長野駅前店,6,greninja-mega kangaskhan-mega,カレイ,https://limitlesstcg.com/tournaments/jp/5198,https://limitlesstcg.com/decks/list/jp/77391
+5198:4,2026-11-07,Nagano,バトスタ長野駅前店,5,alakazam dudunsparce,くろかみ,https://limitlesstcg.com/tournaments/jp/5198,https://limitlesstcg.com/decks/list/jp/77390
+5198:3,2026-11-07,Nagano,バトスタ長野駅前店,4,kangaskhan-mega slowking,アジしお,https://limitlesstcg.com/tournaments/jp/5198,https://limitlesstcg.com/decks/list/jp/77389
+5198:2,2026-11-07,Nagano,バトスタ長野駅前店,3,thwackey dipplin,マコト,https://limitlesstcg.com/tournaments/jp/5198,https://limitlesstcg.com/decks/list/jp/77388
+5198:15,2026-11-07,Nagano,バトスタ長野駅前店,16,slowking kangaskhan-mega,いけ,https://limitlesstcg.com/tournaments/jp/5198,https://limitlesstcg.com/decks/list/jp/77400
+5198:14,2026-11-07,Nagano,バトスタ長野駅前店,15,ogerpon kangaskhan-mega,vivienne,https://limitlesstcg.com/tournaments/jp/5198,https://limitlesstcg.com/decks/list/jp/77399
+5198:13,2026-11-07,Nagano,バトスタ長野駅前店,14,mamoswine toucannon,エナクラ,https://limitlesstcg.com/tournaments/jp/5198,https://limitlesstcg.com/decks/list/jp/77398
+5198:12,2026-11-07,Nagano,バトスタ長野駅前店,13,dragapult,ぐっち〜,https://limitlesstcg.com/tournaments/jp/5198,https://limitlesstcg.com/decks/list/jp/77397
+5198:11,2026-11-07,Nagano,バトスタ長野駅前店,12,slowking kangaskhan-mega,tiuni,https://limitlesstcg.com/tournaments/jp/5198,https://limitlesstcg.com/decks/list/jp/77396
+5198:10,2026-11-07,Nagano,バトスタ長野駅前店,11,dragapult,タカナシ,https://limitlesstcg.com/tournaments/jp/5198,https://limitlesstcg.com/decks/list/jp/74842
+5198:1,2026-11-07,Nagano,バトスタ長野駅前店,2,dragapult dudunsparce,さるじえ,https://limitlesstcg.com/tournaments/jp/5198,https://limitlesstcg.com/decks/list/jp/73148
+5198:0,2026-11-07,Nagano,バトスタ長野駅前店,1,dragapult,わた,https://limitlesstcg.com/tournaments/jp/5198,https://limitlesstcg.com/decks/list/jp/76939
+5197:9,2026-11-07,Gunma,トーナメントセンターバトロコ　高崎駅前,10,dragapult,ブロッコリー博士,https://limitlesstcg.com/tournaments/jp/5197,https://limitlesstcg.com/decks/list/jp/73470
+5197:8,2026-11-07,Gunma,トーナメントセンターバトロコ　高崎駅前,9,dragapult dusknoir,つっちー,https://limitlesstcg.com/tournaments/jp/5197,https://limitlesstcg.com/decks/list/jp/77381
+5197:7,2026-11-07,Gunma,トーナメントセンターバトロコ　高崎駅前,8,beedrill dudunsparce,コシミズ,https://limitlesstcg.com/tournaments/jp/5197,https://limitlesstcg.com/decks/list/jp/77380
+5197:6,2026-11-07,Gunma,トーナメントセンターバトロコ　高崎駅前,7,kangaskhan-mega slowking,フォロ,https://limitlesstcg.com/tournaments/jp/5197,https://limitlesstcg.com/decks/list/jp/77379
+5197:5,2026-11-07,Gunma,トーナメントセンターバトロコ　高崎駅前,6,dragapult dusknoir,えるじぇい,https://limitlesstcg.com/tournaments/jp/5197,https://limitlesstcg.com/decks/list/jp/77378
+5197:4,2026-11-07,Gunma,トーナメントセンターバトロコ　高崎駅前,5,dragapult dusknoir,99,https://limitlesstcg.com/tournaments/jp/5197,https://limitlesstcg.com/decks/list/jp/74116
+5197:3,2026-11-07,Gunma,トーナメントセンターバトロコ　高崎駅前,4,alakazam dudunsparce,whitecat,https://limitlesstcg.com/tournaments/jp/5197,https://limitlesstcg.com/decks/list/jp/77377
+5197:2,2026-11-07,Gunma,トーナメントセンターバトロコ　高崎駅前,3,metagross genesect,ともきち,https://limitlesstcg.com/tournaments/jp/5197,https://limitlesstcg.com/decks/list/jp/77376
+5197:15,2026-11-07,Gunma,トーナメントセンターバトロコ　高崎駅前,16,zoroark,スルメイカ,https://limitlesstcg.com/tournaments/jp/5197,https://limitlesstcg.com/decks/list/jp/77387
+5197:14,2026-11-07,Gunma,トーナメントセンターバトロコ　高崎駅前,15,dragapult dudunsparce,ゆゆ,https://limitlesstcg.com/tournaments/jp/5197,https://limitlesstcg.com/decks/list/jp/77386
+5197:13,2026-11-07,Gunma,トーナメントセンターバトロコ　高崎駅前,14,kangaskhan-mega talonflame,スズラン,https://limitlesstcg.com/tournaments/jp/5197,https://limitlesstcg.com/decks/list/jp/77385
+5197:12,2026-11-07,Gunma,トーナメントセンターバトロコ　高崎駅前,13,dragapult dusknoir,シュガー3,https://limitlesstcg.com/tournaments/jp/5197,https://limitlesstcg.com/decks/list/jp/77384
+5197:11,2026-11-07,Gunma,トーナメントセンターバトロコ　高崎駅前,12,dragapult,フリーザ,https://limitlesstcg.com/tournaments/jp/5197,https://limitlesstcg.com/decks/list/jp/77383
+5197:10,2026-11-07,Gunma,トーナメントセンターバトロコ　高崎駅前,11,banette sinistcha,まちち,https://limitlesstcg.com/tournaments/jp/5197,https://limitlesstcg.com/decks/list/jp/77382
+5197:1,2026-11-07,Gunma,トーナメントセンターバトロコ　高崎駅前,2,ogerpon hydrapple,さけさけ,https://limitlesstcg.com/tournaments/jp/5197,https://limitlesstcg.com/decks/list/jp/77375
+5197:0,2026-11-07,Gunma,トーナメントセンターバトロコ　高崎駅前,1,beedrill dudunsparce,やかん,https://limitlesstcg.com/tournaments/jp/5197,https://limitlesstcg.com/decks/list/jp/76938
+5196:9,2026-11-07,Saitama,TSUTAYA嵐山店,10,zoroark pecharunt,マオ,https://limitlesstcg.com/tournaments/jp/5196,https://limitlesstcg.com/decks/list/jp/77370
+5196:8,2026-11-07,Saitama,TSUTAYA嵐山店,9,kangaskhan-mega ogerpon,せんすいかん,https://limitlesstcg.com/tournaments/jp/5196,https://limitlesstcg.com/decks/list/jp/75757
+5196:7,2026-11-07,Saitama,TSUTAYA嵐山店,8,zoroark pecharunt,ゼトボタ2,https://limitlesstcg.com/tournaments/jp/5196,https://limitlesstcg.com/decks/list/jp/77369
+5196:6,2026-11-07,Saitama,TSUTAYA嵐山店,7,dragapult,けぴ,https://limitlesstcg.com/tournaments/jp/5196,https://limitlesstcg.com/decks/list/jp/74842
+5196:5,2026-11-07,Saitama,TSUTAYA嵐山店,6,ogerpon arboliva,まめ,https://limitlesstcg.com/tournaments/jp/5196,https://limitlesstcg.com/decks/list/jp/77368
+5196:4,2026-11-07,Saitama,TSUTAYA嵐山店,5,grimmsnarl froslass,うえでぃ,https://limitlesstcg.com/tournaments/jp/5196,https://limitlesstcg.com/decks/list/jp/77367
+5196:3,2026-11-07,Saitama,TSUTAYA嵐山店,4,archaludon dudunsparce,うにょ,https://limitlesstcg.com/tournaments/jp/5196,https://limitlesstcg.com/decks/list/jp/77366
+5196:2,2026-11-07,Saitama,TSUTAYA嵐山店,3,zoroark pecharunt,あるでばれん,https://limitlesstcg.com/tournaments/jp/5196,https://limitlesstcg.com/decks/list/jp/77365
+5196:15,2026-11-07,Saitama,TSUTAYA嵐山店,16,greninja-mega kangaskhan-mega,しお,https://limitlesstcg.com/tournaments/jp/5196,https://limitlesstcg.com/decks/list/jp/77374
+5196:14,2026-11-07,Saitama,TSUTAYA嵐山店,15,dragapult,やまと,https://limitlesstcg.com/tournaments/jp/5196,https://limitlesstcg.com/decks/list/jp/76800
+5196:13,2026-11-07,Saitama,TSUTAYA嵐山店,14,dragapult dusknoir,ヤギ,https://limitlesstcg.com/tournaments/jp/5196,https://limitlesstcg.com/decks/list/jp/77373
+5196:12,2026-11-07,Saitama,TSUTAYA嵐山店,13,dragapult,はる,https://limitlesstcg.com/tournaments/jp/5196,https://limitlesstcg.com/decks/list/jp/75222
+5196:11,2026-11-07,Saitama,TSUTAYA嵐山店,12,kangaskhan-mega meowth,ta-bo-,https://limitlesstcg.com/tournaments/jp/5196,https://limitlesstcg.com/decks/list/jp/77372
+5196:10,2026-11-07,Saitama,TSUTAYA嵐山店,11,slowking kangaskhan-mega,こすず,https://limitlesstcg.com/tournaments/jp/5196,https://limitlesstcg.com/decks/list/jp/77371
+5196:1,2026-11-07,Saitama,TSUTAYA嵐山店,2,dragapult,ハルカシン,https://limitlesstcg.com/tournaments/jp/5196,https://limitlesstcg.com/decks/list/jp/76939
+5196:0,2026-11-07,Saitama,TSUTAYA嵐山店,1,lucario-mega hariyama,あかだるま,https://limitlesstcg.com/tournaments/jp/5196,https://limitlesstcg.com/decks/list/jp/77364
+5195:9,2026-11-07,Chiba,トーナメントセンターバトロコ　新津田沼駅前,10,dragapult dusknoir,アール,https://limitlesstcg.com/tournaments/jp/5195,https://limitlesstcg.com/decks/list/jp/77358
+5195:8,2026-11-07,Chiba,トーナメントセンターバトロコ　新津田沼駅前,9,kangaskhan-mega raging-bolt,あっちこっち,https://limitlesstcg.com/tournaments/jp/5195,https://limitlesstcg.com/decks/list/jp/77357
+5195:7,2026-11-07,Chiba,トーナメントセンターバトロコ　新津田沼駅前,8,dudunsparce banette,メガたこやき,https://limitlesstcg.com/tournaments/jp/5195,https://limitlesstcg.com/decks/list/jp/77356
+5195:6,2026-11-07,Chiba,トーナメントセンターバトロコ　新津田沼駅前,7,alakazam dudunsparce,こととん,https://limitlesstcg.com/tournaments/jp/5195,https://limitlesstcg.com/decks/list/jp/77355
+5195:5,2026-11-07,Chiba,トーナメントセンターバトロコ　新津田沼駅前,6,alakazam dudunsparce,ダイナツ,https://limitlesstcg.com/tournaments/jp/5195,https://limitlesstcg.com/decks/list/jp/77354
+5195:4,2026-11-07,Chiba,トーナメントセンターバトロコ　新津田沼駅前,5,dragapult dudunsparce,いな,https://limitlesstcg.com/tournaments/jp/5195,https://limitlesstcg.com/decks/list/jp/77353
+5195:3,2026-11-07,Chiba,トーナメントセンターバトロコ　新津田沼駅前,4,greninja dusknoir,snowspring,https://limitlesstcg.com/tournaments/jp/5195,https://limitlesstcg.com/decks/list/jp/77352
+5195:2,2026-11-07,Chiba,トーナメントセンターバトロコ　新津田沼駅前,3,slowking kangaskhan-mega,ドラドラ,https://limitlesstcg.com/tournaments/jp/5195,https://limitlesstcg.com/decks/list/jp/77351
+5195:15,2026-11-07,Chiba,トーナメントセンターバトロコ　新津田沼駅前,16,clefairy kangaskhan-mega,はしゆー,https://limitlesstcg.com/tournaments/jp/5195,https://limitlesstcg.com/decks/list/jp/77363
+5195:14,2026-11-07,Chiba,トーナメントセンターバトロコ　新津田沼駅前,15,dragapult,りゅーてぃ,https://limitlesstcg.com/tournaments/jp/5195,https://limitlesstcg.com/decks/list/jp/74842
+5195:13,2026-11-07,Chiba,トーナメントセンターバトロコ　新津田沼駅前,14,lopunny-mega dudunsparce,D,https://limitlesstcg.com/tournaments/jp/5195,https://limitlesstcg.com/decks/list/jp/77362
+5195:12,2026-11-07,Chiba,トーナメントセンターバトロコ　新津田沼駅前,13,dragapult dusknoir,いもけんぴ,https://limitlesstcg.com/tournaments/jp/5195,https://limitlesstcg.com/decks/list/jp/77361
+5195:11,2026-11-07,Chiba,トーナメントセンターバトロコ　新津田沼駅前,12,lucario-mega solrock,しまながし,https://limitlesstcg.com/tournaments/jp/5195,https://limitlesstcg.com/decks/list/jp/77360
+5195:10,2026-11-07,Chiba,トーナメントセンターバトロコ　新津田沼駅前,11,grimmsnarl froslass,Ryo,https://limitlesstcg.com/tournaments/jp/5195,https://limitlesstcg.com/decks/list/jp/77359
+5195:1,2026-11-07,Chiba,トーナメントセンターバトロコ　新津田沼駅前,2,kangaskhan-mega slowking,クロ,https://limitlesstcg.com/tournaments/jp/5195,https://limitlesstcg.com/decks/list/jp/77350
+5195:0,2026-11-07,Chiba,トーナメントセンターバトロコ　新津田沼駅前,1,dragapult dudunsparce,クラランス,https://limitlesstcg.com/tournaments/jp/5195,https://limitlesstcg.com/decks/list/jp/77349
+5194:9,2026-11-07,Akita,トーナメントセンターバトロコ秋田駅前店,10,alakazam dudunsparce,シイナユウキ,https://limitlesstcg.com/tournaments/jp/5194,https://limitlesstcg.com/decks/list/jp/77342
+5194:8,2026-11-07,Akita,トーナメントセンターバトロコ秋田駅前店,9,kangaskhan-mega slowking,あにきにき,https://limitlesstcg.com/tournaments/jp/5194,https://limitlesstcg.com/decks/list/jp/77341
+5194:7,2026-11-07,Akita,トーナメントセンターバトロコ秋田駅前店,8,slowking kangaskhan-mega,Drip,https://limitlesstcg.com/tournaments/jp/5194,https://limitlesstcg.com/decks/list/jp/77340
+5194:6,2026-11-07,Akita,トーナメントセンターバトロコ秋田駅前店,7,grimmsnarl dudunsparce,ラララライ,https://limitlesstcg.com/tournaments/jp/5194,https://limitlesstcg.com/decks/list/jp/77339
+5194:5,2026-11-07,Akita,トーナメントセンターバトロコ秋田駅前店,6,garchomp roserade,まゆっち,https://limitlesstcg.com/tournaments/jp/5194,https://limitlesstcg.com/decks/list/jp/77338
+5194:4,2026-11-07,Akita,トーナメントセンターバトロコ秋田駅前店,5,zoroark,ばやりーす,https://limitlesstcg.com/tournaments/jp/5194,https://limitlesstcg.com/decks/list/jp/77337
+5194:3,2026-11-07,Akita,トーナメントセンターバトロコ秋田駅前店,4,dragapult blaziken,れん,https://limitlesstcg.com/tournaments/jp/5194,https://limitlesstcg.com/decks/list/jp/77336
+5194:2,2026-11-07,Akita,トーナメントセンターバトロコ秋田駅前店,3,kangaskhan-mega ogerpon,ユース,https://limitlesstcg.com/tournaments/jp/5194,https://limitlesstcg.com/decks/list/jp/77335
+5194:15,2026-11-07,Akita,トーナメントセンターバトロコ秋田駅前店,16,charizard-mega-x kangaskhan-mega,ダニエル,https://limitlesstcg.com/tournaments/jp/5194,https://limitlesstcg.com/decks/list/jp/77348
+5194:14,2026-11-07,Akita,トーナメントセンターバトロコ秋田駅前店,15,lucario-mega dudunsparce,北りおん,https://limitlesstcg.com/tournaments/jp/5194,https://limitlesstcg.com/decks/list/jp/77347
+5194:13,2026-11-07,Akita,トーナメントセンターバトロコ秋田駅前店,14,spidops mewtwo,シゼマル,https://limitlesstcg.com/tournaments/jp/5194,https://limitlesstcg.com/decks/list/jp/77346
+5194:12,2026-11-07,Akita,トーナメントセンターバトロコ秋田駅前店,13,garchomp roserade,こだけん,https://limitlesstcg.com/tournaments/jp/5194,https://limitlesstcg.com/decks/list/jp/77345
+5194:11,2026-11-07,Akita,トーナメントセンターバトロコ秋田駅前店,12,kangaskhan-mega ogerpon,めろん,https://limitlesstcg.com/tournaments/jp/5194,https://limitlesstcg.com/decks/list/jp/77344
+5194:10,2026-11-07,Akita,トーナメントセンターバトロコ秋田駅前店,11,greninja-mega kangaskhan-mega,トニー,https://limitlesstcg.com/tournaments/jp/5194,https://limitlesstcg.com/decks/list/jp/77343
+5194:1,2026-11-07,Akita,トーナメントセンターバトロコ秋田駅前店,2,kangaskhan-mega crustle,じゃにっと,https://limitlesstcg.com/tournaments/jp/5194,https://limitlesstcg.com/decks/list/jp/77334
+5194:0,2026-11-07,Akita,トーナメントセンターバトロコ秋田駅前店,1,ogerpon hydrapple,yoshi,https://limitlesstcg.com/tournaments/jp/5194,https://limitlesstcg.com/decks/list/jp/77333
+5193:9,2026-11-07,Tōkyō,Card Secret,10,ogerpon hydrapple,めし,https://limitlesstcg.com/tournaments/jp/5193,https://limitlesstcg.com/decks/list/jp/77328
+5193:8,2026-11-07,Tōkyō,Card Secret,9,dragapult dusknoir,はち,https://limitlesstcg.com/tournaments/jp/5193,https://limitlesstcg.com/decks/list/jp/77327
+5193:7,2026-11-07,Tōkyō,Card Secret,8,metagross excadrill-mega,ゆうと,https://limitlesstcg.com/tournaments/jp/5193,https://limitlesstcg.com/decks/list/jp/77326
+5193:6,2026-11-07,Tōkyō,Card Secret,7,dudunsparce banette,NMLibrary,https://limitlesstcg.com/tournaments/jp/5193,https://limitlesstcg.com/decks/list/jp/77325
+5193:5,2026-11-07,Tōkyō,Card Secret,6,kangaskhan-mega ogerpon,わーなー,https://limitlesstcg.com/tournaments/jp/5193,https://limitlesstcg.com/decks/list/jp/77324
+5193:4,2026-11-07,Tōkyō,Card Secret,5,lucario-mega dudunsparce,チュウマスタ,https://limitlesstcg.com/tournaments/jp/5193,https://limitlesstcg.com/decks/list/jp/77323
+5193:3,2026-11-07,Tōkyō,Card Secret,4,zoroark pecharunt,masato,https://limitlesstcg.com/tournaments/jp/5193,https://limitlesstcg.com/decks/list/jp/77322
+5193:2,2026-11-07,Tōkyō,Card Secret,3,dragapult dudunsparce,おこめ,https://limitlesstcg.com/tournaments/jp/5193,https://limitlesstcg.com/decks/list/jp/76786
+5193:15,2026-11-07,Tōkyō,Card Secret,16,kangaskhan-mega rayquaza-mega,モトージャス,https://limitlesstcg.com/tournaments/jp/5193,https://limitlesstcg.com/decks/list/jp/77332
+5193:14,2026-11-07,Tōkyō,Card Secret,15,dragapult dusknoir,紺,https://limitlesstcg.com/tournaments/jp/5193,https://limitlesstcg.com/decks/list/jp/77331
+5193:13,2026-11-07,Tōkyō,Card Secret,14,dragapult blaziken,ナル姉,https://limitlesstcg.com/tournaments/jp/5193,https://limitlesstcg.com/decks/list/jp/77330
+5193:12,2026-11-07,Tōkyō,Card Secret,13,dragapult dusknoir,ぴろ,https://limitlesstcg.com/tournaments/jp/5193,https://limitlesstcg.com/decks/list/jp/73098
+5193:11,2026-11-07,Tōkyō,Card Secret,12,dragapult,らさん,https://limitlesstcg.com/tournaments/jp/5193,https://limitlesstcg.com/decks/list/jp/77329
+5193:10,2026-11-07,Tōkyō,Card Secret,11,dragapult,くーねる,https://limitlesstcg.com/tournaments/jp/5193,https://limitlesstcg.com/decks/list/jp/77220
+5193:1,2026-11-07,Tōkyō,Card Secret,2,dragapult,ぴろ,https://limitlesstcg.com/tournaments/jp/5193,https://limitlesstcg.com/decks/list/jp/75210
+5193:0,2026-11-07,Tōkyō,Card Secret,1,dragapult dusknoir,さた,https://limitlesstcg.com/tournaments/jp/5193,https://limitlesstcg.com/decks/list/jp/77321
+5216:9,2026-11-06,Fukuoka,オレタン福岡天神店,10,kangaskhan-mega rayquaza-mega,つつーん,https://limitlesstcg.com/tournaments/jp/5216,https://limitlesstcg.com/decks/list/jp/77608
+5216:8,2026-11-06,Fukuoka,オレタン福岡天神店,9,kangaskhan-mega ogerpon,カジ,https://limitlesstcg.com/tournaments/jp/5216,https://limitlesstcg.com/decks/list/jp/77607
+5216:7,2026-11-06,Fukuoka,オレタン福岡天神店,8,metagross genesect,nt,https://limitlesstcg.com/tournaments/jp/5216,https://limitlesstcg.com/decks/list/jp/77606
+5216:6,2026-11-06,Fukuoka,オレタン福岡天神店,7,gengar-mega toxtricity,キングドラ☆,https://limitlesstcg.com/tournaments/jp/5216,https://limitlesstcg.com/decks/list/jp/77605
+5216:5,2026-11-06,Fukuoka,オレタン福岡天神店,6,banette dudunsparce,てんねんすい,https://limitlesstcg.com/tournaments/jp/5216,https://limitlesstcg.com/decks/list/jp/77604
+5216:4,2026-11-06,Fukuoka,オレタン福岡天神店,5,rayquaza-mega talonflame,なお,https://limitlesstcg.com/tournaments/jp/5216,https://limitlesstcg.com/decks/list/jp/77603
+5216:3,2026-11-06,Fukuoka,オレタン福岡天神店,4,sharpedo-mega pecharunt,おかず,https://limitlesstcg.com/tournaments/jp/5216,https://limitlesstcg.com/decks/list/jp/77602
+5216:2,2026-11-06,Fukuoka,オレタン福岡天神店,3,dragapult,二階堂,https://limitlesstcg.com/tournaments/jp/5216,https://limitlesstcg.com/decks/list/jp/77601
+5216:15,2026-11-06,Fukuoka,オレタン福岡天神店,16,kangaskhan-mega rayquaza-mega,まぼまる,https://limitlesstcg.com/tournaments/jp/5216,https://limitlesstcg.com/decks/list/jp/77613
+5216:14,2026-11-06,Fukuoka,オレタン福岡天神店,15,lucario-mega hariyama,トールギス,https://limitlesstcg.com/tournaments/jp/5216,https://limitlesstcg.com/decks/list/jp/77612
+5216:13,2026-11-06,Fukuoka,オレタン福岡天神店,14,honchkrow porygon2,こーみ,https://limitlesstcg.com/tournaments/jp/5216,https://limitlesstcg.com/decks/list/jp/70272
+5216:12,2026-11-06,Fukuoka,オレタン福岡天神店,13,dragapult blaziken,みんと,https://limitlesstcg.com/tournaments/jp/5216,https://limitlesstcg.com/decks/list/jp/77611
+5216:11,2026-11-06,Fukuoka,オレタン福岡天神店,12,lucario-mega hariyama,おかわりむりょう,https://limitlesstcg.com/tournaments/jp/5216,https://limitlesstcg.com/decks/list/jp/77610
+5216:10,2026-11-06,Fukuoka,オレタン福岡天神店,11,kangaskhan-mega talonflame,ヌメヌメデント,https://limitlesstcg.com/tournaments/jp/5216,https://limitlesstcg.com/decks/list/jp/77609
+5216:1,2026-11-06,Fukuoka,オレタン福岡天神店,2,dragapult dudunsparce,なかぬちゃんGX,https://limitlesstcg.com/tournaments/jp/5216,https://limitlesstcg.com/decks/list/jp/77600
+5216:0,2026-11-06,Fukuoka,オレタン福岡天神店,1,alakazam dudunsparce,赤坂,https://limitlesstcg.com/tournaments/jp/5216,https://limitlesstcg.com/decks/list/jp/77599
 5189:9,2026-11-06,Tōkyō,ドラゴンスター池袋店,10,grimmsnarl munkidori,ルン,https://limitlesstcg.com/tournaments/jp/5189,https://limitlesstcg.com/decks/list/jp/77297
 5189:8,2026-11-06,Tōkyō,ドラゴンスター池袋店,9,kangaskhan-mega rayquaza-mega,ニクトホネ,https://limitlesstcg.com/tournaments/jp/5189,https://limitlesstcg.com/decks/list/jp/77296
 5189:7,2026-11-06,Tōkyō,ドラゴンスター池袋店,8,kangaskhan-mega ogerpon,mine,https://limitlesstcg.com/tournaments/jp/5189,https://limitlesstcg.com/decks/list/jp/77295
