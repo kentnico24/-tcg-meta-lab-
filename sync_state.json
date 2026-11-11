@@ -21,7 +21,7 @@
       "id": "6ad95ff18a8383117e3f11f4",
       "players": 7,
       "organizerId": 2227,
-      "checked": "2026-11-04T22:23:09Z",
+      "checked": "2026-11-11T22:32:58Z",
       "failures": 0,
       "retry_after": 0
     },
@@ -33,7 +33,7 @@
       "id": "6ada81e991617679e849e7d0",
       "players": 43,
       "organizerId": 2679,
-      "checked": "2026-11-04T22:23:05Z",
+      "checked": "2026-11-11T22:32:54Z",
       "failures": 0,
       "retry_after": 0
     },
@@ -45,7 +45,7 @@
       "id": "6adec0f291617679e84a1108",
       "players": 24,
       "organizerId": 2612,
-      "checked": "2026-11-04T22:23:14Z",
+      "checked": "2026-11-11T22:33:03Z",
       "failures": 0,
       "retry_after": 0
     },
@@ -57,7 +57,7 @@
       "id": "6adf925880a8f79408d1eb22",
       "players": 108,
       "organizerId": 2623,
-      "checked": "2026-11-04T22:23:00Z",
+      "checked": "2026-11-11T22:32:50Z",
       "failures": 0,
       "retry_after": 0
     },
@@ -69,7 +69,7 @@
       "id": "6ae0b27d80a8f79408d1f7e9",
       "players": 126,
       "organizerId": 2227,
-      "checked": "2026-11-04T22:23:23Z",
+      "checked": "2026-11-11T22:33:12Z",
       "failures": 0,
       "retry_after": 0
     },
@@ -93,7 +93,7 @@
       "id": "6ae121ba80a8f79408d1fb07",
       "players": 26,
       "organizerId": 2306,
-      "checked": "2026-11-04T22:23:19Z",
+      "checked": "2026-11-11T22:33:07Z",
       "failures": 0,
       "retry_after": 0
     },
@@ -729,9 +729,9 @@
       "id": "6ad3bb258a8383117e3ee20a",
       "players": 21,
       "organizerId": 2025,
-      "checked": "2026-11-03T22:21:32Z",
-      "failures": 1,
-      "retry_after": 1794370150
+      "checked": "2026-11-11T22:28:07Z",
+      "failures": 0,
+      "retry_after": 0
     },
     "6adb366d91617679e849ec3e": {
       "game": "PTCG",
@@ -741,9 +741,9 @@
       "id": "6adb366d91617679e849ec3e",
       "players": 13,
       "organizerId": 1286,
-      "checked": "2026-11-03T22:21:28Z",
-      "failures": 1,
-      "retry_after": 1794370126
+      "checked": "2026-11-11T22:28:03Z",
+      "failures": 0,
+      "retry_after": 0
     },
     "6ad8a8598a8383117e3f09e6": {
       "game": "PTCG",
@@ -753,9 +753,9 @@
       "id": "6ad8a8598a8383117e3f09e6",
       "players": 83,
       "organizerId": 1778,
-      "checked": "2026-11-03T22:21:23Z",
-      "failures": 1,
-      "retry_after": 1794370103
+      "checked": "2026-11-11T22:27:59Z",
+      "failures": 0,
+      "retry_after": 0
     },
     "6ad246a7115c12b73a5a53f4": {
       "game": "PTCG",
@@ -933,9 +933,9 @@
       "id": "6ad8a808115c12b73a5a8e4f",
       "players": 88,
       "organizerId": 1778,
-      "checked": "2026-11-04T22:13:18Z",
-      "failures": 1,
-      "retry_after": 1794370468
+      "checked": "2026-11-11T22:28:20Z",
+      "failures": 0,
+      "retry_after": 0
     },
     "6ad246458a8383117e3ed09b": {
       "game": "PTCG",
@@ -1521,7 +1521,7 @@
       "id": "6ad56277115c12b73a5a7572",
       "players": 64,
       "organizerId": 2226,
-      "checked": "2026-11-04T22:22:55Z",
+      "checked": "2026-11-11T22:32:45Z",
       "failures": 0,
       "retry_after": 0
     },
@@ -1533,7 +1533,7 @@
       "id": "6ad246f68a8383117e3ed0a1",
       "players": 179,
       "organizerId": 2518,
-      "checked": "2026-11-04T22:22:50Z",
+      "checked": "2026-11-11T22:32:41Z",
       "failures": 0,
       "retry_after": 0
     },
@@ -1545,7 +1545,7 @@
       "id": "6acc57928a8383117e3ea0a5",
       "players": 29,
       "organizerId": 2831,
-      "checked": "2026-11-04T22:22:45Z",
+      "checked": "2026-11-11T22:32:37Z",
       "failures": 0,
       "retry_after": 0
     },
@@ -1557,7 +1557,7 @@
       "id": "6ad4eca3115c12b73a5a7200",
       "players": 30,
       "organizerId": 2581,
-      "checked": "2026-11-04T22:22:40Z",
+      "checked": "2026-11-11T22:32:32Z",
       "failures": 0,
       "retry_after": 0
     },
@@ -1569,7 +1569,7 @@
       "id": "6ad49b59115c12b73a5a6f13",
       "players": 8,
       "organizerId": 2735,
-      "checked": "2026-11-04T22:22:36Z",
+      "checked": "2026-11-11T22:32:28Z",
       "failures": 0,
       "retry_after": 0
     },
@@ -1581,7 +1581,7 @@
       "id": "6ad4e393115c12b73a5a719d",
       "players": 4,
       "organizerId": 2571,
-      "checked": "2026-11-04T22:22:31Z",
+      "checked": "2026-11-11T22:32:24Z",
       "failures": 0,
       "retry_after": 0
     },
@@ -1593,7 +1593,7 @@
       "id": "6ad02ed4115c12b73a5a44d7",
       "players": 44,
       "organizerId": 445,
-      "checked": "2026-11-04T22:22:26Z",
+      "checked": "2026-11-11T22:32:20Z",
       "failures": 0,
       "retry_after": 0
     },
@@ -1605,7 +1605,7 @@
       "id": "6ad47a1d115c12b73a5a6e4e",
       "players": 88,
       "organizerId": 2623,
-      "checked": "2026-11-04T22:22:22Z",
+      "checked": "2026-11-11T22:32:15Z",
       "failures": 0,
       "retry_after": 0
     },
@@ -1617,7 +1617,7 @@
       "id": "6acfd622115c12b73a5a40d9",
       "players": 12,
       "organizerId": 2555,
-      "checked": "2026-11-04T22:22:17Z",
+      "checked": "2026-11-11T22:32:11Z",
       "failures": 0,
       "retry_after": 0
     },
@@ -1821,9 +1821,9 @@
       "id": "6ac0523f85920e4d25362589",
       "players": 12,
       "organizerId": 2679,
-      "checked": "2026-11-04T22:13:13Z",
-      "failures": 1,
-      "retry_after": 1794370444
+      "checked": "2026-11-11T22:28:16Z",
+      "failures": 0,
+      "retry_after": 0
     },
     "6aca7c8f8a8383117e3e8ead": {
       "game": "PTCG",
@@ -1833,9 +1833,9 @@
       "id": "6aca7c8f8a8383117e3e8ead",
       "players": 14,
       "organizerId": 2025,
-      "checked": "2026-11-04T22:13:09Z",
-      "failures": 1,
-      "retry_after": 1794370421
+      "checked": "2026-11-11T22:28:12Z",
+      "failures": 0,
+      "retry_after": 0
     },
     "6ad211378a8383117e3ece86": {
       "game": "PTCG",
@@ -6862,8 +6862,8 @@
       "players": 7,
       "organizerId": 622,
       "checked": "2026-11-05T22:16:04Z",
-      "failures": 0,
-      "retry_after": 0
+      "failures": 1,
+      "retry_after": 1794458452
     },
     "6aaa365338886b36383c163d": {
       "game": "PTCG",
@@ -6874,8 +6874,8 @@
       "players": 106,
       "organizerId": 2623,
       "checked": "2026-11-05T22:16:00Z",
-      "failures": 0,
-      "retry_after": 0
+      "failures": 1,
+      "retry_after": 1794458429
     },
     "6aabc7a0f1243e65f9803610": {
       "game": "PTCG",
@@ -6885,7 +6885,7 @@
       "id": "6aabc7a0f1243e65f9803610",
       "players": 8,
       "organizerId": 2485,
-      "checked": "2026-11-05T22:15:56Z",
+      "checked": "2026-11-11T22:40:08Z",
       "failures": 0,
       "retry_after": 0
     },
@@ -6897,7 +6897,7 @@
       "id": "6aa9fd46f1243e65f980283d",
       "players": 70,
       "organizerId": 2226,
-      "checked": "2026-11-05T22:15:51Z",
+      "checked": "2026-11-11T22:40:00Z",
       "failures": 0,
       "retry_after": 0
     },
@@ -6909,7 +6909,7 @@
       "id": "6aa5d141f1243e65f97ff7a7",
       "players": 16,
       "organizerId": 2142,
-      "checked": "2026-11-05T22:15:47Z",
+      "checked": "2026-11-11T22:39:56Z",
       "failures": 0,
       "retry_after": 0
     },
@@ -6921,7 +6921,7 @@
       "id": "6aa1a404ab080c8c957ff3c9",
       "players": 128,
       "organizerId": 2568,
-      "checked": "2026-11-05T22:15:42Z",
+      "checked": "2026-11-11T22:39:52Z",
       "failures": 0,
       "retry_after": 0
     },
@@ -6933,7 +6933,7 @@
       "id": "6aa5b6ca38886b36383be0c3",
       "players": 13,
       "organizerId": 2571,
-      "checked": "2026-11-05T22:15:38Z",
+      "checked": "2026-11-11T22:39:47Z",
       "failures": 0,
       "retry_after": 0
     },
@@ -6945,7 +6945,7 @@
       "id": "6aa9dbde38886b36383c1287",
       "players": 16,
       "organizerId": 2293,
-      "checked": "2026-11-05T22:15:34Z",
+      "checked": "2026-11-11T22:39:43Z",
       "failures": 0,
       "retry_after": 0
     },
@@ -6957,7 +6957,7 @@
       "id": "6aa42a02f1243e65f97fd2d7",
       "players": 7,
       "organizerId": 2703,
-      "checked": "2026-11-05T22:15:25Z",
+      "checked": "2026-11-11T22:39:34Z",
       "failures": 0,
       "retry_after": 0
     },
@@ -6969,7 +6969,7 @@
       "id": "6aaa4577f1243e65f9802955",
       "players": 71,
       "organizerId": 1778,
-      "checked": "2026-11-05T22:15:29Z",
+      "checked": "2026-11-11T22:39:39Z",
       "failures": 0,
       "retry_after": 0
     },
@@ -6981,7 +6981,7 @@
       "id": "6aa2200ca4272c53be64ca11",
       "players": 135,
       "organizerId": 2679,
-      "checked": "2026-11-05T22:15:20Z",
+      "checked": "2026-11-11T22:39:30Z",
       "failures": 0,
       "retry_after": 0
     },
@@ -6993,7 +6993,7 @@
       "id": "6aa9a1bc38886b36383c10cc",
       "players": 13,
       "organizerId": 2585,
-      "checked": "2026-11-05T22:15:16Z",
+      "checked": "2026-11-11T22:39:26Z",
       "failures": 0,
       "retry_after": 0
     },
@@ -7017,7 +7017,7 @@
       "id": "6aa8b39138886b36383c0937",
       "players": 105,
       "organizerId": 2623,
-      "checked": "2026-11-05T22:14:27Z",
+      "checked": "2026-11-11T22:39:22Z",
       "failures": 0,
       "retry_after": 0
     },
@@ -7029,7 +7029,7 @@
       "id": "6aa9b2b6f1243e65f9802438",
       "players": 27,
       "organizerId": 2226,
-      "checked": "2026-11-05T22:14:23Z",
+      "checked": "2026-11-11T22:39:17Z",
       "failures": 0,
       "retry_after": 0
     },
@@ -7053,7 +7053,7 @@
       "id": "6aa5eecef1243e65f97ff95b",
       "players": 136,
       "organizerId": 2720,
-      "checked": "2026-11-05T22:13:36Z",
+      "checked": "2026-11-11T22:39:13Z",
       "failures": 0,
       "retry_after": 0
     },
@@ -7065,7 +7065,7 @@
       "id": "6aa5a3f038886b36383bdf05",
       "players": 73,
       "organizerId": 2612,
-      "checked": "2026-11-05T22:13:28Z",
+      "checked": "2026-11-11T22:39:09Z",
       "failures": 0,
       "retry_after": 0
     },
@@ -7077,7 +7077,7 @@
       "id": "6aa2de21a4272c53be64d080",
       "players": 11,
       "organizerId": 2807,
-      "checked": "2026-11-05T22:13:19Z",
+      "checked": "2026-11-11T22:39:00Z",
       "failures": 0,
       "retry_after": 0
     },
@@ -7089,7 +7089,7 @@
       "id": "6aa9bcc238886b36383c1179",
       "players": 42,
       "organizerId": 2306,
-      "checked": "2026-11-05T22:13:24Z",
+      "checked": "2026-11-11T22:39:04Z",
       "failures": 0,
       "retry_after": 0
     },
@@ -7101,7 +7101,7 @@
       "id": "6aa98d9438886b36383c0f16",
       "players": 15,
       "organizerId": 1270,
-      "checked": "2026-11-05T22:13:15Z",
+      "checked": "2026-11-11T22:38:56Z",
       "failures": 0,
       "retry_after": 0
     },
@@ -7113,7 +7113,7 @@
       "id": "6a9eeea7ab080c8c957fcf3e",
       "players": 194,
       "organizerId": 2603,
-      "checked": "2026-11-05T22:13:11Z",
+      "checked": "2026-11-11T22:38:52Z",
       "failures": 0,
       "retry_after": 0
     },
@@ -7125,7 +7125,7 @@
       "id": "6aa8b37638886b36383c0935",
       "players": 117,
       "organizerId": 2623,
-      "checked": "2026-11-05T22:13:06Z",
+      "checked": "2026-11-11T22:38:47Z",
       "failures": 0,
       "retry_after": 0
     },
@@ -7173,7 +7173,7 @@
       "id": "6aa7a2f2f1243e65f9800d88",
       "players": 75,
       "organizerId": 1630,
-      "checked": "2026-11-05T22:13:02Z",
+      "checked": "2026-11-11T22:38:43Z",
       "failures": 0,
       "retry_after": 0
     },
@@ -7185,7 +7185,7 @@
       "id": "6aa5a30138886b36383bdef8",
       "players": 48,
       "organizerId": 2612,
-      "checked": "2026-11-05T22:12:57Z",
+      "checked": "2026-11-11T22:38:38Z",
       "failures": 0,
       "retry_after": 0
     },
@@ -7197,7 +7197,7 @@
       "id": "6aa84ffef1243e65f9801586",
       "players": 10,
       "organizerId": 30,
-      "checked": "2026-11-05T22:12:53Z",
+      "checked": "2026-11-11T22:38:34Z",
       "failures": 0,
       "retry_after": 0
     },
@@ -7209,7 +7209,7 @@
       "id": "6a962f6e629039f77d8a70e1",
       "players": 35,
       "organizerId": 236,
-      "checked": "2026-11-05T22:12:48Z",
+      "checked": "2026-11-11T22:38:30Z",
       "failures": 0,
       "retry_after": 0
     },
@@ -7221,7 +7221,7 @@
       "id": "6a9f13b4ab080c8c957fd34a",
       "players": 211,
       "organizerId": 145,
-      "checked": "2026-11-05T22:12:44Z",
+      "checked": "2026-11-11T22:38:25Z",
       "failures": 0,
       "retry_after": 0
     },
@@ -7233,7 +7233,7 @@
       "id": "6aa7d3db38886b36383bf846",
       "players": 8,
       "organizerId": 2773,
-      "checked": "2026-11-05T22:12:39Z",
+      "checked": "2026-11-11T22:38:21Z",
       "failures": 0,
       "retry_after": 0
     },
@@ -7245,7 +7245,7 @@
       "id": "6aa6db0938886b36383beef2",
       "players": 255,
       "organizerId": 36,
-      "checked": "2026-11-05T22:12:35Z",
+      "checked": "2026-11-11T22:38:17Z",
       "failures": 0,
       "retry_after": 0
     },
@@ -7257,7 +7257,7 @@
       "id": "6aa77ded38886b36383bf720",
       "players": 9,
       "organizerId": 622,
-      "checked": "2026-11-05T22:12:30Z",
+      "checked": "2026-11-11T22:38:12Z",
       "failures": 0,
       "retry_after": 0
     },
@@ -7269,7 +7269,7 @@
       "id": "6aa701ae38886b36383bf083",
       "players": 54,
       "organizerId": 2613,
-      "checked": "2026-11-05T22:12:26Z",
+      "checked": "2026-11-11T22:38:08Z",
       "failures": 0,
       "retry_after": 0
     },
@@ -7281,7 +7281,7 @@
       "id": "6aa7aab2f1243e65f9800d99",
       "players": 10,
       "organizerId": 1073,
-      "checked": "2026-11-05T22:12:22Z",
+      "checked": "2026-11-11T22:38:04Z",
       "failures": 0,
       "retry_after": 0
     },
@@ -7293,7 +7293,7 @@
       "id": "6aa75259f1243e65f9800b72",
       "players": 135,
       "organizerId": 2623,
-      "checked": "2026-11-05T22:12:17Z",
+      "checked": "2026-11-11T22:37:59Z",
       "failures": 0,
       "retry_after": 0
     },
@@ -7305,7 +7305,7 @@
       "id": "6aa75b1538886b36383bf660",
       "players": 12,
       "organizerId": 2226,
-      "checked": "2026-11-05T22:12:13Z",
+      "checked": "2026-11-11T22:37:55Z",
       "failures": 0,
       "retry_after": 0
     },
@@ -7317,7 +7317,7 @@
       "id": "6aa38dfaab080c8c95800d97",
       "players": 263,
       "organizerId": 2518,
-      "checked": "2026-11-05T22:12:08Z",
+      "checked": "2026-11-11T22:37:51Z",
       "failures": 0,
       "retry_after": 0
     },
@@ -7329,7 +7329,7 @@
       "id": "6a6f72f92b308b6067b47d58",
       "players": 48,
       "organizerId": 222,
-      "checked": "2026-11-05T22:12:03Z",
+      "checked": "2026-11-11T22:37:46Z",
       "failures": 0,
       "retry_after": 0
     },
@@ -7341,7 +7341,7 @@
       "id": "6aa0a22dab080c8c957fe961",
       "players": 68,
       "organizerId": 236,
-      "checked": "2026-11-05T22:11:55Z",
+      "checked": "2026-11-11T22:37:37Z",
       "failures": 0,
       "retry_after": 0
     },
@@ -7353,7 +7353,7 @@
       "id": "6aa0dd63ab080c8c957fed64",
       "players": 8,
       "organizerId": 2679,
-      "checked": "2026-11-05T22:11:59Z",
+      "checked": "2026-11-11T22:37:42Z",
       "failures": 0,
       "retry_after": 0
     },
@@ -7365,7 +7365,7 @@
       "id": "6aa6f2dd38886b36383bf003",
       "players": 63,
       "organizerId": 2045,
-      "checked": "2026-11-05T22:11:50Z",
+      "checked": "2026-11-11T22:37:33Z",
       "failures": 0,
       "retry_after": 0
     },
@@ -7377,7 +7377,7 @@
       "id": "6aa5a98338886b36383bdfdf",
       "players": 8,
       "organizerId": 2571,
-      "checked": "2026-11-05T22:11:46Z",
+      "checked": "2026-11-11T22:37:29Z",
       "failures": 0,
       "retry_after": 0
     },
@@ -7389,7 +7389,7 @@
       "id": "6aa5fcc238886b36383be514",
       "players": 4,
       "organizerId": 1063,
-      "checked": "2026-11-05T22:11:41Z",
+      "checked": "2026-11-11T22:37:24Z",
       "failures": 0,
       "retry_after": 0
     },
@@ -7401,7 +7401,7 @@
       "id": "6aa5f598f1243e65f97ff9ff",
       "players": 12,
       "organizerId": 157,
-      "checked": "2026-11-05T22:11:37Z",
+      "checked": "2026-11-11T22:37:20Z",
       "failures": 0,
       "retry_after": 0
     },
@@ -7413,7 +7413,7 @@
       "id": "6aa2e21aab080c8c958002e4",
       "players": 173,
       "organizerId": 2623,
-      "checked": "2026-11-05T22:11:33Z",
+      "checked": "2026-11-11T22:37:16Z",
       "failures": 0,
       "retry_after": 0
     },
@@ -7425,7 +7425,7 @@
       "id": "6aa0e4d5ab080c8c957fed78",
       "players": 17,
       "organizerId": 2555,
-      "checked": "2026-11-05T22:11:28Z",
+      "checked": "2026-11-11T22:37:11Z",
       "failures": 0,
       "retry_after": 0
     },
@@ -7437,7 +7437,7 @@
       "id": "6a7c9df8cdc0391d7fa64aba",
       "players": 22,
       "organizerId": 2782,
-      "checked": "2026-11-04T22:25:16Z",
+      "checked": "2026-11-11T22:34:55Z",
       "failures": 0,
       "retry_after": 0
     },
@@ -7449,7 +7449,7 @@
       "id": "6a9fec42a4272c53be64aaeb",
       "players": 5,
       "organizerId": 2059,
-      "checked": "2026-11-04T22:25:08Z",
+      "checked": "2026-11-11T22:34:48Z",
       "failures": 0,
       "retry_after": 0
     },
@@ -7461,7 +7461,7 @@
       "id": "6aa20e15a4272c53be64c8a5",
       "players": 4,
       "organizerId": 1814,
-      "checked": "2026-11-04T22:25:03Z",
+      "checked": "2026-11-11T22:34:43Z",
       "failures": 0,
       "retry_after": 0
     },
@@ -7473,7 +7473,7 @@
       "id": "6a9ceedbab080c8c957fb8f2",
       "players": 82,
       "organizerId": 2226,
-      "checked": "2026-11-04T22:24:59Z",
+      "checked": "2026-11-11T22:34:39Z",
       "failures": 0,
       "retry_after": 0
     },
@@ -7485,7 +7485,7 @@
       "id": "6a8c5eef8302ae761e5fb228",
       "players": 19,
       "organizerId": 2512,
-      "checked": "2026-11-04T22:24:54Z",
+      "checked": "2026-11-11T22:34:35Z",
       "failures": 0,
       "retry_after": 0
     },
@@ -7497,7 +7497,7 @@
       "id": "6a63ce2252c24ac2da64ae00",
       "players": 117,
       "organizerId": 1777,
-      "checked": "2026-11-04T22:24:49Z",
+      "checked": "2026-11-11T22:34:30Z",
       "failures": 0,
       "retry_after": 0
     },
@@ -7509,7 +7509,7 @@
       "id": "6a99a15fa4272c53be645cd9",
       "players": 355,
       "organizerId": 2705,
-      "checked": "2026-11-04T22:24:45Z",
+      "checked": "2026-11-11T22:34:26Z",
       "failures": 0,
       "retry_after": 0
     },
@@ -7521,7 +7521,7 @@
       "id": "6a9edc2ea4272c53be649c82",
       "players": 19,
       "organizerId": 2612,
-      "checked": "2026-11-04T22:24:39Z",
+      "checked": "2026-11-11T22:34:22Z",
       "failures": 0,
       "retry_after": 0
     },
@@ -7533,7 +7533,7 @@
       "id": "6aa404e0f1243e65f97fd087",
       "players": 41,
       "organizerId": 1216,
-      "checked": "2026-11-04T22:24:35Z",
+      "checked": "2026-11-11T22:34:17Z",
       "failures": 0,
       "retry_after": 0
     },
@@ -7545,7 +7545,7 @@
       "id": "6aa2e234a4272c53be64d0b0",
       "players": 126,
       "organizerId": 2623,
-      "checked": "2026-11-04T22:24:30Z",
+      "checked": "2026-11-11T22:34:13Z",
       "failures": 0,
       "retry_after": 0
     },
@@ -7557,7 +7557,7 @@
       "id": "6aa52d6ef1243e65f97fe887",
       "players": 10,
       "organizerId": 2485,
-      "checked": "2026-11-04T22:24:25Z",
+      "checked": "2026-11-11T22:34:09Z",
       "failures": 0,
       "retry_after": 0
     },
@@ -7569,7 +7569,7 @@
       "id": "6a9c0b3fa4272c53be647a8f",
       "players": 30,
       "organizerId": 2779,
-      "checked": "2026-11-04T22:22:12Z",
+      "checked": "2026-11-11T22:32:07Z",
       "failures": 0,
       "retry_after": 0
     },
@@ -7581,7 +7581,7 @@
       "id": "6a9dfcdcab080c8c957fc57d",
       "players": 25,
       "organizerId": 362,
-      "checked": "2026-11-04T22:24:20Z",
+      "checked": "2026-11-11T22:34:04Z",
       "failures": 0,
       "retry_after": 0
     },
@@ -7593,7 +7593,7 @@
       "id": "6aa4b8fef1243e65f97fe08c",
       "players": 9,
       "organizerId": 2485,
-      "checked": "2026-11-04T22:22:07Z",
+      "checked": "2026-11-11T22:32:02Z",
       "failures": 0,
       "retry_after": 0
     },
@@ -7605,7 +7605,7 @@
       "id": "6a87214678baaa6d1c2244db",
       "players": 511,
       "organizerId": 349,
-      "checked": "2026-11-04T22:22:03Z",
+      "checked": "2026-11-11T22:31:58Z",
       "failures": 0,
       "retry_after": 0
     },
@@ -7617,7 +7617,7 @@
       "id": "6aa47621f1243e65f97fdb2b",
       "players": 24,
       "organizerId": 2142,
-      "checked": "2026-11-04T22:21:58Z",
+      "checked": "2026-11-11T22:31:53Z",
       "failures": 0,
       "retry_after": 0
     },
@@ -7629,7 +7629,7 @@
       "id": "6aa1ff8dab080c8c957ffafe",
       "players": 9,
       "organizerId": 1031,
-      "checked": "2026-11-04T22:21:48Z",
+      "checked": "2026-11-11T22:31:45Z",
       "failures": 0,
       "retry_after": 0
     },
@@ -7641,7 +7641,7 @@
       "id": "6aa22132a4272c53be64ca22",
       "players": 24,
       "organizerId": 2791,
-      "checked": "2026-11-04T22:21:53Z",
+      "checked": "2026-11-11T22:31:49Z",
       "failures": 0,
       "retry_after": 0
     },
@@ -7653,7 +7653,7 @@
       "id": "6aa4787f38886b36383bc80a",
       "players": 31,
       "organizerId": 90,
-      "checked": "2026-11-04T22:21:43Z",
+      "checked": "2026-11-11T22:31:41Z",
       "failures": 0,
       "retry_after": 0
     },
@@ -7665,7 +7665,7 @@
       "id": "6a9edb3fab080c8c957fce21",
       "players": 42,
       "organizerId": 2612,
-      "checked": "2026-11-04T22:21:39Z",
+      "checked": "2026-11-11T22:31:36Z",
       "failures": 0,
       "retry_after": 0
     },
@@ -7677,7 +7677,7 @@
       "id": "6aa0dd1fab080c8c957fed63",
       "players": 18,
       "organizerId": 2679,
-      "checked": "2026-11-04T22:21:34Z",
+      "checked": "2026-11-11T22:31:32Z",
       "failures": 0,
       "retry_after": 0
     },
@@ -7689,7 +7689,7 @@
       "id": "6a9f76f0ab080c8c957fdc61",
       "players": 13,
       "organizerId": 2025,
-      "checked": "2026-11-04T22:21:29Z",
+      "checked": "2026-11-11T22:31:28Z",
       "failures": 0,
       "retry_after": 0
     },
@@ -7701,7 +7701,7 @@
       "id": "6aa127fba4272c53be64b8e6",
       "players": 92,
       "organizerId": 1778,
-      "checked": "2026-11-04T22:21:25Z",
+      "checked": "2026-11-11T22:31:24Z",
       "failures": 0,
       "retry_after": 0
     },
@@ -7714,8 +7714,8 @@
       "players": 16,
       "organizerId": 2592,
       "checked": "2026-11-04T22:21:20Z",
-      "failures": 0,
-      "retry_after": 0
+      "failures": 1,
+      "retry_after": 1794457865
     },
     "6a9eece8a4272c53be649d53": {
       "game": "PTCG",
@@ -7726,8 +7726,8 @@
       "players": 119,
       "organizerId": 2603,
       "checked": "2026-11-04T22:21:06Z",
-      "failures": 0,
-      "retry_after": 0
+      "failures": 1,
+      "retry_after": 1794457842
     },
     "6a91acf1abb9482237502724": {
       "game": "PTCG",
@@ -7738,8 +7738,8 @@
       "players": 8,
       "organizerId": 196,
       "checked": "2026-11-04T22:21:01Z",
-      "failures": 0,
-      "retry_after": 0
+      "failures": 1,
+      "retry_after": 1794457819
     },
     "6aa1c5f1ab080c8c957ff688": {
       "game": "PTCG",
@@ -7749,7 +7749,7 @@
       "id": "6aa1c5f1ab080c8c957ff688",
       "players": 32,
       "organizerId": 2579,
-      "checked": "2026-11-05T22:11:24Z",
+      "checked": "2026-11-11T22:37:07Z",
       "failures": 0,
       "retry_after": 0
     },
@@ -7761,7 +7761,7 @@
       "id": "6aa18cb7a4272c53be64bcbb",
       "players": 102,
       "organizerId": 2583,
-      "checked": "2026-11-04T22:20:27Z",
+      "checked": "2026-11-11T22:29:57Z",
       "failures": 0,
       "retry_after": 0
     },
@@ -7773,7 +7773,7 @@
       "id": "6a9c17a9a4272c53be647b50",
       "players": 36,
       "organizerId": 2601,
-      "checked": "2026-11-04T22:19:43Z",
+      "checked": "2026-11-11T22:29:45Z",
       "failures": 0,
       "retry_after": 0
     },
@@ -7785,7 +7785,7 @@
       "id": "6aa3c275f1243e65f97fce85",
       "players": 64,
       "organizerId": 2045,
-      "checked": "2026-11-04T22:20:09Z",
+      "checked": "2026-11-11T22:29:53Z",
       "failures": 0,
       "retry_after": 0
     },
@@ -7797,7 +7797,7 @@
       "id": "6a77d58a2b308b6067b4eba5",
       "players": 21,
       "organizerId": 1073,
-      "checked": "2026-11-04T22:19:38Z",
+      "checked": "2026-11-11T22:29:38Z",
       "failures": 0,
       "retry_after": 0
     },
@@ -7809,7 +7809,7 @@
       "id": "6a438738c87cd9ff0a31356f",
       "players": 96,
       "organizerId": 1659,
-      "checked": "2026-11-04T22:19:33Z",
+      "checked": "2026-11-11T22:29:34Z",
       "failures": 0,
       "retry_after": 0
     },
@@ -7821,7 +7821,7 @@
       "id": "6a8c5dd081741245b151d7e0",
       "players": 31,
       "organizerId": 2512,
-      "checked": "2026-11-04T22:19:28Z",
+      "checked": "2026-11-11T22:29:29Z",
       "failures": 0,
       "retry_after": 0
     },
@@ -7833,7 +7833,7 @@
       "id": "6aa34962a4272c53be64d6ca",
       "players": 17,
       "organizerId": 2142,
-      "checked": "2026-11-04T22:19:24Z",
+      "checked": "2026-11-11T22:29:25Z",
       "failures": 0,
       "retry_after": 0
     },
@@ -7845,7 +7845,7 @@
       "id": "6a9350e2abb94822375036f3",
       "players": 32,
       "organizerId": 78,
-      "checked": "2026-11-04T22:19:19Z",
+      "checked": "2026-11-11T22:29:21Z",
       "failures": 0,
       "retry_after": 0
     },
@@ -7857,7 +7857,7 @@
       "id": "6aa2bde1ab080c8c95800182",
       "players": 4,
       "organizerId": 2667,
-      "checked": "2026-11-04T22:19:14Z",
+      "checked": "2026-11-11T22:29:16Z",
       "failures": 0,
       "retry_after": 0
     },
@@ -7869,7 +7869,7 @@
       "id": "6aa0dc1aa4272c53be64b7be",
       "players": 73,
       "organizerId": 2774,
-      "checked": "2026-11-04T22:19:05Z",
+      "checked": "2026-11-11T22:29:08Z",
       "failures": 0,
       "retry_after": 0
     },
@@ -7881,7 +7881,7 @@
       "id": "6aa16e23a4272c53be64bb3a",
       "players": 11,
       "organizerId": 1689,
-      "checked": "2026-11-04T22:19:10Z",
+      "checked": "2026-11-11T22:29:12Z",
       "failures": 0,
       "retry_after": 0
     },
@@ -7893,7 +7893,7 @@
       "id": "6a9eda38ab080c8c957fce1d",
       "players": 99,
       "organizerId": 2612,
-      "checked": "2026-11-04T22:24:11Z",
+      "checked": "2026-11-11T22:33:56Z",
       "failures": 0,
       "retry_after": 0
     },
@@ -7905,7 +7905,7 @@
       "id": "6aa31358a4272c53be64d332",
       "players": 19,
       "organizerId": 2306,
-      "checked": "2026-11-04T22:24:06Z",
+      "checked": "2026-11-11T22:33:51Z",
       "failures": 0,
       "retry_after": 0
     },
@@ -7917,7 +7917,7 @@
       "id": "6a9f6e4dab080c8c957fdba8",
       "players": 156,
       "organizerId": 1727,
-      "checked": "2026-11-04T22:24:02Z",
+      "checked": "2026-11-11T22:33:47Z",
       "failures": 0,
       "retry_after": 0
     },
@@ -7929,7 +7929,7 @@
       "id": "6aa28584a4272c53be64cd13",
       "players": 10,
       "organizerId": 438,
-      "checked": "2026-11-04T22:23:57Z",
+      "checked": "2026-11-11T22:33:43Z",
       "failures": 0,
       "retry_after": 0
     },
@@ -7941,7 +7941,7 @@
       "id": "6aa268cfab080c8c957ffed1",
       "players": 12,
       "organizerId": 622,
-      "checked": "2026-11-04T22:19:00Z",
+      "checked": "2026-11-11T22:29:03Z",
       "failures": 0,
       "retry_after": 0
     },
@@ -7953,7 +7953,7 @@
       "id": "6aa0d9e1ab080c8c957fed59",
       "players": 108,
       "organizerId": 2623,
-      "checked": "2026-11-04T22:18:56Z",
+      "checked": "2026-11-11T22:28:59Z",
       "failures": 0,
       "retry_after": 0
     },
@@ -7965,7 +7965,7 @@
       "id": "6aa27f15a4272c53be64cca9",
       "players": 14,
       "organizerId": 2485,
-      "checked": "2026-11-04T22:18:51Z",
+      "checked": "2026-11-11T22:28:54Z",
       "failures": 0,
       "retry_after": 0
     },
@@ -7977,7 +7977,7 @@
       "id": "6aa17dbaab080c8c957ff0fd",
       "players": 102,
       "organizerId": 2226,
-      "checked": "2026-11-04T22:18:42Z",
+      "checked": "2026-11-11T22:28:46Z",
       "failures": 0,
       "retry_after": 0
     },
@@ -7989,7 +7989,7 @@
       "id": "6aa1e209a4272c53be64c4ee",
       "players": 8,
       "organizerId": 2791,
-      "checked": "2026-11-04T22:18:46Z",
+      "checked": "2026-11-11T22:28:50Z",
       "failures": 0,
       "retry_after": 0
     },
@@ -8001,7 +8001,7 @@
       "id": "6a99789aab080c8c957f8ad7",
       "players": 128,
       "organizerId": 2568,
-      "checked": "2026-11-04T22:18:37Z",
+      "checked": "2026-11-11T22:28:42Z",
       "failures": 0,
       "retry_after": 0
     },
@@ -8013,7 +8013,7 @@
       "id": "6aa1ddc1ab080c8c957ff825",
       "players": 14,
       "organizerId": 2293,
-      "checked": "2026-11-04T22:18:32Z",
+      "checked": "2026-11-11T22:28:37Z",
       "failures": 0,
       "retry_after": 0
     },
@@ -8025,7 +8025,7 @@
       "id": "6aa01adbab080c8c957fe008",
       "players": 12,
       "organizerId": 2571,
-      "checked": "2026-11-04T22:18:27Z",
+      "checked": "2026-11-11T22:28:33Z",
       "failures": 0,
       "retry_after": 0
     },
@@ -8037,7 +8037,7 @@
       "id": "6aa1b51ca4272c53be64c0b8",
       "players": 12,
       "organizerId": 2293,
-      "checked": "2026-11-04T22:18:23Z",
+      "checked": "2026-11-11T22:28:29Z",
       "failures": 0,
       "retry_after": 0
     },
@@ -8049,7 +8049,7 @@
       "id": "6a9eebf8ab080c8c957fcf19",
       "players": 8,
       "organizerId": 2603,
-      "checked": "2026-11-04T22:18:18Z",
+      "checked": "2026-11-11T22:28:25Z",
       "failures": 0,
       "retry_after": 0
     },
@@ -8349,7 +8349,7 @@
       "id": "6a962d65abb9482237505277",
       "players": 34,
       "organizerId": 236,
-      "checked": "2026-11-05T22:11:19Z",
+      "checked": "2026-11-11T22:37:03Z",
       "failures": 0,
       "retry_after": 0
     },
@@ -8361,7 +8361,7 @@
       "id": "6a9db100ab080c8c957fc12b",
       "players": 342,
       "organizerId": 36,
-      "checked": "2026-11-05T22:11:15Z",
+      "checked": "2026-11-11T22:36:59Z",
       "failures": 0,
       "retry_after": 0
     },
@@ -8757,7 +8757,7 @@
       "id": "6a9b3922ab080c8c957fa230",
       "players": 12,
       "organizerId": 1270,
-      "checked": "2026-11-04T22:23:52Z",
+      "checked": "2026-11-11T22:33:38Z",
       "failures": 0,
       "retry_after": 0
     },
@@ -8769,7 +8769,7 @@
       "id": "6a93becbabb9482237503a91",
       "players": 8,
       "organizerId": 2679,
-      "checked": "2026-11-04T22:23:47Z",
+      "checked": "2026-11-11T22:33:34Z",
       "failures": 0,
       "retry_after": 0
     },
@@ -8781,7 +8781,7 @@
       "id": "6a93c8d6629039f77d8a5638",
       "players": 179,
       "organizerId": 2705,
-      "checked": "2026-11-04T22:23:43Z",
+      "checked": "2026-11-11T22:33:29Z",
       "failures": 0,
       "retry_after": 0
     },
@@ -9273,7 +9273,7 @@
       "id": "6a95caa6abb9482237504c33",
       "players": 4,
       "organizerId": 2791,
-      "checked": "2026-11-04T22:23:33Z",
+      "checked": "2026-11-11T22:33:20Z",
       "failures": 0,
       "retry_after": 0
     },
@@ -9285,7 +9285,7 @@
       "id": "6a95dc45abb9482237504d26",
       "players": 102,
       "organizerId": 2152,
-      "checked": "2026-11-04T22:23:38Z",
+      "checked": "2026-11-11T22:33:25Z",
       "failures": 0,
       "retry_after": 0
     },
@@ -9297,7 +9297,7 @@
       "id": "6a95075cabb9482237504627",
       "players": 71,
       "organizerId": 2575,
-      "checked": "2026-11-04T22:23:28Z",
+      "checked": "2026-11-11T22:33:16Z",
       "failures": 0,
       "retry_after": 0
     },
@@ -9369,7 +9369,7 @@
       "id": "6a9c1945ab080c8c957fabba",
       "players": 17,
       "organizerId": 2601,
-      "checked": "2026-11-04T22:24:16Z",
+      "checked": "2026-11-11T22:34:00Z",
       "failures": 0,
       "retry_after": 0
     },
@@ -9765,7 +9765,7 @@
       "id": "6ae4e8380d00101b48bf28e3",
       "players": 23,
       "organizerId": 1216,
-      "checked": "2026-11-05T22:10:35Z",
+      "checked": "2026-11-11T22:35:20Z",
       "failures": 0,
       "retry_after": 0
     },
@@ -9778,8 +9778,8 @@
       "players": 7,
       "organizerId": 1270,
       "checked": "2026-11-05T22:10:39Z",
-      "failures": 0,
-      "retry_after": 0
+      "failures": 1,
+      "retry_after": 1794458142
     },
     "6ae4b3470d00101b48bf257e": {
       "game": "PTCG",
@@ -9790,8 +9790,8 @@
       "players": 63,
       "organizerId": 2623,
       "checked": "2026-11-05T22:10:44Z",
-      "failures": 0,
-      "retry_after": 0
+      "failures": 1,
+      "retry_after": 1794458165
     },
     "6ae1df7580a8f79408d1ffe9": {
       "game": "PTCG",
@@ -9801,7 +9801,7 @@
       "id": "6ae1df7580a8f79408d1ffe9",
       "players": 12,
       "organizerId": 2555,
-      "checked": "2026-11-05T22:10:48Z",
+      "checked": "2026-11-11T22:36:32Z",
       "failures": 0,
       "retry_after": 0
     },
@@ -9813,7 +9813,7 @@
       "id": "6ada46598a8383117e3f17ef",
       "players": 379,
       "organizerId": 349,
-      "checked": "2026-11-05T22:10:53Z",
+      "checked": "2026-11-11T22:36:37Z",
       "failures": 0,
       "retry_after": 0
     },
@@ -9825,7 +9825,7 @@
       "id": "6ae230b722fd412b92a4eb09",
       "players": 34,
       "organizerId": 1031,
-      "checked": "2026-11-05T22:11:02Z",
+      "checked": "2026-11-11T22:36:46Z",
       "failures": 0,
       "retry_after": 0
     },
@@ -9837,7 +9837,7 @@
       "id": "6ae4eca0ae67092a4073f3f4",
       "players": 58,
       "organizerId": 377,
-      "checked": "2026-11-05T22:10:57Z",
+      "checked": "2026-11-11T22:36:41Z",
       "failures": 0,
       "retry_after": 0
     },
@@ -10557,7 +10557,7 @@
       "id": "6ae27e0a22fd412b92a4ef94",
       "players": 6,
       "organizerId": 1689,
-      "checked": "2026-11-05T22:11:10Z",
+      "checked": "2026-11-11T22:36:54Z",
       "failures": 0,
       "retry_after": 0
     },
@@ -10569,7 +10569,7 @@
       "id": "6ada42708a8383117e3f1789",
       "players": 24,
       "organizerId": 438,
-      "checked": "2026-11-05T22:11:06Z",
+      "checked": "2026-11-11T22:36:50Z",
       "failures": 0,
       "retry_after": 0
     },
@@ -10581,7 +10581,7 @@
       "id": "6ae3e41780a8f79408d214bc",
       "players": 8,
       "organizerId": 2227,
-      "checked": "2026-11-10T22:04:59Z",
+      "checked": "2026-11-11T22:27:29Z",
       "failures": 0,
       "retry_after": 0
     },
@@ -10593,7 +10593,7 @@
       "id": "6aa2d291ab080c8c9580024f",
       "players": 29,
       "organizerId": 2579,
-      "checked": "2026-11-10T22:05:04Z",
+      "checked": "2026-11-11T22:27:33Z",
       "failures": 0,
       "retry_after": 0
     },
@@ -10605,7 +10605,7 @@
       "id": "6aedc6a9e99f3235a75e20a8",
       "players": 12,
       "organizerId": 2485,
-      "checked": "2026-11-10T22:00:58Z",
+      "checked": "2026-11-11T22:23:45Z",
       "failures": 0,
       "retry_after": 0
     },
@@ -10617,7 +10617,7 @@
       "id": "6a8d74d48302ae761e5fbdbf",
       "players": 21,
       "organizerId": 1073,
-      "checked": "2026-11-10T22:05:08Z",
+      "checked": "2026-11-11T22:27:37Z",
       "failures": 0,
       "retry_after": 0
     },
@@ -10629,7 +10629,7 @@
       "id": "6ac0878385920e4d2536288e",
       "players": 79,
       "organizerId": 1659,
-      "checked": "2026-11-10T22:01:02Z",
+      "checked": "2026-11-11T22:23:49Z",
       "failures": 0,
       "retry_after": 0
     },
@@ -10641,7 +10641,7 @@
       "id": "6acd04a2115c12b73a5a211a",
       "players": 24,
       "organizerId": 2512,
-      "checked": "2026-11-10T22:05:12Z",
+      "checked": "2026-11-11T22:27:42Z",
       "failures": 0,
       "retry_after": 0
     },
@@ -10653,7 +10653,7 @@
       "id": "6ae8cf850c463890f3049906",
       "players": 106,
       "organizerId": 2518,
-      "checked": "2026-11-10T22:05:17Z",
+      "checked": "2026-11-11T22:27:46Z",
       "failures": 0,
       "retry_after": 0
     },
@@ -10665,7 +10665,7 @@
       "id": "6aeb22dce94eae0f947470a4",
       "players": 7,
       "organizerId": 2667,
-      "checked": "2026-11-10T22:05:21Z",
+      "checked": "2026-11-11T22:27:50Z",
       "failures": 0,
       "retry_after": 0
     },
@@ -10677,7 +10677,7 @@
       "id": "6ad827588a8383117e3f0825",
       "players": 7,
       "organizerId": 2791,
-      "checked": "2026-11-10T22:05:25Z",
+      "checked": "2026-11-11T22:27:54Z",
       "failures": 0,
       "retry_after": 0
     },
@@ -10797,7 +10797,7 @@
       "id": "6aee27a9c931f53978d94e0f",
       "players": 15,
       "organizerId": 1216,
-      "checked": "2026-11-10T22:02:45Z",
+      "checked": "2026-11-11T22:26:46Z",
       "failures": 0,
       "retry_after": 0
     },
@@ -10809,7 +10809,7 @@
       "id": "6aeeb402e99f3235a75e2b58",
       "players": 52,
       "organizerId": 2623,
-      "checked": "2026-11-10T22:02:56Z",
+      "checked": "2026-11-11T22:26:50Z",
       "failures": 0,
       "retry_after": 0
     },
@@ -10821,9 +10821,9 @@
       "id": "6aec7d67e94eae0f94747cdd",
       "players": 26,
       "organizerId": 2601,
-      "checked": "2026-11-09T22:07:03Z",
-      "failures": 1,
-      "retry_after": 1794369826
+      "checked": "2026-11-11T22:22:40Z",
+      "failures": 0,
+      "retry_after": 0
     },
     "6aee18ffe99f3235a75e24fe": {
       "game": "PTCG",
@@ -10833,7 +10833,7 @@
       "id": "6aee18ffe99f3235a75e24fe",
       "players": 10,
       "organizerId": 2555,
-      "checked": "2026-11-10T22:03:19Z",
+      "checked": "2026-11-11T22:26:54Z",
       "failures": 0,
       "retry_after": 0
     },
@@ -10845,9 +10845,9 @@
       "id": "6ae86097ae67092a407411de",
       "players": 12,
       "organizerId": 1710,
-      "checked": "2026-11-09T22:07:08Z",
-      "failures": 1,
-      "retry_after": 1794369849
+      "checked": "2026-11-11T22:22:44Z",
+      "failures": 0,
+      "retry_after": 0
     },
     "6aee4459e99f3235a75e2763": {
       "game": "PTCG",
@@ -10857,7 +10857,7 @@
       "id": "6aee4459e99f3235a75e2763",
       "players": 9,
       "organizerId": 90,
-      "checked": "2026-11-10T22:04:25Z",
+      "checked": "2026-11-11T22:26:59Z",
       "failures": 0,
       "retry_after": 0
     },
@@ -10869,7 +10869,7 @@
       "id": "6ae7fe3a0d00101b48bf460a",
       "players": 69,
       "organizerId": 2819,
-      "checked": "2026-11-10T22:04:29Z",
+      "checked": "2026-11-11T22:27:03Z",
       "failures": 0,
       "retry_after": 0
     },
@@ -10881,7 +10881,7 @@
       "id": "6ae5e3a20d00101b48bf331c",
       "players": 10,
       "organizerId": 2612,
-      "checked": "2026-11-10T22:04:34Z",
+      "checked": "2026-11-11T22:27:07Z",
       "failures": 0,
       "retry_after": 0
     },
@@ -10893,7 +10893,7 @@
       "id": "6ae9e1f40c463890f304a545",
       "players": 8,
       "organizerId": 2692,
-      "checked": "2026-11-10T22:04:38Z",
+      "checked": "2026-11-11T22:27:12Z",
       "failures": 0,
       "retry_after": 0
     },
@@ -10905,7 +10905,7 @@
       "id": "6ae9ca8e0c463890f304a48c",
       "players": 17,
       "organizerId": 2025,
-      "checked": "2026-11-10T22:04:42Z",
+      "checked": "2026-11-11T22:27:16Z",
       "failures": 0,
       "retry_after": 0
     },
@@ -10917,7 +10917,7 @@
       "id": "6aeb3790e94eae0f947470f2",
       "players": 121,
       "organizerId": 1778,
-      "checked": "2026-11-10T22:04:47Z",
+      "checked": "2026-11-11T22:27:20Z",
       "failures": 0,
       "retry_after": 0
     },
@@ -10929,7 +10929,7 @@
       "id": "6a95d159629039f77d8a6af8",
       "players": 73,
       "organizerId": 196,
-      "checked": "2026-11-10T22:04:51Z",
+      "checked": "2026-11-11T22:27:24Z",
       "failures": 0,
       "retry_after": 0
     },
@@ -10965,7 +10965,7 @@
       "id": "6af0a611c931f53978d967b1",
       "players": 6,
       "organizerId": 2735,
-      "checked": "2026-11-10T22:01:50Z",
+      "checked": "2026-11-11T22:24:24Z",
       "failures": 0,
       "retry_after": 0
     },
@@ -10977,7 +10977,7 @@
       "id": "6af096d9e99f3235a75e422d",
       "players": 6,
       "organizerId": 506,
-      "checked": "2026-11-10T22:01:55Z",
+      "checked": "2026-11-11T22:24:37Z",
       "failures": 0,
       "retry_after": 0
     },
@@ -10989,7 +10989,7 @@
       "id": "6af0636cc931f53978d9650e",
       "players": 57,
       "organizerId": 2533,
-      "checked": "2026-11-10T22:01:59Z",
+      "checked": "2026-11-11T22:24:44Z",
       "failures": 0,
       "retry_after": 0
     },
@@ -11002,8 +11002,8 @@
       "players": 8,
       "organizerId": 1049,
       "checked": "2026-11-10T22:02:03Z",
-      "failures": 0,
-      "retry_after": 0
+      "failures": 1,
+      "retry_after": 1794457506
     },
     "6a7c9e3a2b308b6067b52120": {
       "game": "PTCG",
@@ -11014,8 +11014,8 @@
       "players": 14,
       "organizerId": 2782,
       "checked": "2026-11-10T22:02:12Z",
-      "failures": 0,
-      "retry_after": 0
+      "failures": 1,
+      "retry_after": 1794457552
     },
     "6ae7d030ae67092a40740ee3": {
       "game": "PTCG",
@@ -11026,8 +11026,8 @@
       "players": 24,
       "organizerId": 362,
       "checked": "2026-11-10T22:02:07Z",
-      "failures": 0,
-      "retry_after": 0
+      "failures": 1,
+      "retry_after": 1794457529
     },
     "6aefe6cae99f3235a75e3d41": {
       "game": "PTCG",
@@ -11037,7 +11037,7 @@
       "id": "6aefe6cae99f3235a75e3d41",
       "players": 10,
       "organizerId": 2612,
-      "checked": "2026-11-10T22:02:16Z",
+      "checked": "2026-11-11T22:26:20Z",
       "failures": 0,
       "retry_after": 0
     },
@@ -11049,7 +11049,7 @@
       "id": "6aea6ad30c463890f304ab8c",
       "players": 161,
       "organizerId": 2226,
-      "checked": "2026-11-10T22:02:20Z",
+      "checked": "2026-11-11T22:26:24Z",
       "failures": 0,
       "retry_after": 0
     },
@@ -11061,7 +11061,7 @@
       "id": "6aefc511c931f53978d95ed2",
       "players": 10,
       "organizerId": 2142,
-      "checked": "2026-11-10T22:02:25Z",
+      "checked": "2026-11-11T22:26:29Z",
       "failures": 0,
       "retry_after": 0
     },
@@ -11073,7 +11073,7 @@
       "id": "6ae9d7610c463890f304a4e0",
       "players": 60,
       "organizerId": 30,
-      "checked": "2026-11-10T22:02:29Z",
+      "checked": "2026-11-11T22:26:33Z",
       "failures": 0,
       "retry_after": 0
     },
@@ -11085,7 +11085,7 @@
       "id": "6ae5e417ae67092a4073fc4f",
       "players": 23,
       "organizerId": 2612,
-      "checked": "2026-11-10T22:02:34Z",
+      "checked": "2026-11-11T22:26:37Z",
       "failures": 0,
       "retry_after": 0
     },
@@ -11097,7 +11097,7 @@
       "id": "6aee95d9c931f53978d953d5",
       "players": 24,
       "organizerId": 2622,
-      "checked": "2026-11-10T22:02:38Z",
+      "checked": "2026-11-11T22:26:42Z",
       "failures": 0,
       "retry_after": 0
     },
@@ -11109,7 +11109,7 @@
       "id": "6af15067e99f3235a75e4949",
       "players": 7,
       "organizerId": 622,
-      "checked": "2026-11-10T22:01:06Z",
+      "checked": "2026-11-11T22:23:53Z",
       "failures": 0,
       "retry_after": 0
     },
@@ -11121,7 +11121,7 @@
       "id": "6aee7c9fe99f3235a75e29c5",
       "players": 149,
       "organizerId": 2518,
-      "checked": "2026-11-10T22:01:11Z",
+      "checked": "2026-11-11T22:23:58Z",
       "failures": 0,
       "retry_after": 0
     },
@@ -11133,7 +11133,7 @@
       "id": "6af08c62c931f53978d966bd",
       "players": 58,
       "organizerId": 1371,
-      "checked": "2026-11-10T22:01:15Z",
+      "checked": "2026-11-11T22:24:02Z",
       "failures": 0,
       "retry_after": 0
     },
@@ -11145,7 +11145,7 @@
       "id": "6af0c1ade99f3235a75e43f0",
       "players": 10,
       "organizerId": 1953,
-      "checked": "2026-11-10T22:01:19Z",
+      "checked": "2026-11-11T22:24:06Z",
       "failures": 0,
       "retry_after": 0
     },
@@ -11157,7 +11157,7 @@
       "id": "6aa74ce538886b36383bf593",
       "players": 8,
       "organizerId": 2496,
-      "checked": "2026-11-10T22:01:24Z",
+      "checked": "2026-11-11T22:24:11Z",
       "failures": 0,
       "retry_after": 0
     },
@@ -11169,7 +11169,7 @@
       "id": "6aeeb490c931f53978d954e2",
       "players": 105,
       "organizerId": 2623,
-      "checked": "2026-11-10T22:01:28Z",
+      "checked": "2026-11-11T22:24:15Z",
       "failures": 0,
       "retry_after": 0
     },
@@ -11181,7 +11181,7 @@
       "id": "6a8723725a30714095575300",
       "players": 494,
       "organizerId": 349,
-      "checked": "2026-11-10T22:01:33Z",
+      "checked": "2026-11-11T22:24:19Z",
       "failures": 0,
       "retry_after": 0
     },
@@ -11193,7 +11193,7 @@
       "id": "6aef9042e99f3235a75e3916",
       "players": 8,
       "organizerId": 2227,
-      "checked": "2026-11-10T22:00:01Z",
+      "checked": "2026-11-11T22:22:48Z",
       "failures": 0,
       "retry_after": 0
     },
@@ -11205,7 +11205,7 @@
       "id": "6af2734fc931f53978d97dc8",
       "players": 60,
       "organizerId": 2226,
-      "checked": "2026-11-10T22:00:05Z",
+      "checked": "2026-11-11T22:22:53Z",
       "failures": 0,
       "retry_after": 0
     },
@@ -11217,7 +11217,7 @@
       "id": "6adf641922fd412b92a4d374",
       "players": 78,
       "organizerId": 2152,
-      "checked": "2026-11-10T22:00:09Z",
+      "checked": "2026-11-11T22:22:57Z",
       "failures": 0,
       "retry_after": 0
     },
@@ -11229,7 +11229,7 @@
       "id": "6aee1717c931f53978d94c86",
       "players": 27,
       "organizerId": 2689,
-      "checked": "2026-11-10T22:00:14Z",
+      "checked": "2026-11-11T22:23:01Z",
       "failures": 0,
       "retry_after": 0
     },
@@ -11241,7 +11241,7 @@
       "id": "6aad840ff127b1b52c27c2fb",
       "players": 86,
       "organizerId": 2579,
-      "checked": "2026-11-10T22:00:18Z",
+      "checked": "2026-11-11T22:23:06Z",
       "failures": 0,
       "retry_after": 0
     },
@@ -11253,7 +11253,7 @@
       "id": "6ad82790115c12b73a5a8ccd",
       "players": 34,
       "organizerId": 2791,
-      "checked": "2026-11-10T22:00:31Z",
+      "checked": "2026-11-11T22:23:19Z",
       "failures": 0,
       "retry_after": 0
     },
@@ -11265,7 +11265,7 @@
       "id": "6ae7fa53ae67092a4074106b",
       "players": 37,
       "organizerId": 2819,
-      "checked": "2026-11-10T22:00:27Z",
+      "checked": "2026-11-11T22:23:14Z",
       "failures": 0,
       "retry_after": 0
     },
@@ -11277,7 +11277,7 @@
       "id": "6af1cb5be99f3235a75e4b93",
       "players": 8,
       "organizerId": 2667,
-      "checked": "2026-11-10T22:00:23Z",
+      "checked": "2026-11-11T22:23:10Z",
       "failures": 0,
       "retry_after": 0
     },
@@ -11289,7 +11289,7 @@
       "id": "6ae901a50c463890f3049d40",
       "players": 226,
       "organizerId": 145,
-      "checked": "2026-11-10T22:00:36Z",
+      "checked": "2026-11-11T22:23:23Z",
       "failures": 0,
       "retry_after": 0
     },
@@ -11301,7 +11301,7 @@
       "id": "6ae5e254ae67092a4073fc46",
       "players": 33,
       "organizerId": 2612,
-      "checked": "2026-11-10T22:00:40Z",
+      "checked": "2026-11-11T22:23:27Z",
       "failures": 0,
       "retry_after": 0
     },
@@ -11313,7 +11313,7 @@
       "id": "6af06b63c931f53978d9656c",
       "players": 135,
       "organizerId": 36,
-      "checked": "2026-11-10T22:00:45Z",
+      "checked": "2026-11-11T22:23:32Z",
       "failures": 0,
       "retry_after": 0
     },
@@ -11325,7 +11325,7 @@
       "id": "6aea2850e94eae0f947467c5",
       "players": 236,
       "organizerId": 35,
-      "checked": "2026-11-10T22:00:49Z",
+      "checked": "2026-11-11T22:23:36Z",
       "failures": 0,
       "retry_after": 0
     },
@@ -11337,23 +11337,179 @@
       "id": "6af11320c931f53978d96cfb",
       "players": 88,
       "organizerId": 2623,
-      "checked": "2026-11-10T22:00:54Z",
+      "checked": "2026-11-11T22:23:40Z",
+      "failures": 0,
+      "retry_after": 0
+    },
+    "6ae39f8080a8f79408d210f9": {
+      "game": "PTCG",
+      "name": "TAVERNA LEAGUE - SEASON 0 - DAY #9",
+      "date": "2026-11-11T20:00:00.000Z",
+      "format": "STANDARD",
+      "id": "6ae39f8080a8f79408d210f9",
+      "players": 15,
+      "organizerId": 2703,
+      "checked": "2026-11-11T22:21:43Z",
+      "failures": 0,
+      "retry_after": 0
+    },
+    "6af435bf00d53a11f5b90fd1": {
+      "game": "PTCG",
+      "name": "Circuito TCG #7 | Z2 Gaming",
+      "date": "2026-11-11T17:00:00.000Z",
+      "format": "STANDARD",
+      "id": "6af435bf00d53a11f5b90fd1",
+      "players": 70,
+      "organizerId": 2585,
+      "checked": "2026-11-11T22:21:48Z",
+      "failures": 0,
+      "retry_after": 0
+    },
+    "6af05507c931f53978d9647f": {
+      "game": "PTCG",
+      "name": "Hydra TCG Serbia standard tournament 11.11.2026.",
+      "date": "2026-11-11T16:00:00.000Z",
+      "format": "STANDARD",
+      "id": "6af05507c931f53978d9647f",
+      "players": 8,
+      "organizerId": 2555,
+      "checked": "2026-11-11T22:21:52Z",
+      "failures": 0,
+      "retry_after": 0
+    },
+    "6af23e39e99f3235a75e52ca": {
+      "game": "PTCG",
+      "name": "Pudding Weekly #21 | an IQ too high?",
+      "date": "2026-11-11T02:00:00.000Z",
+      "format": "STANDARD",
+      "id": "6af23e39e99f3235a75e52ca",
+      "players": 146,
+      "organizerId": 2720,
+      "checked": "2026-11-11T22:21:57Z",
+      "failures": 0,
+      "retry_after": 0
+    },
+    "6adf708222fd412b92a4d3b7": {
+      "game": "PTCG",
+      "name": "Torneo Relámpago ⚡ #89 PTCG Live (25 CODES)",
+      "date": "2026-11-11T01:30:00.000Z",
+      "format": "STANDARD",
+      "id": "6adf708222fd412b92a4d3b7",
+      "players": 32,
+      "organizerId": 2512,
+      "checked": "2026-11-11T22:22:01Z",
+      "failures": 0,
+      "retry_after": 0
+    },
+    "6aee88aae99f3235a75e2a4e": {
+      "game": "PTCG",
+      "name": "Last Prize Series S4 #8",
+      "date": "2026-11-10T23:35:00.000Z",
+      "format": "STANDARD",
+      "id": "6aee88aae99f3235a75e2a4e",
+      "players": 160,
+      "organizerId": 2227,
+      "checked": "2026-11-11T22:22:05Z",
+      "failures": 0,
+      "retry_after": 0
+    },
+    "6af38671dcbca32da6c4db13": {
+      "game": "PTCG",
+      "name": "Torneo Gratis Sidedeck Online Martes 10 Noviembre",
+      "date": "2026-11-10T23:00:00.000Z",
+      "format": "STANDARD",
+      "id": "6af38671dcbca32da6c4db13",
+      "players": 19,
+      "organizerId": 2306,
+      "checked": "2026-11-11T22:22:10Z",
+      "failures": 0,
+      "retry_after": 0
+    },
+    "6aa1eb1ca4272c53be64c5f1": {
+      "game": "PTCG",
+      "name": "League Challenge Casa de Ruter - Novembro 2026",
+      "date": "2026-11-10T22:30:00.000Z",
+      "format": "STANDARD",
+      "id": "6aa1eb1ca4272c53be64c5f1",
+      "players": 20,
+      "organizerId": 1242,
+      "checked": "2026-11-11T22:22:14Z",
+      "failures": 0,
+      "retry_after": 0
+    },
+    "6aea3ff8e94eae0f94746915": {
+      "game": "PTCG",
+      "name": "👑CrownOfSpain 👑 #13",
+      "date": "2026-11-10T19:00:00.000Z",
+      "format": "STANDARD",
+      "id": "6aea3ff8e94eae0f94746915",
+      "players": 123,
+      "organizerId": 2698,
+      "checked": "2026-11-11T22:22:18Z",
+      "failures": 0,
+      "retry_after": 0
+    },
+    "6af2651cc931f53978d97c32": {
+      "game": "PTCG",
+      "name": "⚡ Surge's TCG Vault Winner Takes All - 50 Codes",
+      "date": "2026-11-10T18:45:00.000Z",
+      "format": "STANDARD",
+      "id": "6af2651cc931f53978d97c32",
+      "players": 45,
+      "organizerId": 2603,
+      "checked": "2026-11-11T22:22:23Z",
+      "failures": 0,
+      "retry_after": 0
+    },
+    "6aea4cf8e94eae0f9474697e": {
+      "game": "PTCG",
+      "name": "Amyverse Bulk Box Battles #7 🧡 Cash Prize!",
+      "date": "2026-11-10T18:00:00.000Z",
+      "format": "STANDARD",
+      "id": "6aea4cf8e94eae0f9474697e",
+      "players": 19,
+      "organizerId": 2679,
+      "checked": "2026-11-11T22:22:27Z",
+      "failures": 0,
+      "retry_after": 0
+    },
+    "6af1fd6de99f3235a75e4db2": {
+      "game": "PTCG",
+      "name": "Team Corna Weekly November #1",
+      "date": "2026-11-10T17:45:00.000Z",
+      "format": "STANDARD",
+      "id": "6af1fd6de99f3235a75e4db2",
+      "players": 139,
+      "organizerId": 2583,
+      "checked": "2026-11-11T22:22:31Z",
+      "failures": 0,
+      "retry_after": 0
+    },
+    "6af1bac4c931f53978d9719d": {
+      "game": "PTCG",
+      "name": "SEASAC League Challenge #25 (SEASON 6) [50 CODES]",
+      "date": "2026-11-10T11:30:00.000Z",
+      "format": "STANDARD",
+      "id": "6af1bac4c931f53978d9719d",
+      "players": 83,
+      "organizerId": 2623,
+      "checked": "2026-11-11T22:22:36Z",
       "failures": 0,
       "retry_after": 0
     }
   },
   "season_boundary_seen": true,
   "last_sync": {
-    "at_utc": "2026-11-10T22:19:01Z",
-    "saved_matches": 112458,
+    "at_utc": "2026-11-11T22:40:52Z",
+    "saved_matches": 114373,
     "oldest_match_date": "2026-09-01",
-    "newest_match_date": "2026-11-10",
-    "discovered_tournaments": 945,
-    "checked_tournaments": 945,
+    "newest_match_date": "2026-11-11",
+    "discovered_tournaments": 958,
+    "checked_tournaments": 958,
     "pending_tournaments": 0,
-    "latest_cutoff_jst": "2026-11-05",
+    "latest_cutoff_jst": "2026-11-06",
     "latest_pending_tournaments": 0,
-    "successful_tournaments": 187,
-    "failed_tournaments": 8
+    "successful_tournaments": 190,
+    "failed_tournaments": 10
   }
 }
