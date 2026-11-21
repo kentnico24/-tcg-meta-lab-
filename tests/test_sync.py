@@ -103,13 +103,16 @@ class ProtectionTests(unittest.TestCase):
         state = Path(self.tmp.name) / 'state.json'
         db = Path(self.tmp.name) / 'db.sqlite3'
         event = {**self.event(), 'date': '2026-10-29'}
-        with patch.object(sync, 'DB', db), patch('sys.argv', ['sync', '--since', '2026-10-29', '--pages', '1', '--state', str(state)]), patch.object(sync, 'fetch', side_effect=[[event], self.standings(), [self.pairing()]]), patch.object(sync, 'pause'):
+        # This checks state progression on a fresh local DB, not the large
+        # production snapshot. Otherwise restored unrelated tournaments can
+        # consume the per-run quota before the synthetic event is rechecked.
+        with patch.object(sync, 'restore', return_value=0), patch.object(sync, 'restore_countries', return_value=0), patch.object(sync, 'DB', db), patch('sys.argv', ['sync', '--since', '2026-10-29', '--pages', '1', '--state', str(state)]), patch.object(sync, 'fetch', side_effect=[[event], self.standings(), [self.pairing()]]), patch.object(sync, 'pause'):
             sync.main()
         import json
         saved = json.loads(state.read_text())
         self.assertEqual(saved['page'], 2)
         self.assertTrue(saved['events']['test']['checked'])
-        with patch.object(sync, 'DB', db), patch('sys.argv', ['sync', '--since', '2026-10-29', '--pages', '1', '--state', str(state)]), patch.object(sync, 'fetch', side_effect=[[], self.standings(), [self.pairing(1, 'p2')]]) as request, patch.object(sync, 'pause'):
+        with patch.object(sync, 'restore', return_value=0), patch.object(sync, 'restore_countries', return_value=0), patch.object(sync, 'DB', db), patch('sys.argv', ['sync', '--since', '2026-10-29', '--pages', '1', '--state', str(state)]), patch.object(sync, 'fetch', side_effect=[[], self.standings(), [self.pairing(1, 'p2')]]) as request, patch.object(sync, 'pause'):
             sync.main()
             self.assertEqual(request.call_args_list[0].args[1]['page'], 2)
         self.assertEqual(json.loads(state.read_text())['page'], 1)

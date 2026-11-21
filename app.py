@@ -9,7 +9,8 @@ from region_labels import country_group, eligible_player
 from weekly_view import render_weekly_recommendations
 from matrix_style import matrix_cell_css
 from matchup_sort import MATCHUP_SORT_OPTIONS, sort_matchup_rows
-from deck_variants import classify_dragapult
+from deck_variants import (classify_dragapult, classify_clefairy_alakazam,
+                           CLEFAIRY_ALAKAZAM_GENESECT)
 from snapshot_store import preferred_snapshot
 ROOT=pathlib.Path(__file__).parent
 DB=pathlib.Path(os.environ.get('TCG_DB_PATH', str(ROOT/'research.sqlite3')))
@@ -83,7 +84,7 @@ with st.expander('はじめての方へ｜TCG Meta Lab の使い方', expanded=F
  st.markdown('''
 **TCG Meta Lab は、公開されたポケモンカードの大会記録を調べる試験版アプリです。**
 
-1. **対戦勝率・採用カード**：デッキを選び、相手ごとの勝率や採用カードの傾向を比較。クラハンドラパも選べます。
+1. **対戦勝率・採用カード**：デッキを選び、相手ごとの勝率や採用カードの傾向を比較。クラハンドラパやピッピフーディン（ゲノセクト型）も選べます。
 2. **シティリーグ（国内大会）**：国内の公開入賞結果と掲載デッキのシェアを確認。
 3. **今週のおすすめ**：国内直近7日間の公開入賞内シェアと、世界の公開試合の対面実績を組み合わせて参考候補を確認。
 
@@ -331,10 +332,26 @@ for side in ('a','b'):
  if mask.any():
   df.loc[mask,deck_column]=df.loc[mask,list_column].map(
    lambda value:classify_dragapult('Dragapult',normalize_list(value)))
+ alakazam_mask=(df[deck_column].eq('Alakazam') |
+                df[deck_column].str.startswith('Alakazam ') |
+                df[deck_column].str.endswith(' Alakazam'))
+ if alakazam_mask.any():
+  df.loc[alakazam_mask,deck_column]=[
+   classify_clefairy_alakazam(deck,normalize_list(cards))
+   for deck,cards in zip(df.loc[alakazam_mask,deck_column],
+                         df.loc[alakazam_mask,list_column])
+  ]
 hammer_game_sides=int(df.deck_a.eq('Dragapult [Crushing Hammer]').sum()+df.deck_b.eq('Dragapult [Crushing Hammer]').sum())
 st.caption(f'クラハンドラパは独立デッキとして自動集計（採用確認済みの対戦：{hammer_game_sides:,}件）。'
            '通常のドラパルトにはクラハン非採用とリスト未確認を含みます。'
            'ドラパルト・ヨノワールなどの複合型はそれぞれ別デッキです。')
+clefairy_alakazam_sides=int(df.deck_a.eq(CLEFAIRY_ALAKAZAM_GENESECT).sum()+
+                           df.deck_b.eq(CLEFAIRY_ALAKAZAM_GENESECT).sum())
+st.caption(f'ピッピフーディン（ゲノセクト型）は、フーディン・リーリエのピッピex・'
+           f'特性エースキャンセラーのゲノセクトの3種類をリストで確認できた'
+           f'{clefairy_alakazam_sides:,}件の対戦参加記録を独立集計。'
+           'ノココッチ等の採用枚数は問いません。リスト非公開のフーディンは元のタイプに残ります。'
+           '国内シティリーグ入賞情報は別集計です。')
 
 with st.expander('集計条件',expanded=True):
  region=st.selectbox('分析する地域（プレイヤー登録国）',['すべて','国内','海外','国内同士','国不明'],help='国内＝日本登録プレイヤー、海外＝日本以外の登録プレイヤー、国内同士＝対戦者双方が日本登録。開催地や実際の地域大会を意味しません。')
