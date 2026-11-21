@@ -71,6 +71,8 @@ def classify_clefairy_alakazam(deck, cards):
         return deck
     if deck == CLEFAIRY_ALAKAZAM_GENESECT:
         return deck
+    if deck.startswith(("Mega ", "メガ")):
+        return deck
     if not (deck == "Alakazam" or deck.startswith("Alakazam ")
             or deck.endswith(" Alakazam")):
         return deck
