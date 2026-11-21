@@ -8,6 +8,7 @@ guessing. No paid translation service or API key is required.
 DECK_NAMES_JA = {
     "Basic Box": "ベーシックBOX",
     "Dragapult [Crushing Hammer]": "クラハンドラパ",
+    "Alakazam [Lillie\'s Clefairy ex + Genesect]": "ピッピフーディン（ゲノセクト型）",
     "Dragapult [No Crushing Hammer]": "ドラパルト（クラハン非採用）",
     "Dragapult [List Unknown]": "ドラパルト（採用不明）",
     "Charizard": "リザードン",
